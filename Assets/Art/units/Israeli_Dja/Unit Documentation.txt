@@ -1,0 +1,36 @@
+PolyCount for Israeli Dja:
+701
+
+Uses Included Animation:
+Directory may Vary/Israeli_Dja.kfm
+
+CONTAINS ALTERNATE TEXTURES.
+To use the Alternate Textures (in this case, for the Shield), delete Shield.dds, and make a copy of the new desired texture. Then, rename it to Shield.dds
+
+Shield.dds is the original texture, Team Color on the Shield, Yellow Star of David.
+ShieldALT1.dds is a reddish-orange shield with a Team Color Star of David.
+ShieldAlt2.dds is a reddish-orange shield. There is no Team Color on this one.
+ShiledORG.dds is a backup of the original texture, Team Color on the Shield, Yellow Star of David.
+
+
+Made by taking the unit from Capo's Maccabee (which is a reskinned version of Bakuel's Hebrew Axeman) and putting it on the Charlemagne Heavy Spearman skeleton. I then had to do a little bit of NifSkope UV Editing, as the new skeleton warped the texture on the unit's chest armor. Then, I used "Scale Vertices" to make the spear much shorter (it was only 4 feet long in reality). I used the Mali Skirmisher's "Idle" animation, as the old pikeman style idle animation wasn't very suitable. And finally, with a little bit of NifViewer and .dds editing magic, I added Team Color to the units. The Team Color is on the Headband for the spearman, and on the shield (except the Star of David).
+
+
+Credits:
+Concept: mechaerik
+Design: mechaerik
+Body: Capo, Bakuel
+Special Thanks: Refar (Adding TeamColor Tutorial)
+
+
+Hecho in the People's Republic of mechaerikistan (PRm)
+
+
+
+
+
+MMMMM  EEEEE  CCCCC  HH HH  AAAAA  EEEEE  RRRRR  IIIII  K   K
+M M M  E      C      HH HH  AA AA  E      R   R    I    K  K
+M M M  EEEE   C      HHHHH  AAAAA  EEEE   RRRRR    I    KKK
+M M M  E      C      HH HH  AA AA  E      R  R     I    K  K
+M M M  EEEEE  CCCCC  HH HH  AA AA  EEEEE  R   R  IIIII  K   K

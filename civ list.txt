@@ -1,0 +1,42 @@
+egypt			750bc
+babylon			750bc
+assyria			750bc	conquest, 1st to military drill
+kush			750bc	conquest, gold mines, culture vs egypt
+saba			750bc
+qin				750bc	conquest, wonders
+zhou			750bc
+qi				750bc	
+jin				750bc
+chu				750bc
+lu				750bc	found & spread confucianism, settle gp
+wu				750bc	1st gg, conquest
+carthage		750bc	conquer & settle, luxuries, destroy rome
+greece			750bc	1st to techs, wonders, settle
+magadha			750bc	control shrines, spread religions
+lydia			680bc	1st to currency, gold
+neo-babylon		610bc	conquest, wonders, city
+persia			600bc	conquest, wonders, happiness
+celts			500bc	settle, 1st to mail armor, sack rome
+tamils			500bc	trade, 1st to blast furnace
+macedon			450bc	conquest of greece, capital in babylon, conquest of persia
+kalinga			400bc
+mauryans		330bc	conquest, spread buddhism, build edicts
+ptolemys		320bc	1st to techs, wonders, conquest
+seleucids		320bc	
+antigonids		320bc
+pontus			290bc	conquest, beat romans, diplomacy
+rome			270bc	conquest, 1st to techs, gp
+bactria			220bc	capital in india, hellenic/buddhist cities w gp, trade
+xiongnu			210bc	conquest
+han				200bc	conquest, 1st to techs, population
+satavahanas		200bc	conquest, culture, spred religion to se asia
+numidia			200bc
+nan yue			200bc
+armenia			180bc	conquest, 1st christian, no city loss
+hebrews			160bc	spread judaism, found christianity, settle prophets
+parthia			140bc	capital in ctesiphon, conquest, beat romans, 
+goguryeo		 30bc	1st e asian buddhist, conquest, culture
+dacia			 80bc
+sakas			 80bc	conquest
+aksum			 15ad	trade, top 4 score, religion
+kushans			 50ad	conquest, trade, buddhism to china
