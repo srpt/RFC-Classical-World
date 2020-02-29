@@ -429,11 +429,6 @@ class CvGameUtils:
 
 		iPillageGold += (pUnit.getPillageChange() * iPillageGold) / 100
 		
-		# edead: start UP: Plunder
-		if pUnit.getOwner() == con.iGhaznavids:
-			iPillageGold *= 2
-		# edead: end
-		
 		return iPillageGold
 	
 	def doCityCaptureGold(self, argsList):
@@ -448,11 +443,6 @@ class CvGameUtils:
 		iCaptureGold += (pOldCity.getPopulation() * gc.getDefineINT("CAPTURE_GOLD_PER_POPULATION"))
 		iCaptureGold += CyGame().getSorenRandNum(gc.getDefineINT("CAPTURE_GOLD_RAND1"), "Capture Gold 1")
 		iCaptureGold += CyGame().getSorenRandNum(gc.getDefineINT("CAPTURE_GOLD_RAND2"), "Capture Gold 2")
-
-		# edead: start UP: Plunder
-		if iPlayer == con.iGhaznavids:
-			iCaptureGold *= 2
-		# edead: end
 
 		if (gc.getDefineINT("CAPTURE_GOLD_MAX_TURNS") > 0):
 			iCaptureGold *= cyIntRange((CyGame().getGameTurn() - pOldCity.getGameTurnAcquired()), 0, gc.getDefineINT("CAPTURE_GOLD_MAX_TURNS"))

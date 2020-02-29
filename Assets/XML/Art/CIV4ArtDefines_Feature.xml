@@ -598,11 +598,11 @@
 			<Button>,-,Art/Interface/Buttons/Unit_Resource_Atlas.dds,7,15</Button>
 			<FeatureVariety>
 				<FeatureArtPieces>
-			<FeatureArtPiece>
-				<ModelFile>Art/Terrain/Resources/Oil/Oil.nif</ModelFile>
-				<Connections/>
-			</FeatureArtPiece>
-            	</FeatureArtPieces> 
+					<FeatureArtPiece>
+						<ModelFile>Art/Terrain/Resources/Oil/Oil.nif</ModelFile>
+						<Connections/>
+					</FeatureArtPiece>
+				</FeatureArtPieces> 
 				<FeatureDummyNodes/>
 				<bGenerateRotations>0</bGenerateRotations>
 				<VarietyButton>,-,Art/Interface/Buttons/Unit_Resource_Atlas.dds,7,15</VarietyButton>

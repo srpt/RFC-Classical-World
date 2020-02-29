@@ -13001,14 +13001,13 @@ void CvGameTextMgr::parseGreatPeopleHelp(CvWStringBuffer &szBuffer, CvCity& city
 		}
 	}
 
-	// edead: start
-	//rfctemp
-	/*if (city.getOwner() == ABBASIDS && GET_PLAYER(city.getOwner()).getCurrentEra() < 2)
+	// edead: start // srpt Athenian UP
+	if (city.getOwner() == ATHENS && GET_PLAYER(city.getOwner()).getCurrentEra() < 1)
 	{
-		szBuffer.append(gDLL->getText("TXT_KEY_MISC_HELP_ABBASID_UP", 100));
+		szBuffer.append(gDLL->getText("TXT_KEY_MISC_HELP_PTOLEMYS_UP", 100));
 		szBuffer.append(NEWLINE);
 		iModifier += 100;
-	}*/
+	}
 	// edead: end
 
 	if (owner.isGoldenAge())
@@ -13022,6 +13021,42 @@ void CvGameTextMgr::parseGreatPeopleHelp(CvWStringBuffer &szBuffer, CvCity& city
 			iModifier += iGoldenAgeMod;
 		}
 	}
+	
+	// srpt extra great people from nearby cities
+	CvCity* pLoopCity;
+	int iLoop;
+	int iSynergyModifier = 0;
+	for (iI = 0; iI < MAX_PLAYERS; iI++)
+	{
+		if (GET_PLAYER(city.getOwner()).canHaveTradeRoutesWith((PlayerTypes)iI))
+		{
+			for (pLoopCity = GET_PLAYER((PlayerTypes)iI).firstCity(&iLoop); pLoopCity != NULL; pLoopCity = GET_PLAYER((PlayerTypes)iI).nextCity(&iLoop))
+			{
+				int iDistance = plotDistance(pLoopCity->getX(), pLoopCity->getY(), city.getX(), city.getY());
+				if ((0 < iDistance) && (iDistance <= 3))
+				{
+					if (pLoopCity->getPopulation() >= 6)
+					{
+						iSynergyModifier += 10;
+						iModifier += 10;
+					}
+				}
+				if ((0 < iDistance) && (iDistance <= 2))
+				{
+					if (pLoopCity->getPopulation() >= 4)
+					{
+						iSynergyModifier += 10;
+					}
+				}
+			}
+		}
+	}
+	if (iSynergyModifier != 0)
+	{
+		szBuffer.append(gDLL->getText("TXT_KEY_MISC_HELP_SYNERGY", iSynergyModifier));
+		szBuffer.append(NEWLINE);
+	}
+	// srpt end
 
 	int iModGreatPeople = (iModifier * city.getBaseGreatPeopleRate()) / 100;
 

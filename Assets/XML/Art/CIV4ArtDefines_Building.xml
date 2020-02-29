@@ -7,6 +7,46 @@
 <Civ4ArtDefines xmlns="x-schema:CIV4ArtDefinesSchema.xml">
 	<BuildingArtInfos>
 		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_CASTLE</Type>
+			<LSystem>LSYSTEM_3x3</LSystem>
+			<bAnimated>0</bAnimated>
+			<fScale>2.01</fScale>
+			<fInterfaceScale>0.4</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Castle/Castle.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Buildings/Castle.dds,Art/Interface/Buttons/Buildings_Atlas.dds,2,8</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_GREAT_LIGHTHOUSE</Type>
+			<LSystem>LSYSTEM_WATER</LSystem>
+			<bAnimated>1</bAnimated>
+			<fScale>2.2</fScale>
+			<fInterfaceScale>0.36</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/GreatLighthouse/GreatLighthouse.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Buildings/GreatLighthouse.dds,Art/Interface/Buttons/Buildings_Atlas.dds,6,15</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_PTAH</Type>
+			<LSystem>LSYSTEM_2x2</LSystem>
+			<bAnimated>0</bAnimated>
+			<fScale>1.5</fScale>
+			<fInterfaceScale>1.30</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/egyptian temple/Ptah.nif</NIF>
+			<KFM/>
+			<Button>Art/Interface/Buttons/Buildings/egyptian_temple.dds</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_OTTOMAN_HAMMAM</Type>
+			<LSystem>LSYSTEM_2x2</LSystem>
+			<bAnimated>0</bAnimated>
+			<fScale>1.5</fScale>
+			<fInterfaceScale>0.67</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Ottoman Hammam/Hammam.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Buildings/Aqueduct.dds,Art/Interface/Buttons/Warlords_Atlas_1.dds,2,4</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
 			<Type>ART_DEF_BUILDING_DUJIANGYAN</Type>
 			<LSystem>LSYSTEM_RIVER</LSystem>
 			<bAnimated>0</bAnimated>
@@ -25,6 +65,16 @@
 			<NIF>Art/Structures/Buildings/Palace/ren_eastern_palace.nif</NIF>
 			<KFM/>
 			<Button>,Art/Interface/Buttons/Buildings/Palace.dds,Art/Interface/Buttons/Buildings_Atlas.dds,6,5</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_EDICT</Type>
+			<LSystem>LSYSTEM_1x1</LSystem>
+			<bAnimated>0</bAnimated>
+			<fScale>1.25</fScale>
+			<fInterfaceScale>0.4</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Obelisk/Obelisk.nif</NIF>
+			<KFM/>
+			<Button>Art/Interface/Buttons/Buildings/edict.dds</Button>
 		</BuildingArtInfo>
 		<BuildingArtInfo>
 			<Type>ART_DEF_BUILDING_OBELISK</Type>
@@ -57,6 +107,16 @@
 			<Button>,Art/Interface/Buttons/Buildings/Wall.dds,Art/Interface/Buttons/Buildings_Atlas.dds,8,7</Button>
 		</BuildingArtInfo>
 		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_CELTIC_DUN</Type>
+			<LSystem>LSYSTEM_CELTIC_DUN</LSystem>
+			<bAnimated>0</bAnimated>
+			<fScale>1.0</fScale>
+			<fInterfaceScale>0.4</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Celtic_Dun/Celtic_Dun_Civilopedia.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Buildings/Wall.dds,Art/Interface/Buttons/Warlords_Atlas_1.dds,8,3</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
 			<Type>ART_DEF_BUILDING_BARRACKS</Type>
 			<LSystem>LSYSTEM_2x2</LSystem>
 			<bAnimated>0</bAnimated>
@@ -74,7 +134,127 @@
 			<fInterfaceScale>0.6</fInterfaceScale>
 			<NIF>Art/Structures/Buildings/Archery Range/archery_range_me.nif</NIF>
 			<KFM/>
-			<Button>,-,Art/Interface/Buttons/rfccw_Atlas.dds,6,9</Button>
+			<Button>Art/Interface/Buttons/buildings/practice_range.dds</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_JEWISH_TEMPLE</Type>
+			<LSystem>LSYSTEM_2x2</LSystem>
+			<bAnimated>1</bAnimated>
+			<fScale>4.0</fScale>
+			<fInterfaceScale>0.7</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Temple/jewish/jewish-temple.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Buildings/Temple_Jewish.dds,Art/Interface/Buttons/Buildings_Atlas.dds,8,14</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_CHRISTIAN_TEMPLE</Type>
+			<LSystem>LSYSTEM_1x1</LSystem>
+			<bAnimated>1</bAnimated>
+			<fScale>2.0</fScale>
+			<fInterfaceScale>0.45</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Temple/christian/christian temple.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Buildings/Temple_Christian.dds,Art/Interface/Buttons/Buildings_Atlas.dds,8,13</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_HINDU_TEMPLE</Type>
+			<LSystem>LSYSTEM_2x2</LSystem>
+			<bAnimated>1</bAnimated>
+			<fScale>2.9</fScale>
+			<fInterfaceScale>0.52</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Temple/hindu/hindu_temple.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Buildings/Temple_Hindu.dds,Art/Interface/Buttons/Buildings_Atlas.dds,8,12</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_BUDDHIST_TEMPLE</Type>
+			<LSystem>LSYSTEM_2x2</LSystem>
+			<bAnimated>1</bAnimated>
+			<fScale>2.5</fScale>
+			<fInterfaceScale>0.44</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Temple/buddhist/buddhist_temple.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Buildings/Temple_Buddhist.dds,Art/Interface/Buttons/Buildings_Atlas.dds,4,13</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_CONFUCIAN_TEMPLE</Type>
+			<LSystem>LSYSTEM_2x2</LSystem>
+			<bAnimated>1</bAnimated>
+			<fScale>2.5</fScale>
+			<fInterfaceScale>0.92</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Temple/confucian/confucian_temple.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Buildings/Temple_Confuscianist.dds,Art/Interface/Buttons/Buildings_Atlas.dds,4,12</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_TAOIST_TEMPLE</Type>
+			<LSystem>LSYSTEM_2x2</LSystem>
+			<bAnimated>1</bAnimated>
+			<fScale>2.75</fScale>
+			<fInterfaceScale>0.76</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Temple/taoist/taoist_temple.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Buildings/Temple_Taoist.dds,Art/Interface/Buttons/Buildings_Atlas.dds,4,15</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_HELLENIC_TEMPLE</Type>
+			<LSystem>LSYSTEM_2x2</LSystem>
+			<bAnimated>1</bAnimated>
+			<fScale>2.75</fScale>
+			<fInterfaceScale>0.76</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Temple/taoist/taoist_temple.nif</NIF>
+			<KFM/>
+			<Button>Art/Interface/Buttons/Buildings/hellenic_temple.dds</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_JAIN_TEMPLE</Type>
+			<LSystem>LSYSTEM_2x2</LSystem>
+			<bAnimated>1</bAnimated>
+			<fScale>2.75</fScale>
+			<fInterfaceScale>0.76</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Temple/taoist/taoist_temple.nif</NIF>
+			<KFM/>
+			<Button>Art/Interface/Buttons/Buildings/jain_temple.dds</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_MANICHEAN_TEMPLE</Type>
+			<LSystem>LSYSTEM_2x2</LSystem>
+			<bAnimated>1</bAnimated>
+			<fScale>2.75</fScale>
+			<fInterfaceScale>0.76</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Temple/taoist/taoist_temple.nif</NIF>
+			<KFM/>
+			<Button>Art/Interface/Buttons/Buildings/manichean_temple.dds</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_PHOENICIAN_TEMPLE</Type>
+			<LSystem>LSYSTEM_2x2</LSystem>
+			<bAnimated>1</bAnimated>
+			<fScale>2.75</fScale>
+			<fInterfaceScale>0.76</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Temple/taoist/taoist_temple.nif</NIF>
+			<KFM/>
+			<Button>Art/Interface/Buttons/Buildings/Temple_phoenician.dds</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_ZOROASTRIAN_TEMPLE</Type>
+			<LSystem>LSYSTEM_2x2</LSystem>
+			<bAnimated>1</bAnimated>
+			<fScale>2.75</fScale>
+			<fInterfaceScale>0.76</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Temple/taoist/taoist_temple.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Buildings/Temple_Taoist.dds,Art/Interface/Buttons/Buildings_Atlas.dds,4,15</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_GREEK_ODEON</Type>
+			<LSystem>LSYSTEM_3x2</LSystem>
+			<bAnimated>0</bAnimated>
+			<fScale>2.17</fScale>
+			<fInterfaceScale>0.48</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Odeon/Odeon.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Buildings/Colosseum.dds,Art/Interface/Buttons/Warlords_Atlas_1.dds,4,1</Button>
 		</BuildingArtInfo>
 		<BuildingArtInfo>
 			<Type>ART_DEF_BUILDING_HARBOR</Type>
@@ -124,7 +304,7 @@
 			<fInterfaceScale>0.55</fInterfaceScale>
 			<NIF>Art/Structures/Buildings/middle_east_market/market.nif</NIF>
 			<KFM/>
-			<Button>,-,Art/Interface/Buttons/rfccw_Atlas.dds,8,2</Button>
+			<Button>,Art/Interface/Buttons/Buildings/Market.dds,Art/Interface/Buttons/Buildings_Atlas.dds,3,3</Button>
 		</BuildingArtInfo>
 		<BuildingArtInfo>
 			<Type>ART_DEF_BUILDING_LIBRARY</Type>
@@ -195,7 +375,7 @@
 			<fInterfaceScale>0.7</fInterfaceScale>
 			<NIF>Art/Structures/Buildings/Fairground/fest_mid_tentbig.nif</NIF>
 			<KFM/>
-			<Button>,-,Art/Interface/Buttons/rfccw_Atlas.dds,7,9</Button>
+			<Button>Art/Interface/Buttons/buildings/fairground.dds</Button>
 		</BuildingArtInfo>
 		<BuildingArtInfo>
 			<Type>ART_DEF_BUILDING_COURTHOUSE</Type>
@@ -496,6 +676,36 @@
 			<NIF>Art/Structures/Wonders/Arg-e_bam/Spanish_Citadel.nif</NIF>
 			<KFM/>
 			<Button>,-,Art/Interface/Buttons/RFCA_Buildings_Projects_Atlas.dds,3,5</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_SUMERIAN_ZIGGURAT</Type>
+			<LSystem>LSYSTEM_2x3</LSystem>
+			<bAnimated>0</bAnimated>
+			<fScale>1.0</fScale>
+			<fInterfaceScale>0.6</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Sumerian_Ziggurat/Sumerian_Ziggurat.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Buildings/ChichenItza.dds,Art/Interface/Buttons/Beyond_the_Sword_Atlas.dds,3,7</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_CARTHAGE_COTHON</Type>
+			<LSystem>LSYSTEM_HARBOR</LSystem>
+			<bAnimated>0</bAnimated>
+			<fScale>1.0</fScale>
+			<fInterfaceScale>1.1</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Cartheginian Cothon/Cothon.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Buildings/Harbor.dds,Art/Interface/Buttons/Warlords_Atlas_1.dds,7,3</Button>
+		</BuildingArtInfo>
+		<BuildingArtInfo>
+			<Type>ART_DEF_BUILDING_INDIAN_MAUSOLEUM</Type>
+			<LSystem>LSYSTEM_2x2</LSystem>
+			<bAnimated>0</bAnimated>
+			<fScale>1.65</fScale>
+			<fInterfaceScale>0.67</fInterfaceScale>
+			<NIF>Art/Structures/Buildings/Indian_Mausoleum/Indian_Mausoleum.nif</NIF>
+			<KFM/>
+			<Button>,Art/Interface/Buttons/Buildings/PoliceStation.dds,Art/Interface/Buttons/Warlords_Atlas_1.dds,7,2</Button>
 		</BuildingArtInfo>
 	</BuildingArtInfos>
 </Civ4ArtDefines>

@@ -197,13 +197,6 @@
 		</HintInfo>
 
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_19</Description>
-		</HintInfo>
-		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_20</Description>
-		</HintInfo>
-
-		<HintInfo>
 			<Description>TXT_KEY_HINT_RFC_1</Description>
 		</HintInfo>
 		<HintInfo>
@@ -246,61 +239,61 @@
 			<Description>TXT_KEY_HINT_RFC_14</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_21</Description>
+			<Description>TXT_KEY_HINT_RFCCW_1</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_1</Description>
+			<Description>TXT_KEY_HINT_RFCCW_2</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_2</Description>
+			<Description>TXT_KEY_HINT_RFCCW_3</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_3</Description>
+			<Description>TXT_KEY_HINT_RFCCW_4</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_4</Description>
+			<Description>TXT_KEY_HINT_RFCCW_5</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_5</Description>
+			<Description>TXT_KEY_HINT_RFCCW_6</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_6</Description>
+			<Description>TXT_KEY_HINT_RFCCW_7</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_7</Description>
+			<Description>TXT_KEY_HINT_RFCCW_8</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_8</Description>
+			<Description>TXT_KEY_HINT_RFCCW_9</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_9</Description>
+			<Description>TXT_KEY_HINT_RFCCW_10</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_10</Description>
+			<Description>TXT_KEY_HINT_RFCCW_11</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_11</Description>
+			<Description>TXT_KEY_HINT_RFCCW_12</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_12</Description>
+			<Description>TXT_KEY_HINT_RFCCW_13</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_13</Description>
+			<Description>TXT_KEY_HINT_RFCCW_14</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_14</Description>
+			<Description>TXT_KEY_HINT_RFCCW_15</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_15</Description>
+			<Description>TXT_KEY_HINT_RFCCW_16</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_16</Description>
+			<Description>TXT_KEY_HINT_RFCCW_17</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_17</Description>
+			<Description>TXT_KEY_HINT_RFCCW_18</Description>
 		</HintInfo>
 		<HintInfo>
-			<Description>TXT_KEY_HINT_SOI_18</Description>
+			<Description>TXT_KEY_HINT_RFCCW_19</Description>
 		</HintInfo>
 	</HintInfos>
 </Civ4Hints>

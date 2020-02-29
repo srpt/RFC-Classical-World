@@ -168,8 +168,10 @@
 			<iFeatureGrainChange>1</iFeatureGrainChange>
 			<iResearchPercent>200</iResearchPercent>
 			<iTradeProfitPercent>30</iTradeProfitPercent>
-			<iDistanceMaintenancePercent>100</iDistanceMaintenancePercent>
-			<iNumCitiesMaintenancePercent>25</iNumCitiesMaintenancePercent>
+			<!--<iDistanceMaintenancePercent>100</iDistanceMaintenancePercent>
+			<iNumCitiesMaintenancePercent>25</iNumCitiesMaintenancePercent>-->
+			<iDistanceMaintenancePercent>75</iDistanceMaintenancePercent>
+			<iNumCitiesMaintenancePercent>30</iNumCitiesMaintenancePercent>
 			<iColonyMaintenancePercent>0</iColonyMaintenancePercent>
 			<iCorporationMaintenancePercent>100</iCorporationMaintenancePercent>
 			<iNumCitiesAnarchyPercent>6</iNumCitiesAnarchyPercent>

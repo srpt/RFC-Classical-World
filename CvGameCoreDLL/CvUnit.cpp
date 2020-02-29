@@ -2299,7 +2299,19 @@ bool CvUnit::canEnterTerritory(TeamTypes eTeam, bool bIgnoreRightOfPassage) cons
 	{
 		if (GET_TEAM(getTeam()).isOpenBorders(eTeam))
 		{
-			return true;
+			// srpt open borders restriction
+			if ((baseCombatStr() < 1) || (GET_TEAM(getTeam()).isVassal(eTeam)) || (GET_TEAM(eTeam).isVassal(getTeam())))
+			{
+				return true;
+			}
+			int iI;
+			for (iI = 0; iI < (MAX_TEAMS - 3); iI++)
+			{
+				if ((GET_TEAM(getTeam()).isAtWar((TeamTypes)iI)) && (GET_TEAM(eTeam).isAtWar((TeamTypes)iI)))
+				{
+					return true;
+				}
+			}
 		}
 	}
 
@@ -2438,7 +2450,8 @@ bool CvUnit::canMoveInto(const CvPlot* pPlot, bool bAttack, bool bDeclareWar, bo
 				TechTypes eTech = (TechTypes)m_pUnitInfo->getFeaturePassableTech(pPlot->getFeatureType());
 				if (NO_TECH == eTech || !GET_TEAM(getTeam()).isHasTech(eTech))
 				{
-					if (DOMAIN_SEA != getDomainType() || pPlot->getTeam() != getTeam())  // sea units can enter impassable in own cultural borders
+					if (pPlot->getTeam() != getTeam() && getTeam() != BARBARIAN_TEAM) // srpt non-barb all units
+					//if (DOMAIN_SEA != getDomainType() || pPlot->getTeam() != getTeam())  // sea units can enter impassable in own cultural borders
 					{
 						return false;
 					}
@@ -2463,7 +2476,8 @@ bool CvUnit::canMoveInto(const CvPlot* pPlot, bool bAttack, bool bDeclareWar, bo
 				TechTypes eTech = (TechTypes)m_pUnitInfo->getTerrainPassableTech(pPlot->getTerrainType());
 				if (NO_TECH == eTech || !GET_TEAM(getTeam()).isHasTech(eTech))
 				{
-					if (DOMAIN_SEA != getDomainType() || pPlot->getTeam() != getTeam())  // sea units can enter impassable in own cultural borders
+					if (pPlot->getTeam() != getTeam() && getTeam() != BARBARIAN_TEAM) // srpt non-barb all units
+					//if (DOMAIN_SEA != getDomainType() || pPlot->getTeam() != getTeam())  // sea units can enter impassable in own cultural borders
 					{
 						if (bIgnoreLoad || !canLoad(pPlot)) 
 						{ 
@@ -6061,6 +6075,17 @@ int CvUnit::getMaxHurryProduction(CvCity* pCity) const
 
 	iProduction *= GC.getGameSpeedInfo(GC.getGameINLINE().getGameSpeedType()).getUnitHurryPercent();
 	iProduction /= 100;
+	// Qin UP srpt this covers extra production from slaves used to hurry buildings
+	if (getOwnerINLINE() == QIN && getUnitClassType() == GC.getInfoTypeForString("UNITCLASS_SLAVE"))
+	{
+		iProduction *= 2;
+	}
+	// end
+	// srpt: Archimedes effect: great scholars can rush buildings
+	//if (GET_PLAYER(getOwnerINLINE()).isHasBuilding((BuildingTypes)GC.getInfoTypeForString("BUILDING_ARCHIMEDES_WORKSHOP")) && getUnitClassType() == GC.getInfoTypeForString("UNITCLASS_SCIENTIST"))
+	//{
+		//iProduction = GC.getUnitInfo((UnitTypes)GC.getCivilizationInfo(GET_PLAYER(getOwnerINLINE()).getCivilizationType()).getCivilizationUnits(GC.getInfoTypeForString("UNITCLASS_ENGINEER"))).getBaseHurry() + (m_pUnitInfo->getHurryMultiplier() * pCity->getPopulation());;
+	//}
 
 	return std::max(0, iProduction);
 }
@@ -6905,12 +6930,16 @@ bool CvUnit::canGoldenAge(const CvPlot* pPlot, bool bTestVisible) const
 	}
 
 	if (!bTestVisible)
-	{
-		if (GET_PLAYER(getOwnerINLINE()).unitsRequiredForGoldenAge() > GET_PLAYER(getOwnerINLINE()).unitsGoldenAgeReady())
+	{ // srpt Guptan UP
+		if (getOwnerINLINE() != GUPTAS && (GET_PLAYER(getOwnerINLINE()).unitsRequiredForGoldenAge() > GET_PLAYER(getOwnerINLINE()).unitsGoldenAgeReady()))
 		{
 			return false;
 		}
-	}
+		if (getOwnerINLINE() == GUPTAS && (GET_PLAYER(getOwnerINLINE()).unitsRequiredForGoldenAge() -1 > GET_PLAYER(getOwnerINLINE()).unitsGoldenAgeReady()))
+		{
+			return false;
+		}
+	} // srpt end
 
 	return true;
 }

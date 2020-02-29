@@ -170,26 +170,9 @@ class CvPediaCivilization:
 		# edead: start provinces stuff
 		if self.iCivilization != con.iNumPlayers and self.iCivilization != con.iNumPlayers+1: # rebels + barbs in XML
 			szText += localText.getText("TXT_KEY_CIVILOPEDIA_CORE_PROVINCES", ())
-			if self.iCivilization == gc.getInfoTypeForString("CIVILIZATION_DELHI"):
-				lCoreRegions = con.lRespawnRegions[con.iGhorids]
-				lNormalRegions = con.lRespawnNormalRegions[con.iGhorids]
-				lBroaderRegions = con.lRespawnBroaderRegions[con.iGhorids]
-			elif self.iCivilization == gc.getInfoTypeForString("CIVILIZATION_KARAMAN"):
-				lCoreRegions = con.lRespawnRegions[con.iRum]
-				lNormalRegions = con.lRespawnNormalRegions[con.iRum]
-				lBroaderRegions = con.lRespawnBroaderRegions[con.iRum]
-			elif self.iCivilization == gc.getInfoTypeForString("CIVILIZATION_CILICIA"):
-				lCoreRegions = con.lRespawnRegions[con.iArmenia]
-				lNormalRegions = con.lRespawnNormalRegions[con.iArmenia]
-				lBroaderRegions = con.lRespawnBroaderRegions[con.iArmenia]
-			elif self.iCivilization == gc.getInfoTypeForString("CIVILIZATION_SHAYBANIDS"):
-				lCoreRegions = con.lRespawnRegions[con.iKhwarezm]
-				lNormalRegions = con.lRespawnNormalRegions[con.iKhwarezm]
-				lBroaderRegions = con.lRespawnBroaderRegions[con.iKhwarezm]
-			else:
-				lCoreRegions = con.lCoreRegions[self.iCivilization]
-				lNormalRegions = con.lNormalRegions[self.iCivilization]
-				lBroaderRegions = con.lBroaderRegions[self.iCivilization]
+			lCoreRegions = con.lCoreRegions[self.iCivilization]
+			lNormalRegions = con.lNormalRegions[self.iCivilization]
+			lBroaderRegions = con.lBroaderRegions[self.iCivilization]
 			for i in range(len(lCoreRegions)):
 				if i > 0: szText += ", "
 				szText += gc.getGame().getRegionName(lCoreRegions[i], False)

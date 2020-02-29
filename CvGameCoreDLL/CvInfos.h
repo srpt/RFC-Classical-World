@@ -2293,6 +2293,7 @@ protected:
 	
 	// 3MiroCIV: New Civ Attributes
 	int m_iStartingYear;
+	int m_iStartingCalendarYear;//srpt
 	CvWString m_szLoadingTime;
 	
 	// Arrays

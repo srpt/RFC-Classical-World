@@ -1805,8 +1805,9 @@ class CvMainInterface:
 		# edead: start Piety + GP info text by NeverMind 1/2
 		screen.hide( "StabilityButton" )
 		screen.hide( "StabilityText" )
-		screen.hide( "PietyButton" )
-		screen.hide( "PietyText" )
+		# srpt piety
+		#screen.hide( "PietyButton" )
+		#screen.hide( "PietyText" )
 		screen.hide( "CombatXPButton" )
 		screen.hide( "CombatXPText" )
 		screen.hide( "GPInfoButton" )
@@ -1905,7 +1906,8 @@ class CvMainInterface:
 				# edead: end
 				
 				# edead: start piety
-				iPiety = utils.getPiety(ePlayer)
+				# srpt piety
+				"""iPiety = utils.getPiety(ePlayer)
 				if iPiety >= 0 and gc.getPlayer(ePlayer).getStateReligion() >= 0 and not CyInterface().isCityScreenUp():
 					szPietyButton = u"<font=2>%c</font>" %(CyGame().getSymbolID(FontSymbols.RELIGION_CHAR))
 					szPietyText = ": %s (%d)" %(utils.getFavorLevelText(ePlayer), iPiety)
@@ -1916,7 +1918,7 @@ class CvMainInterface:
 					iCount += 1
 				else:
 					screen.hide("PietyButton")
-					screen.hide("PietyText")
+					screen.hide("PietyText")"""
 				# edead: end
 				
 				# edead: start GP info text by NeverMind 2/2
@@ -3027,6 +3029,7 @@ class CvMainInterface:
 													szTempBuffer = u"%c" %(gc.getReligionInfo(gc.getPlayer(ePlayer).getStateReligion()).getChar())
 													szBuffer = szBuffer + szTempBuffer
 												# edead: start piety display
+												# srpt piety
 												# iPiety = utils.getPiety(ePlayer)
 												# iBasePiety = utils.getBasePiety(ePlayer)
 												# if iPiety >= 0:

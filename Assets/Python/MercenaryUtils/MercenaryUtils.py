@@ -3131,7 +3131,7 @@ class Mercenary:
 		#return int((math.ceil(self.getLevel() * math.pi) + math.ceil(self.getHireCost() * 0.05))*g_dMaintenanceCostModifier)
 		#iResult = int((math.ceil(self.getLevel() * math.pi) + math.ceil(self.getHireCost() * 0.05))*dMaintenanceCostModifier) + g_dBaseMaintenanceCost #Rhye
 		iResult = int((math.ceil(self.getLevel() * 1.5 + self.getHireCost() * 0.1))*dMaintenanceCostModifier) + g_dBaseMaintenanceCost #Rhye
-		if iPlayer == con.iCrusaders: # edead
+		if iPlayer == con.iCarthage: # edead
 			iResult /= 2
 		return iResult
 		#Rhye - end Carthaginian UP

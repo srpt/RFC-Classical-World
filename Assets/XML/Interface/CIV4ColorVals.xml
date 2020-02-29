@@ -1246,6 +1246,13 @@
 			<fAlpha>1.00</fAlpha>
 		</ColorVal>
 		<ColorVal>
+			<Type>COLOR_PLAYER_LIGHT_BLACK_1</Type>
+			<fRed>0.248</fRed>
+			<fGreen>0.250</fGreen>
+			<fBlue>0.250</fBlue>
+			<fAlpha>1.00</fAlpha>
+		</ColorVal>
+		<ColorVal>
 			<Type>COLOR_PLAYER_LIGHT_BLACK_2</Type>
 			<fRed>0.250</fRed>
 			<fGreen>0.250</fGreen>

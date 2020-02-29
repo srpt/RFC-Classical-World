@@ -31,6 +31,7 @@ g_RegionArtStyles = {
 	con.rCrete 				: "UNIT_ARTSTYLE_GREEK",
 	con.rMacedonia 			: "UNIT_ARTSTYLE_GREEK",
 	con.rCyprus 			: "UNIT_ARTSTYLE_GREEK",
+	con.rThrace				: "UNIT_ARTSTYLE_GREEK",
 	#Persian
 	con.rPersia 			: "UNIT_ARTSTYLE_PERSIA",
 	con.rArmenia 			: "UNIT_ARTSTYLE_PERSIA",
@@ -47,7 +48,7 @@ g_RegionArtStyles = {
 	con.rGandhara 			: "UNIT_ARTSTYLE_INDIA",
 	con.rPunjab 			: "UNIT_ARTSTYLE_INDIA",
 	con.rMagadha 			: "UNIT_ARTSTYLE_INDIA",
-	con.rBangala 			: "UNIT_ARTSTYLE_INDIA",
+	con.rAnga 				: "UNIT_ARTSTYLE_INDIA",
 	con.rKalinka 			: "UNIT_ARTSTYLE_INDIA",
 	con.rKerala 			: "UNIT_ARTSTYLE_INDIA",
 	con.rTamilNadu 			: "UNIT_ARTSTYLE_INDIA",
@@ -106,9 +107,8 @@ g_ConditionalArtStyles = {
 	con.rIberia				: (con.iStartYear, [con.iPhoenicianPolytheism], "UNIT_ARTSTYLE_CARTHAGE"),
 	con.rMauretania			: (con.iStartYear, [con.iPhoenicianPolytheism], "UNIT_ARTSTYLE_CARTHAGE"),
 	con.rNumidia			: (con.iStartYear, [con.iPhoenicianPolytheism], "UNIT_ARTSTYLE_CARTHAGE"),
-	con.rLibya				: (con.iStartYear, [con.iPhoenicianPolytheism], "UNIT_ARTSTYLE_CARTHAGE"),
+	#con.rLibya				: (con.iStartYear, [con.iPhoenicianPolytheism], "UNIT_ARTSTYLE_CARTHAGE"),
 	con.rBaetica			: (con.iStartYear, [con.iPhoenicianPolytheism], "UNIT_ARTSTYLE_CARTHAGE"),
-	con.rLibya				: (con.iStartYear, [con.iPhoenicianPolytheism], "UNIT_ARTSTYLE_CARTHAGE"),
 	con.rLusitania			: (con.iStartYear, [con.iPhoenicianPolytheism], "UNIT_ARTSTYLE_CARTHAGE"),
 	#Chinese religions
 	con.rTibet				: (con.iStartYear, [con.iConfucianism,con.iTaoism], "UNIT_ARTSTYLE_CHINA"),

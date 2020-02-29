@@ -9816,6 +9816,7 @@ void CvCivilizationInfo::read(FDataStreamBase* stream)
 
 	// 3MiroCIV: New Atts
 	stream->Read(&m_iStartingYear);
+	stream->Read(&m_iStartingCalendarYear);//srpt
 	stream->ReadString(m_szLoadingTime);
 
 	// Arrays

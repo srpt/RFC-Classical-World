@@ -116,24 +116,6 @@ class Companies:
 		
 		
 		
-		# state religion requirements
-		iStateReligion = owner.getStateReligion()
-		if iCompany == iHospitallers or iCompany == iTemplars:
-			if iStateReligion == iCatholicism:
-				iValue += 3
-			elif iStateReligion == iOrthodoxy:
-				iValue += 1
-			else:
-				return -1
-		elif iCompany == iKarimi:
-			if iStateReligion != iSunni and iStateReligion != iShia:
-				return -1
-		elif iCompany == iSufi:
-			if iStateReligion != iSunni and iStateReligion != iShia:
-				return -1
-		
-		
-		
 		# geographical requirements
 		plot = gc.getMap().plot(city.getX(),city.getY())
 		if len(lCompanyRegions[iCompany]) > 0 and plot.getRegionID() not in lCompanyRegions[iCompany]:
@@ -143,25 +125,8 @@ class Companies:
 		
 		
 		# resources
-		iTempValue = 0
-		bFound = False
-		for i in range(4):
-			iBonus = gc.getCorporationInfo(iCompany).getPrereqBonus(i)
-			if iBonus > -1:
-				if city.getNumBonuses(iBonus) > 0: bFound = True
-				if iCompany in [iKarimi, iHospitallers, iTemplars, iNizari]:
-					iTempValue += city.getNumBonuses(iBonus)
-				else:
-					iTempValue += city.getNumBonuses(iBonus) * 2
-		if iCompany in [iKarimi, iVenetians, iGenoans] and not bFound: return -1
-		iValue += iTempValue
 		
 		# competition
-		if iCompany == iHospitallers and city.isHasCorporation(iTemplars): iValue *= 0.66
-		elif iCompany == iTemplars and city.isHasCorporation(iHospitallers): iValue *= 0.66
-		elif iCompany == iKarimi and (city.isHasCorporation(iVenetians) or city.isHasCorporation(iGenoans)): iValue /= 2
-		elif iCompany == iVenetians and (city.isHasCorporation(iGenoans) or city.isHasCorporation(iKarimi)): iValue /= 2
-		elif iCompany == iGenoans and (city.isHasCorporation(iVenetians) or city.isHasCorporation(iKarimi)): iValue /= 2
 		
 		# threshold
 		if iValue < 3: return -1

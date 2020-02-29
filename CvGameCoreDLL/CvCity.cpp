@@ -1853,6 +1853,7 @@ bool CvCity::canTrain(UnitTypes eUnit, bool bContinue, bool bTestVisible, bool b
 		return false;
 	}
 
+	// srpt upgrades do not block lower tech units from being trained
 	if (!bIgnoreUpgrades)
 	{
 		if (allUpgradesAvailable(eUnit) != NO_UNIT)
@@ -4140,21 +4141,6 @@ ArtStyleTypes CvCity::getArtStyleType() const
 	// edead: start tile-specific city art styles
 	if (plot()->getArtStyleType() >= 0)
 	{
-		//rfctemp
-		/*if (plot()->getArtStyleType() == ARTSTYLE_MEDITERRANEAN)
-		{
-			if (GET_PLAYER(getOwnerINLINE()).getStateReligion() == RELIGION_SUNNI || GET_PLAYER(getOwnerINLINE()).getStateReligion() == RELIGION_SHIA || GET_PLAYER(getOwnerINLINE()).getArtStyleType() == ARTSTYLE_MIDDLE_EAST)
-			{
-				return ARTSTYLE_TURKISH;
-			}
-		}
-		else if (plot()->getArtStyleType() == ARTSTYLE_INDIAN)
-		{
-			if (GET_PLAYER(getOwnerINLINE()).getStateReligion() == RELIGION_SUNNI || GET_PLAYER(getOwnerINLINE()).getStateReligion() == RELIGION_SHIA || (GET_PLAYER(getOwnerINLINE()).getArtStyleType() == ARTSTYLE_MIDDLE_EAST && !GET_PLAYER(getOwnerINLINE()).isMinorCiv()))
-			{
-				return ARTSTYLE_MIDDLE_EAST;
-			}
-		}*/
 		return plot()->getArtStyleType();
 	}
 	else
@@ -4398,8 +4384,7 @@ int CvCity::getReligionPercentAnger() const
 	iAnger /= getReligionCount();
 	
 	// edead: start UP: Tolerance
-	//rfctemp
-	//if (getOwnerINLINE() == FATIMIDS) iAnger /= 2;
+	//if (getOwnerINLINE() == KUSHANS) iAnger /= 2;//srpt
 	// edead: end
 
 	return iAnger;
@@ -5555,6 +5540,10 @@ int CvCity::getGreatPeopleRate() const
 int CvCity::getTotalGreatPeopleRateModifier() const
 {
 	int iModifier;
+	// srpt
+	CvCity* pLoopCity;
+	int iLoop;
+	int iI;
 
 	iModifier = getGreatPeopleRateModifier();
 
@@ -5571,7 +5560,35 @@ int CvCity::getTotalGreatPeopleRateModifier() const
 	if (GET_PLAYER(getOwnerINLINE()).isGoldenAge())
 	{
 		iModifier += GC.getDefineINT("GOLDEN_AGE_GREAT_PEOPLE_MODIFIER");
+	}		
+	// srpt extra great people from nearby cities
+	for (iI = 0; iI < MAX_PLAYERS; iI++)
+	{
+		if (GET_PLAYER(getOwnerINLINE()).canHaveTradeRoutesWith((PlayerTypes)iI))
+		{
+			for (pLoopCity = GET_PLAYER((PlayerTypes)iI).firstCity(&iLoop); pLoopCity != NULL; pLoopCity = GET_PLAYER((PlayerTypes)iI).nextCity(&iLoop))
+			{
+				if (pLoopCity != this)
+				{
+					if (plotDistance(pLoopCity->getX_INLINE(), pLoopCity->getY_INLINE(), getX_INLINE(), getY_INLINE()) <= 3)
+					{
+						if (pLoopCity->getPopulation() >= 6)
+						{
+							iModifier += 10;
+						}
+					}
+					if (plotDistance(pLoopCity->getX_INLINE(), pLoopCity->getY_INLINE(), getX_INLINE(), getY_INLINE()) <= 2)
+					{
+						if (pLoopCity->getPopulation() >= 6)
+						{
+							iModifier += 10;
+						}
+					}
+				}
+			}
+		}
 	}
+	// srpt end
 
 	return std::max(0, (iModifier + 100));
 }
@@ -6157,6 +6174,22 @@ void CvCity::updateFeatureHealth()
 
 			if (eFeature != NO_FEATURE)
 			{
+				// srpt Funan UP
+				if ((getOwnerINLINE() == FUNAN) && (eFeature != JUNGLE))
+				{
+					if (GC.getFeatureInfo(eFeature).getHealthPercent() > 0)
+					{
+						iNewGoodHealth += GC.getFeatureInfo(eFeature).getHealthPercent();
+					}
+					else
+					{
+						iNewBadHealth += GC.getFeatureInfo(eFeature).getHealthPercent();
+					}
+				}
+			}
+			// original code
+			/*if (eFeature != NO_FEATURE)
+			{
 				if (GC.getFeatureInfo(eFeature).getHealthPercent() > 0)
 				{
 					iNewGoodHealth += GC.getFeatureInfo(eFeature).getHealthPercent();
@@ -6165,7 +6198,7 @@ void CvCity::updateFeatureHealth()
 				{
 					iNewBadHealth += GC.getFeatureInfo(eFeature).getHealthPercent();
 				}
-			}
+			}*/
 		}
 	}
 
@@ -6389,11 +6422,39 @@ int CvCity::getMilitaryHappinessUnits() const
 }
 
 
-int CvCity::getMilitaryHappiness() const
+/*int CvCity::getMilitaryHappiness() const
 {
 	return (getMilitaryHappinessUnits() * GET_PLAYER(getOwnerINLINE()).getHappyPerMilitaryUnit());
-}
+}*/
 
+int CvCity::getMilitaryHappiness() const
+{
+	bool bNoReligion = true;
+	int iI;
+	if (getOwnerINLINE() == QIN && GET_PLAYER(getOwnerINLINE()).getStateReligion() == NO_RELIGION)
+	{
+		for (iI = 0; iI < GC.getNumReligionInfos(); iI++)
+		{
+			if (isHasReligion((ReligionTypes)iI))
+			{
+				bNoReligion = false;
+				break;
+			}
+		}
+		if (bNoReligion == true)
+		{
+			return (getMilitaryHappinessUnits() * GET_PLAYER(getOwnerINLINE()).getHappyPerMilitaryUnit() + getMilitaryHappinessUnits());
+		}
+		else
+		{
+			return (getMilitaryHappinessUnits() * GET_PLAYER(getOwnerINLINE()).getHappyPerMilitaryUnit());
+		}
+	}
+	else
+	{
+		return (getMilitaryHappinessUnits() * GET_PLAYER(getOwnerINLINE()).getHappyPerMilitaryUnit());
+	}
+}
 
 void CvCity::changeMilitaryHappinessUnits(int iChange)
 {
@@ -7439,6 +7500,9 @@ bool CvCity::isOccupation() const
 void CvCity::setOccupationTimer(int iNewValue)
 {
 	bool bOldOccupation;
+	
+	//srpt: cap city disorder at 3 turns
+	iNewValue = std::min(iNewValue, 3);
 
 	if (getOccupationTimer() != iNewValue)
 	{
@@ -11015,6 +11079,31 @@ void CvCity::updateTradeRoutes()
 	if (!isDisorder() && !isPlundered())
 	{
 		iTradeRoutes = getTradeRoutes();
+		
+		// srpt extra trade routes for nearby cities
+		if (getPopulation() >= 3)
+		{
+			for (iI = 0; iI < MAX_PLAYERS; iI++)
+			{
+				if (GET_PLAYER(getOwnerINLINE()).canHaveTradeRoutesWith((PlayerTypes)iI))
+				{
+					for (pLoopCity = GET_PLAYER((PlayerTypes)iI).firstCity(&iLoop); pLoopCity != NULL; pLoopCity = GET_PLAYER((PlayerTypes)iI).nextCity(&iLoop))
+					{
+						if (pLoopCity != this)
+						{
+							if (plotDistance(pLoopCity->getX_INLINE(), pLoopCity->getY_INLINE(), getX_INLINE(), getY_INLINE()) <= 3)
+							{
+								if (pLoopCity->getPopulation() >= 3)
+								{
+									iTradeRoutes += 1;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		// srpt end
 
 		FAssert(iTradeRoutes <= GC.getDefineINT("MAX_TRADE_ROUTES"));
 
@@ -11031,6 +11120,15 @@ void CvCity::updateTradeRoutes()
 							if (pLoopCity->plotGroup(getOwnerINLINE()) == plotGroup(getOwnerINLINE()) || GC.getDefineINT("IGNORE_PLOT_GROUP_FOR_TRADE_ROUTES"))
 							{
 								iValue = calculateTradeProfit(pLoopCity);
+								// srpt make sure the nearby city is one of the trade routes
+								if (plotDistance(pLoopCity->getX_INLINE(), pLoopCity->getY_INLINE(), getX_INLINE(), getY_INLINE()) <= 3)
+								{
+									if (pLoopCity->getPopulation() >= 3)
+									{
+										iValue *= 10;
+									}
+								}
+								// srpt end
 
 								for (iJ = 0; iJ < iTradeRoutes; iJ++)
 								{
@@ -12229,15 +12327,15 @@ void CvCity::doReligion()
 									int iBaseSpreadFactor = GC.getReligionInfo((ReligionTypes)iI).getSpreadFactor();
 									int iSpreadFactor = GET_PLAYER(getOwnerINLINE()).getReligionSpreadPercent((ReligionTypes)iI) * iBaseSpreadFactor / 100;
 									//edead - start Buddhism decline
-									if (iI == RELIGION_BUDDHISM)
-									{
-										if (GC.getGameINLINE().getGameTurnYear() >= 1000)
-										{
-											int iBuddhismModifier = std::max(1, (1200 - GC.getGameINLINE().getGameTurnYear()) / 2);
-											iSpreadFactor *= iBuddhismModifier;
-											iSpreadFactor /= 100;
-										}
-									}
+									//if (iI == RELIGION_BUDDHISM)
+									//{
+										//if (GC.getGameINLINE().getGameTurnYear() >= 1000)
+										//{
+											//int iBuddhismModifier = std::max(1, (1200 - GC.getGameINLINE().getGameTurnYear()) / 2);
+											//iSpreadFactor *= iBuddhismModifier;
+											//iSpreadFactor /= 100;
+										//}
+									//}
 									//edead - end
 									iSpread *= iSpreadFactor;
 									//Rhye - end

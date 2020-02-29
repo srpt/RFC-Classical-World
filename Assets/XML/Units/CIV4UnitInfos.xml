@@ -10,7 +10,7 @@
 		<UnitInfo>
 			<Class>UNITCLASS_SETTLER</Class>
 			<Type>UNIT_SETTLER</Type>
-			<Capture>NONE</Capture>
+			<Capture>UNITCLASS_WORKER</Capture>
 			<Domain>DOMAIN_LAND</Domain>
 			<DefaultUnitAI>UNITAI_SETTLE</DefaultUnitAI>
 			<Description>TXT_KEY_UNIT_SETTLER</Description>
@@ -27,7 +27,7 @@
 			</UnitAIs>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMinAreaSize>-1</iMinAreaSize>
-			<iMoves>2</iMoves>
+			<iMoves>1</iMoves>
 			<iNukeRange>-1</iNukeRange>
 			<iAsset>4</iAsset>
 			<UnitMeshGroups>
@@ -54,7 +54,7 @@
 		<UnitInfo>
 			<Class>UNITCLASS_WORKER</Class>
 			<Type>UNIT_WORKER</Type>
-			<Capture>NONE</Capture>
+			<Capture>UNITCLASS_WORKER</Capture>
 			<Combat>NONE</Combat>
 			<Domain>DOMAIN_LAND</Domain>
 			<DefaultUnitAI>UNITAI_WORKER</DefaultUnitAI>
@@ -76,10 +76,6 @@
 					<bBuild>1</bBuild>
 				</Build>
 				<Build>
-					<BuildType>BUILD_RAILROAD</BuildType>
-					<bBuild>1</bBuild>
-				</Build>
-				<Build>
 					<BuildType>BUILD_FARM</BuildType>
 					<bBuild>1</bBuild>
 				</Build>
@@ -127,10 +123,6 @@
 					<BuildType>BUILD_WINERY</BuildType>
 					<bBuild>1</bBuild>
 				</Build>
-				<!--<Build>
-					<BuildType>BUILD_APIARY</BuildType>
-					<bBuild>1</bBuild>
-				</Build>-->
 				<Build>
 					<BuildType>BUILD_COTTAGE</BuildType>
 					<bBuild>1</bBuild>
@@ -144,10 +136,11 @@
 					<bBuild>1</bBuild>
 				</Build>
 			</Builds>
-			<iCost>60</iCost>
+			<iCost>80</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
-			<iMoves>2</iMoves>
+			<iMoves>1</iMoves>
 			<iNukeRange>-1</iNukeRange>
+			<iWorkRate>100</iWorkRate>
 			<iAsset>2</iAsset>
 			<UnitMeshGroups>
 				<iGroupSize>2</iGroupSize>
@@ -165,7 +158,7 @@
 		<UnitInfo>
 			<Class>UNITCLASS_SLAVE</Class>
 			<Type>UNIT_SLAVE</Type>
-			<Capture>NONE</Capture>
+			<Capture>UNITCLASS_WORKER</Capture>
 			<Combat>NONE</Combat>
 			<Domain>DOMAIN_LAND</Domain>
 			<DefaultUnitAI>UNITAI_WORKER</DefaultUnitAI>
@@ -187,10 +180,6 @@
 					<bBuild>1</bBuild>
 				</Build>
 				<Build>
-					<BuildType>BUILD_RAILROAD</BuildType>
-					<bBuild>1</bBuild>
-				</Build>
-				<Build>
 					<BuildType>BUILD_FARM</BuildType>
 					<bBuild>1</bBuild>
 				</Build>
@@ -238,10 +227,6 @@
 					<BuildType>BUILD_WINERY</BuildType>
 					<bBuild>1</bBuild>
 				</Build>
-				<!--<Build>
-					<BuildType>BUILD_APIARY</BuildType>
-					<bBuild>1</bBuild>
-				</Build>-->
 				<Build>
 					<BuildType>BUILD_COTTAGE</BuildType>
 					<bBuild>1</bBuild>
@@ -255,10 +240,11 @@
 					<bBuild>1</bBuild>
 				</Build>
 			</Builds>
-			<iCost>60</iCost>
+			<iCost>-1</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
-			<iMoves>2</iMoves>
+			<iMoves>1</iMoves>
 			<iNukeRange>-1</iNukeRange>
+			<iWorkRate>750</iWorkRate>
 			<iAsset>2</iAsset>
 			<UnitMeshGroups>
 				<iGroupSize>2</iGroupSize>
@@ -308,6 +294,45 @@
 				<UnitMeshGroup>
 					<iRequired>3</iRequired>
 					<EarlyArtDefineTag>ART_DEF_UNIT_LEVY_SPEARMAN</EarlyArtDefineTag>
+				</UnitMeshGroup>
+			</UnitMeshGroups>
+			<FormationType>FORMATION_TYPE_RANGED</FormationType>
+		</UnitInfo>
+		<UnitInfo>
+			<Class>UNITCLASS_BARBARIAN_WARRIOR</Class>
+			<Type>UNIT_BARBARIAN_WARRIOR</Type>
+			<Capture>NONE</Capture>
+			<Combat>UNITCOMBAT_MELEE</Combat>
+			<Domain>DOMAIN_LAND</Domain>
+			<DefaultUnitAI>UNITAI_ATTACK</DefaultUnitAI>
+			<Description>Warrior</Description>
+			<Civilopedia></Civilopedia>
+			<Strategy>TXT_KEY_UNIT_WARRIOR_STRATEGY</Strategy>
+			<Advisor>ADVISOR_MILITARY</Advisor>
+			<bMilitaryHappiness>1</bMilitaryHappiness>
+			<bMilitarySupport>1</bMilitarySupport>
+			<bMilitaryProduction>1</bMilitaryProduction>
+			<bPillage>1</bPillage>
+			<iCost>-1</iCost>
+			<iAdvancedStartCost>100</iAdvancedStartCost>
+			<iMoves>1</iMoves>
+			<iNukeRange>-1</iNukeRange>
+			<iCombat>3</iCombat>
+			<iCombatLimit>100</iCombatLimit>
+			<iXPValueAttack>4</iXPValueAttack>
+			<iXPValueDefense>2</iXPValueDefense>
+			<iCultureGarrison>3</iCultureGarrison>
+			<iAsset>1</iAsset>
+			<iPower>3</iPower>
+			<UnitMeshGroups>
+				<iGroupSize>3</iGroupSize>
+				<fMaxSpeed>1.75</fMaxSpeed>
+				<fPadTime>1</fPadTime>
+				<iMeleeWaveSize>3</iMeleeWaveSize>
+				<iRangedWaveSize>3</iRangedWaveSize>
+				<UnitMeshGroup>
+					<iRequired>3</iRequired>
+					<EarlyArtDefineTag>ART_DEF_UNIT_WARRIOR</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
 			<FormationType>FORMATION_TYPE_RANGED</FormationType>
@@ -366,7 +391,33 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_MILITARY_DRILL</PrereqTech>
+			<PrereqBonuses>
+				<BonusType>BONUS_COPPER</BonusType>
+				<BonusType>BONUS_IRON</BonusType>
+				<BonusType>NONE</BonusType>
+				<BonusType>NONE</BonusType>
+			</PrereqBonuses>
 			<iCost>40</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>2</iMoves>
@@ -412,7 +463,33 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_MILITARY_DRILL</PrereqTech>
+			<PrereqBonuses>
+				<BonusType>BONUS_COPPER</BonusType>
+				<BonusType>BONUS_IRON</BonusType>
+				<BonusType>NONE</BonusType>
+				<BonusType>NONE</BonusType>
+			</PrereqBonuses>
 			<iCost>40</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>2</iMoves>
@@ -438,7 +515,7 @@
 				<iRangedWaveSize>3</iRangedWaveSize>
 				<UnitMeshGroup>
 					<iRequired>3</iRequired>
-					<EarlyArtDefineTag>ART_DEF_UNIT_MILITIA_SPEARMAN</EarlyArtDefineTag>
+					<EarlyArtDefineTag>ART_DEF_UNIT_HOPLITE</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
 			<FormationType>FORMATION_TYPE_RANGED</FormationType>
@@ -458,7 +535,33 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_MILITARY_DRILL</PrereqTech>
+			<PrereqBonuses>
+				<BonusType>BONUS_COPPER</BonusType>
+				<BonusType>BONUS_IRON</BonusType>
+				<BonusType>NONE</BonusType>
+				<BonusType>NONE</BonusType>
+			</PrereqBonuses>
 			<iCost>40</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>2</iMoves>
@@ -504,7 +607,28 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_SCALE_ARMOR</PrereqTech>
+			<BonusType>BONUS_IRON</BonusType>
 			<iCost>60</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>2</iMoves>
@@ -530,7 +654,7 @@
 				<iRangedWaveSize>3</iRangedWaveSize>
 				<UnitMeshGroup>
 					<iRequired>3</iRequired>
-					<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN</EarlyArtDefineTag>
+					<EarlyArtDefineTag>ART_DEF_UNIT_QIN_INFANTRY</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
 			<FormationType>FORMATION_TYPE_RANGED</FormationType>
@@ -550,7 +674,28 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_SCALE_ARMOR</PrereqTech>
+			<BonusType>BONUS_IRON</BonusType>
 			<iCost>60</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>2</iMoves>
@@ -596,7 +741,28 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_MAIL_ARMOR</PrereqTech>
+			<BonusType>BONUS_IRON</BonusType>
 			<iCost>80</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>2</iMoves>
@@ -628,6 +794,80 @@
 			<FormationType>FORMATION_TYPE_RANGED</FormationType>
 		</UnitInfo>
 		<UnitInfo>
+			<Class>UNITCLASS_LIGHT_SWORDSMAN</Class>
+			<Type>UNIT_LIGHT_SWORDSMAN</Type>
+			<Capture>NONE</Capture>
+			<Combat>UNITCOMBAT_MELEE</Combat>
+			<Domain>DOMAIN_LAND</Domain>
+			<DefaultUnitAI>UNITAI_ATTACK</DefaultUnitAI>
+			<Description>Militia Swordsman</Description>
+			<Civilopedia></Civilopedia>
+			<Strategy>TXT_KEY_UNIT_WARRIOR_STRATEGY</Strategy>
+			<Advisor>ADVISOR_MILITARY</Advisor>
+			<bMilitaryHappiness>1</bMilitaryHappiness>
+			<bMilitarySupport>1</bMilitarySupport>
+			<bMilitaryProduction>1</bMilitaryProduction>
+			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
+			<PrereqTech>TECH_METAL_CASTING</PrereqTech>
+			<TechTypes>
+				<PrereqTech>TECH_MILITARY_DRILL</PrereqTech>
+			</TechTypes>
+			<PrereqBonuses>
+				<BonusType>BONUS_COPPER</BonusType>
+				<BonusType>BONUS_IRON</BonusType>
+			</PrereqBonuses>
+			<iCost>60</iCost>
+			<iAdvancedStartCost>100</iAdvancedStartCost>
+			<iMoves>2</iMoves>
+			<iNukeRange>-1</iNukeRange>
+			<iCombat>4</iCombat>
+			<iCombatLimit>100</iCombatLimit>
+			<iXPValueAttack>4</iXPValueAttack>
+			<iXPValueDefense>2</iXPValueDefense>
+			<iCityAttack>10</iCityAttack>
+			<UnitCombatMods>
+				<UnitCombatMod>
+					<UnitCombatType>UNITCOMBAT_MELEE</UnitCombatType>
+					<iUnitCombatMod>25</iUnitCombatMod>
+				</UnitCombatMod>
+			</UnitCombatMods>
+			<iCultureGarrison>3</iCultureGarrison>
+			<iAsset>1</iAsset>
+			<iPower>3</iPower>
+			<UnitMeshGroups>
+				<iGroupSize>3</iGroupSize>
+				<fMaxSpeed>1.75</fMaxSpeed>
+				<fPadTime>1</fPadTime>
+				<iMeleeWaveSize>3</iMeleeWaveSize>
+				<iRangedWaveSize>3</iRangedWaveSize>
+				<UnitMeshGroup>
+					<iRequired>3</iRequired>
+					<EarlyArtDefineTag>ART_DEF_UNIT_LIGHT_SWORDSMAN</EarlyArtDefineTag>
+				</UnitMeshGroup>
+			</UnitMeshGroups>
+			<FormationType>FORMATION_TYPE_RANGED</FormationType>
+		</UnitInfo>
+		<UnitInfo>
 			<Class>UNITCLASS_SWORDSMAN</Class>
 			<Type>UNIT_SWORDSMAN</Type>
 			<Capture>NONE</Capture>
@@ -642,10 +882,31 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_BLAST_FURNACE</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_SCALE_ARMOR</PrereqTech>
 			</TechTypes>
+			<BonusType>BONUS_IRON</BonusType>
 			<iCost>80</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>2</iMoves>
@@ -684,7 +945,7 @@
 			<Combat>UNITCOMBAT_MELEE</Combat>
 			<Domain>DOMAIN_LAND</Domain>
 			<DefaultUnitAI>UNITAI_ATTACK</DefaultUnitAI>
-			<Description>Swordsman</Description>
+			<Description>Legionary</Description>
 			<Civilopedia></Civilopedia>
 			<Strategy>TXT_KEY_UNIT_WARRIOR_STRATEGY</Strategy>
 			<Advisor>ADVISOR_MILITARY</Advisor>
@@ -692,9 +953,30 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_BLAST_FURNACE</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_SCALE_ARMOR</PrereqTech>
+			<BonusType>BONUS_IRON</BonusType>
 			</TechTypes>
 			<iCost>80</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
@@ -734,7 +1016,7 @@
 			<Combat>UNITCOMBAT_MELEE</Combat>
 			<Domain>DOMAIN_LAND</Domain>
 			<DefaultUnitAI>UNITAI_ATTACK</DefaultUnitAI>
-			<Description>Swordsman</Description>
+			<Description>Galatian</Description>
 			<Civilopedia></Civilopedia>
 			<Strategy>TXT_KEY_UNIT_WARRIOR_STRATEGY</Strategy>
 			<Advisor>ADVISOR_MILITARY</Advisor>
@@ -742,6 +1024,26 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_BLAST_FURNACE</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_SCALE_ARMOR</PrereqTech>
@@ -772,7 +1074,7 @@
 				<iRangedWaveSize>3</iRangedWaveSize>
 				<UnitMeshGroup>
 					<iRequired>3</iRequired>
-					<EarlyArtDefineTag>ART_DEF_UNIT_LEGIONARY</EarlyArtDefineTag>
+					<EarlyArtDefineTag>ART_DEF_UNIT_GALATIAN</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
 			<FormationType>FORMATION_TYPE_RANGED</FormationType>
@@ -784,7 +1086,7 @@
 			<Combat>UNITCOMBAT_MELEE</Combat>
 			<Domain>DOMAIN_LAND</Domain>
 			<DefaultUnitAI>UNITAI_ATTACK</DefaultUnitAI>
-			<Description>Swordsman</Description>
+			<Description>Kshatriya</Description>
 			<Civilopedia></Civilopedia>
 			<Strategy>TXT_KEY_UNIT_WARRIOR_STRATEGY</Strategy>
 			<Advisor>ADVISOR_MILITARY</Advisor>
@@ -792,9 +1094,30 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_BLAST_FURNACE</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_SCALE_ARMOR</PrereqTech>
+			<BonusType>BONUS_IRON</BonusType>
 			</TechTypes>
 			<iCost>80</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
@@ -822,7 +1145,7 @@
 				<iRangedWaveSize>3</iRangedWaveSize>
 				<UnitMeshGroup>
 					<iRequired>3</iRequired>
-					<EarlyArtDefineTag>ART_DEF_UNIT_LEGIONARY</EarlyArtDefineTag>
+					<EarlyArtDefineTag>ART_DEF_UNIT_KSHATRIYA</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
 			<FormationType>FORMATION_TYPE_RANGED</FormationType>
@@ -842,10 +1165,31 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_BLAST_FURNACE</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_SCALE_ARMOR</PrereqTech>
 			</TechTypes>
+			<BonusType>BONUS_IRON</BonusType>
 			<iCost>80</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>2</iMoves>
@@ -872,7 +1216,7 @@
 				<iRangedWaveSize>3</iRangedWaveSize>
 				<UnitMeshGroup>
 					<iRequired>3</iRequired>
-					<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN</EarlyArtDefineTag>
+					<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_HEBREW</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
 			<FormationType>FORMATION_TYPE_RANGED</FormationType>
@@ -892,10 +1236,31 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_MAIL_ARMOR</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_BLAST_FURNACE</PrereqTech>
 			</TechTypes>
+			<BonusType>BONUS_IRON</BonusType>
 			<iCost>120</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>2</iMoves>
@@ -942,10 +1307,31 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_MAIL_ARMOR</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_BLAST_FURNACE</PrereqTech>
 			</TechTypes>
+			<BonusType>BONUS_IRON</BonusType>
 			<iCost>120</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>2</iMoves>
@@ -992,11 +1378,32 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_MILITARY_TRADITION</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_MAIL_ARMOR</PrereqTech>
 				<PrereqTech>TECH_BLAST_FURNACE</PrereqTech>
 			</TechTypes>
+			<BonusType>BONUS_IRON</BonusType>
 			<iCost>150</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>2</iMoves>
@@ -1038,7 +1445,7 @@
 			<Capture>NONE</Capture>
 			<Combat>UNITCOMBAT_ARCHER</Combat>
 			<Domain>DOMAIN_LAND</Domain>
-			<DefaultUnitAI>UNITAI_ATTACK</DefaultUnitAI>
+			<DefaultUnitAI>UNITAI_CITY_DEFENSE</DefaultUnitAI>
 			<Description>Archer</Description>
 			<Civilopedia></Civilopedia>
 			<Strategy>TXT_KEY_UNIT_WARRIOR_STRATEGY</Strategy>
@@ -1047,6 +1454,22 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_CITY_DEFENSE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<iCost>35</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>1</iMoves>
@@ -1088,6 +1511,26 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_CITY_DEFENSE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<iCost>35</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>1</iMoves>
@@ -1120,7 +1563,7 @@
 			<Capture>NONE</Capture>
 			<Combat>UNITCOMBAT_ARCHER</Combat>
 			<Domain>DOMAIN_LAND</Domain>
-			<DefaultUnitAI>UNITAI_ATTACK</DefaultUnitAI>
+			<DefaultUnitAI>UNITAI_CITY_DEFENSE</DefaultUnitAI>
 			<Description>Bowman</Description>
 			<Civilopedia></Civilopedia>
 			<Strategy>TXT_KEY_UNIT_WARRIOR_STRATEGY</Strategy>
@@ -1129,6 +1572,22 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_CITY_DEFENSE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_THE_RECURVE_BOW</PrereqTech>
 			<iCost>45</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
@@ -1168,7 +1627,7 @@
 			<Capture>NONE</Capture>
 			<Combat>UNITCOMBAT_ARCHER</Combat>
 			<Domain>DOMAIN_LAND</Domain>
-			<DefaultUnitAI>UNITAI_ATTACK</DefaultUnitAI>
+			<DefaultUnitAI>UNITAI_CITY_DEFENSE</DefaultUnitAI>
 			<Description>Villavar</Description>
 			<Civilopedia></Civilopedia>
 			<Strategy>TXT_KEY_UNIT_WARRIOR_STRATEGY</Strategy>
@@ -1177,6 +1636,22 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_CITY_DEFENSE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_THE_RECURVE_BOW</PrereqTech>
 			<iCost>45</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
@@ -1225,6 +1700,26 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_CITY_DEFENSE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_THE_RECURVE_BOW</PrereqTech>
 			<iCost>45</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
@@ -1264,7 +1759,7 @@
 			<Capture>NONE</Capture>
 			<Combat>UNITCOMBAT_ARCHER</Combat>
 			<Domain>DOMAIN_LAND</Domain>
-			<DefaultUnitAI>UNITAI_ATTACK</DefaultUnitAI>
+			<DefaultUnitAI>UNITAI_CITY_DEFENSE</DefaultUnitAI>
 			<Description>Heavy Bowman</Description>
 			<Civilopedia></Civilopedia>
 			<Strategy>TXT_KEY_UNIT_WARRIOR_STRATEGY</Strategy>
@@ -1273,10 +1768,27 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_CITY_DEFENSE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_MAIL_ARMOR</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_THE_RECURVE_BOW</PrereqTech>
 			</TechTypes>
+			<BonusType>BONUS_IRON</BonusType>
 			<iCost>55</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>2</iMoves>
@@ -1319,7 +1831,7 @@
 			<Capture>NONE</Capture>
 			<Combat>UNITCOMBAT_ARCHER</Combat>
 			<Domain>DOMAIN_LAND</Domain>
-			<DefaultUnitAI>UNITAI_ATTACK</DefaultUnitAI>
+			<DefaultUnitAI>UNITAI_COUNTER</DefaultUnitAI>
 			<Description>Javelinman</Description>
 			<Civilopedia></Civilopedia>
 			<Strategy>TXT_KEY_UNIT_WARRIOR_STRATEGY</Strategy>
@@ -1328,6 +1840,10 @@
 			<bMilitarySupport>1</bMilitarySupport>
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
+			<UnitAIs>
+			</UnitAIs>
+			<NotUnitAIs>
+			</NotUnitAIs>
 			<PrereqTech>TECH_INFANTRY_TACTICS</PrereqTech>
 			<iCost>40</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
@@ -1366,8 +1882,8 @@
 			<Capture>NONE</Capture>
 			<Combat>UNITCOMBAT_ARCHER</Combat>
 			<Domain>DOMAIN_LAND</Domain>
-			<DefaultUnitAI>UNITAI_ATTACK</DefaultUnitAI>
-			<Description>Javelinman</Description>
+			<DefaultUnitAI>UNITAI_COUNTER</DefaultUnitAI>
+			<Description>Peltast</Description>
 			<Civilopedia></Civilopedia>
 			<Strategy>TXT_KEY_UNIT_WARRIOR_STRATEGY</Strategy>
 			<Advisor>ADVISOR_MILITARY</Advisor>
@@ -1423,6 +1939,22 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>NONE</PrereqTech>
 			<BonusType>BONUS_HORSE</BonusType>
 			<iCost>50</iCost>
@@ -1466,6 +1998,22 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>NONE</PrereqTech>
 			<BonusType>BONUS_HORSE</BonusType>
 			<iCost>50</iCost>
@@ -1515,6 +2063,22 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_HORSEMANSHIP</PrereqTech>
 			<BonusType>BONUS_HORSE</BonusType>
 			<iCost>30</iCost>
@@ -1558,6 +2122,22 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_HORSEMANSHIP</PrereqTech>
 			<BonusType>BONUS_HORSE</BonusType>
 			<iCost>30</iCost>
@@ -1601,8 +2181,28 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_EQUESTRIANISM</PrereqTech>
 			<BonusType>BONUS_HORSE</BonusType>
+			<PrereqBonuses>
+				<BonusType>BONUS_COPPER</BonusType>
+				<BonusType>BONUS_IRON</BonusType>
+			</PrereqBonuses>
 			<iCost>50</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>3</iMoves>
@@ -1644,8 +2244,28 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_EQUESTRIANISM</PrereqTech>
 			<BonusType>BONUS_HORSE</BonusType>
+			<PrereqBonuses>
+				<BonusType>BONUS_COPPER</BonusType>
+				<BonusType>BONUS_IRON</BonusType>
+			</PrereqBonuses>
 			<iCost>50</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>3</iMoves>
@@ -1687,8 +2307,28 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_EQUESTRIANISM</PrereqTech>
 			<BonusType>BONUS_HORSE</BonusType>
+			<PrereqBonuses>
+				<BonusType>BONUS_COPPER</BonusType>
+				<BonusType>BONUS_IRON</BonusType>
+			</PrereqBonuses>
 			<iCost>50</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>3</iMoves>
@@ -1730,6 +2370,22 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_CAVALRY_TACTICS</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_SCALE_ARMOR</PrereqTech>
@@ -1779,6 +2435,22 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_CAVALRY_TACTICS</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_SCALE_ARMOR</PrereqTech>
@@ -1828,6 +2500,22 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_THE_STIRRUP</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_MAIL_ARMOR</PrereqTech>
@@ -1877,6 +2565,22 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_EQUESTRIANISM</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_THE_RECURVE_BOW</PrereqTech>
@@ -1922,6 +2626,22 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_EQUESTRIANISM</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_THE_RECURVE_BOW</PrereqTech>
@@ -1967,11 +2687,30 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_CAVALRY_TACTICS</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_THE_RECURVE_BOW</PrereqTech>
 			</TechTypes>
 			<BonusType>BONUS_HORSE</BonusType>
+			<PrereqBonuses>
+				<BonusType>BONUS_IRON</BonusType>
+			</PrereqBonuses>
 			<iCost>120</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>3</iMoves>
@@ -2012,11 +2751,30 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_CAVALRY_TACTICS</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_THE_RECURVE_BOW</PrereqTech>
 			</TechTypes>
 			<BonusType>BONUS_HORSE</BonusType>
+			<PrereqBonuses>
+				<BonusType>BONUS_IRON</BonusType>
+			</PrereqBonuses>
 			<iCost>120</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>3</iMoves>
@@ -2057,11 +2815,32 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_ELEPHANT_TRAINING</PrereqTech>
-			<TechTypes>
-				<!--<PrereqTech>TECH_THE_RECURVE_BOW</PrereqTech>-->
-			</TechTypes>
 			<BonusType>BONUS_IVORY</BonusType>
+			<PrereqBonuses>
+				<BonusType>BONUS_COPPER</BonusType>
+				<BonusType>BONUS_IRON</BonusType>
+			</PrereqBonuses>
 			<iCost>120</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>2</iMoves>
@@ -2102,11 +2881,32 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_ELEPHANT_TRAINING</PrereqTech>
-			<TechTypes>
-				<!--<PrereqTech>TECH_THE_RECURVE_BOW</PrereqTech>-->
-			</TechTypes>
 			<BonusType>BONUS_IVORY</BonusType>
+			<PrereqBonuses>
+				<BonusType>BONUS_COPPER</BonusType>
+				<BonusType>BONUS_IRON</BonusType>
+			</PrereqBonuses>
 			<iCost>120</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>2</iMoves>
@@ -2147,6 +2947,26 @@
 			<bMilitaryProduction>1</bMilitaryProduction>
 			<bPillage>1</bPillage>
 			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_ATTACK</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+				<UnitAI>
+					<UnitAIType>UNITAI_COUNTER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+				<!--<UnitAI>
+					<UnitAIType>UNITAI_EXPLORE</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>-->
+			</NotUnitAIs>
 			<PrereqTech>TECH_CAVALRY_TACTICS</PrereqTech>
 			<TechTypes>
 				<PrereqTech>TECH_ELEPHANT_TRAINING</PrereqTech>
@@ -2197,10 +3017,6 @@
 			<bMechanized>1</bMechanized>
 			<UnitAIs>
 				<UnitAI>
-					<UnitAIType>UNITAI_ATTACK_CITY</UnitAIType>
-					<bUnitAI>1</bUnitAI>
-				</UnitAI>
-				<UnitAI>
 					<UnitAIType>UNITAI_COLLATERAL</UnitAIType>
 					<bUnitAI>1</bUnitAI>
 				</UnitAI>
@@ -2216,21 +3032,18 @@
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>1</iMoves>
 			<iNukeRange>-1</iNukeRange>
-			<iCombat>5</iCombat>
+			<iCombat>1</iCombat>
 			<iCombatLimit>75</iCombatLimit>
 			<iXPValueAttack>4</iXPValueAttack>
 			<iXPValueDefense>2</iXPValueDefense>
-			<iCollateralDamage>100</iCollateralDamage>
-			<iCollateralDamageLimit>50</iCollateralDamageLimit>
-			<iCollateralDamageMaxUnits>6</iCollateralDamageMaxUnits>
 			<UnitCombatCollateralImmunes>
 				<UnitCombatCollateralImmune>
 					<UnitCombatType>UNITCOMBAT_SIEGE</UnitCombatType>
 					<iUnitCombatCollateralImmune>1</iUnitCombatCollateralImmune>
 				</UnitCombatCollateralImmune>
 			</UnitCombatCollateralImmunes>
-			<iBombardRate>8</iBombardRate>
-			<iCultureGarrison>4</iCultureGarrison>
+			<iBombardRate>6</iBombardRate>
+			<iCultureGarrison>1</iCultureGarrison>
 			<iAsset>2</iAsset>
 			<iPower>5</iPower>
 			<UnitMeshGroups>
@@ -2279,17 +3092,18 @@
 				</UnitAI>
 			</NotUnitAIs>
 			<PrereqTech>TECH_MACHINERY</PrereqTech>
-			<iCost>50</iCost>
+			<iCost>60</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>1</iMoves>
 			<iNukeRange>-1</iNukeRange>
-			<iCombat>5</iCombat>
+			<iCombat>4</iCombat>
 			<iCombatLimit>75</iCombatLimit>
 			<iXPValueAttack>4</iXPValueAttack>
 			<iXPValueDefense>2</iXPValueDefense>
+			<iCityAttack>50</iCityAttack>
 			<iCollateralDamage>100</iCollateralDamage>
-			<iCollateralDamageLimit>50</iCollateralDamageLimit>
-			<iCollateralDamageMaxUnits>6</iCollateralDamageMaxUnits>
+			<iCollateralDamageLimit>25</iCollateralDamageLimit>
+			<iCollateralDamageMaxUnits>4</iCollateralDamageMaxUnits>
 			<UnitCombatCollateralImmunes>
 				<UnitCombatCollateralImmune>
 					<UnitCombatType>UNITCOMBAT_SIEGE</UnitCombatType>
@@ -2346,14 +3160,15 @@
 				</UnitAI>
 			</NotUnitAIs>
 			<PrereqTech>TECH_ENGINEERING</PrereqTech>
-			<iCost>50</iCost>
+			<iCost>70</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMoves>1</iMoves>
 			<iNukeRange>-1</iNukeRange>
-			<iCombat>5</iCombat>
+			<iCombat>4</iCombat>
 			<iCombatLimit>75</iCombatLimit>
 			<iXPValueAttack>4</iXPValueAttack>
 			<iXPValueDefense>2</iXPValueDefense>
+			<iCityAttack>100</iCityAttack>
 			<iCollateralDamage>100</iCollateralDamage>
 			<iCollateralDamageLimit>50</iCollateralDamageLimit>
 			<iCollateralDamageMaxUnits>6</iCollateralDamageMaxUnits>
@@ -2376,6 +3191,62 @@
 				<UnitMeshGroup>
 					<iRequired>2</iRequired>
 					<EarlyArtDefineTag>ART_DEF_UNIT_TREBUCHET</EarlyArtDefineTag>
+				</UnitMeshGroup>
+			</UnitMeshGroups>
+			<FormationType>FORMATION_TYPE_MACHINE</FormationType>
+		</UnitInfo>
+		<UnitInfo>
+			<Class>UNITCLASS_WORKBOAT</Class>
+			<Type>UNIT_WORKBOAT</Type>
+			<Combat>NONE</Combat>
+			<Domain>DOMAIN_SEA</Domain>
+			<DefaultUnitAI>UNITAI_WORKER_SEA</DefaultUnitAI>
+			<Description>Work Boat</Description>
+			<Civilopedia></Civilopedia>
+			<Strategy>TXT_KEY_UNIT_GALLEY_STRATEGY</Strategy>
+			<Advisor>ADVISOR_MILITARY</Advisor>
+			<bMilitaryHappiness>0</bMilitaryHappiness>
+			<bMilitarySupport>1</bMilitarySupport>
+			<bMilitaryProduction>1</bMilitaryProduction>
+			<bPillage>1</bPillage>
+			<bNoDefensiveBonus>1</bNoDefensiveBonus>
+			<bMechanized>1</bMechanized>
+			<bRenderBelowWater>1</bRenderBelowWater>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_WORKER_SEA</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs>
+			</NotUnitAIs>
+			<Builds>
+				<Build>
+					<BuildType>BUILD_FISHING_BOATS</BuildType>
+					<bBuild>1</bBuild>
+				</Build>
+			</Builds>
+			<PrereqTech>TECH_SAILING</PrereqTech>
+			<iCost>20</iCost>
+			<iAdvancedStartCost>100</iAdvancedStartCost>
+			<iMinAreaSize>20</iMinAreaSize>
+			<iMoves>2</iMoves>
+			<iNukeRange>-1</iNukeRange>
+			<iWorkRate>100</iWorkRate>
+			<iCombat>5</iCombat>
+			<iXPValueAttack>4</iXPValueAttack>
+			<iXPValueDefense>2</iXPValueDefense>
+			<iAsset>2</iAsset>
+			<iPower>5</iPower>
+			<UnitMeshGroups>
+				<iGroupSize>2</iGroupSize>
+				<fMaxSpeed>1.75</fMaxSpeed>
+				<fPadTime>1</fPadTime>
+				<iMeleeWaveSize>2</iMeleeWaveSize>
+				<iRangedWaveSize>2</iRangedWaveSize>
+				<UnitMeshGroup>
+					<iRequired>2</iRequired>
+					<EarlyArtDefineTag>ART_DEF_UNIT_WORKBOAT</EarlyArtDefineTag>
 				</UnitMeshGroup>
 			</UnitMeshGroups>
 			<FormationType>FORMATION_TYPE_MACHINE</FormationType>
@@ -2410,16 +3281,16 @@
 			<NotUnitAIs>
 			</NotUnitAIs>
 			<PrereqTech>TECH_SAILING</PrereqTech>
-			<iCost>50</iCost>
+			<iCost>60</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMinAreaSize>20</iMinAreaSize>
-			<iMoves>1</iMoves>
+			<iMoves>4</iMoves>
 			<iNukeRange>-1</iNukeRange>
 			<iCombat>5</iCombat>
 			<iXPValueAttack>4</iXPValueAttack>
 			<iXPValueDefense>2</iXPValueDefense>
-			<DomainCargo>DOMAIN_LAND</DomainCargo>
-			<iCargo>2</iCargo>
+			<DomainCargo>DOMAIN_SEA</DomainCargo>
+			<iCargo>4</iCargo>
 			<iAsset>2</iAsset>
 			<iPower>5</iPower>
 			<UnitMeshGroups>
@@ -2473,10 +3344,15 @@
 			<NotUnitAIs>
 			</NotUnitAIs>
 			<PrereqTech>TECH_NAVAL_WARFARE</PrereqTech>
-			<iCost>50</iCost>
+			<BonusType>BONUS_TIMBER</BonusType>
+			<PrereqBonuses>
+				<BonusType>BONUS_COPPER</BonusType>
+				<BonusType>BONUS_IRON</BonusType>
+			</PrereqBonuses>
+			<iCost>100</iCost>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iMinAreaSize>20</iMinAreaSize>
-			<iMoves>1</iMoves>
+			<iMoves>4</iMoves>
 			<iNukeRange>-1</iNukeRange>
 			<iCombat>5</iCombat>
 			<iXPValueAttack>4</iXPValueAttack>
@@ -2495,6 +3371,411 @@
 				</UnitMeshGroup>
 			</UnitMeshGroups>
 			<FormationType>FORMATION_TYPE_MACHINE</FormationType>
+		</UnitInfo>
+		<UnitInfo>
+			<Class>UNITCLASS_PROPHET</Class>
+			<Type>UNIT_PROPHET</Type>
+			<UniqueNames>
+				<UniqueName>TXT_KEY_GREAT_PERSON_MOSES</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_MAHAVIRA</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ZOROASTER</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ANANDA</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_CHUANG_TZU</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_MENCIUS</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_MO_TZU</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ST_JOHN</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ST_PETER</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ST_PAUL</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_RABBI_AKIVA</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_MANI</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ST_AUGUSTINE</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ST_PATRICK</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ABU_BAKR</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_SHANKARA</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_KOBO_DAISHI</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ATISHA</UniqueName>
+			</UniqueNames>
+			<Special>SPECIALUNIT_PEOPLE</Special>
+			<Capture>NONE</Capture>
+			<Domain>DOMAIN_LAND</Domain>
+			<DefaultUnitAI>UNITAI_PROPHET</DefaultUnitAI>
+			<Description>TXT_KEY_UNIT_GREAT_PROPHET</Description>
+			<Civilopedia>TXT_KEY_CONCEPT_GREAT_PEOPLE_PEDIA</Civilopedia>
+			<Strategy>TXT_KEY_UNIT_GREAT_PROPHET_STRATEGY</Strategy>
+			<Advisor>ADVISOR_RELIGION</Advisor>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_PROPHET</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<GreatPeoples>
+				<GreatPeople>
+					<GreatPeopleType>SPECIALIST_GREAT_PRIEST</GreatPeopleType>
+					<bGreatPeople>1</bGreatPeople>
+				</GreatPeople>
+			</GreatPeoples>
+			<iCost>-1</iCost>
+			<iAdvancedStartCost>-1</iAdvancedStartCost>
+			<iMinAreaSize>-1</iMinAreaSize>
+			<iMoves>2</iMoves>
+			<iNukeRange>-1</iNukeRange>
+			<iBaseDiscover>1000</iBaseDiscover>
+			<iDiscoverMultiplier>2</iDiscoverMultiplier>
+			<iAsset>4</iAsset>
+			<UnitMeshGroups>
+				<iGroupSize>4</iGroupSize>
+				<fMaxSpeed>1.75</fMaxSpeed>
+				<fPadTime>1</fPadTime>
+				<iMeleeWaveSize>4</iMeleeWaveSize>
+				<iRangedWaveSize>0</iRangedWaveSize>
+				<UnitMeshGroup>
+					<iRequired>1</iRequired>
+					<EarlyArtDefineTag>ART_DEF_UNIT_PROPHET</EarlyArtDefineTag>
+				</UnitMeshGroup>
+			</UnitMeshGroups>
+			<FormationType>FORMATION_TYPE_DEFAULT</FormationType>
+		</UnitInfo>
+		<UnitInfo>
+			<Class>UNITCLASS_ARTIST</Class>
+			<Type>UNIT_ARTIST</Type>
+			<UniqueNames>
+				<UniqueName>TXT_KEY_GREAT_PERSON_THESPIS</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_LING_LUN</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_WANG_XIZHI</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_VALMIKI</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_VIRGIL</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_KALIDAS</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_LI_PO</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_DU_FU</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_JALAL_ALDIN_RUMI</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_DANTE_ALIGHIERI</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_YUNUS_EMRE</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_AMIR_KHUSRO</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_IBN_MUQLAH</UniqueName>
+			</UniqueNames>
+			<Special>SPECIALUNIT_PEOPLE</Special>
+			<Capture>NONE</Capture>
+			<Domain>DOMAIN_LAND</Domain>
+			<DefaultUnitAI>UNITAI_ARTIST</DefaultUnitAI>
+			<Description>TXT_KEY_UNIT_GREAT_ARTIST</Description>
+			<Civilopedia>TXT_KEY_CONCEPT_GREAT_PEOPLE_PEDIA</Civilopedia>
+			<Strategy>TXT_KEY_UNIT_GREAT_ARTIST_STRATEGY</Strategy>
+			<Advisor>ADVISOR_CULTURE</Advisor>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ARTIST</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<GreatPeoples>
+				<GreatPeople>
+					<GreatPeopleType>SPECIALIST_GREAT_ARTIST</GreatPeopleType>
+					<bGreatPeople>1</bGreatPeople>
+				</GreatPeople>
+			</GreatPeoples>
+			<iCost>-1</iCost>
+			<iAdvancedStartCost>-1</iAdvancedStartCost>
+			<iMinAreaSize>-1</iMinAreaSize>
+			<iMoves>2</iMoves>
+			<iNukeRange>-1</iNukeRange>
+			<iBaseDiscover>1000</iBaseDiscover>
+			<iDiscoverMultiplier>2</iDiscoverMultiplier>
+			<iAsset>4</iAsset>
+			<UnitMeshGroups>
+				<iGroupSize>4</iGroupSize>
+				<fMaxSpeed>1.75</fMaxSpeed>
+				<fPadTime>1</fPadTime>
+				<iMeleeWaveSize>4</iMeleeWaveSize>
+				<iRangedWaveSize>0</iRangedWaveSize>
+				<UnitMeshGroup>
+					<iRequired>1</iRequired>
+					<EarlyArtDefineTag>ART_DEF_UNIT_ARTIST</EarlyArtDefineTag>
+				</UnitMeshGroup>
+			</UnitMeshGroups>
+			<FormationType>FORMATION_TYPE_DEFAULT</FormationType>
+		</UnitInfo>
+		<UnitInfo>
+			<Class>UNITCLASS_MERCHANT</Class>
+			<Type>UNIT_MERCHANT</Type>
+			<UniqueNames>
+				<UniqueName>TXT_KEY_GREAT_PERSON_HARKUF</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_HANNO</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_PYTHEAS</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ZHANG_QIAN</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ARETAS_III</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_LEIF_ERICKSON</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_WANG_ANSHI</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ENRICO_DANDOLO</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_MARCO_POLO</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_IBN_BATTUTA</UniqueName>
+			</UniqueNames>
+			<Special>SPECIALUNIT_PEOPLE</Special>
+			<Capture>NONE</Capture>
+			<Domain>DOMAIN_LAND</Domain>
+			<DefaultUnitAI>UNITAI_MERCHANT</DefaultUnitAI>
+			<Description>TXT_KEY_UNIT_GREAT_MERCHANT</Description>
+			<Civilopedia>TXT_KEY_CONCEPT_GREAT_PEOPLE_PEDIA</Civilopedia>
+			<Strategy>TXT_KEY_UNIT_GREAT_MERCHANT_STRATEGY</Strategy>
+			<Advisor>ADVISOR_RELIGION</Advisor>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_MERCHANT</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<GreatPeoples>
+				<GreatPeople>
+					<GreatPeopleType>SPECIALIST_GREAT_MERCHANT</GreatPeopleType>
+					<bGreatPeople>1</bGreatPeople>
+				</GreatPeople>
+			</GreatPeoples>
+			<iCost>-1</iCost>
+			<iAdvancedStartCost>-1</iAdvancedStartCost>
+			<iMinAreaSize>-1</iMinAreaSize>
+			<iMoves>2</iMoves>
+			<iNukeRange>-1</iNukeRange>
+			<iBaseDiscover>1000</iBaseDiscover>
+			<iDiscoverMultiplier>2</iDiscoverMultiplier>
+			<iAsset>4</iAsset>
+			<UnitMeshGroups>
+				<iGroupSize>4</iGroupSize>
+				<fMaxSpeed>1.75</fMaxSpeed>
+				<fPadTime>1</fPadTime>
+				<iMeleeWaveSize>4</iMeleeWaveSize>
+				<iRangedWaveSize>0</iRangedWaveSize>
+				<UnitMeshGroup>
+					<iRequired>1</iRequired>
+					<EarlyArtDefineTag>ART_DEF_UNIT_MERCHANT</EarlyArtDefineTag>
+				</UnitMeshGroup>
+			</UnitMeshGroups>
+			<FormationType>FORMATION_TYPE_DEFAULT</FormationType>
+		</UnitInfo>
+		<UnitInfo>
+			<Class>UNITCLASS_SCIENTIST</Class>
+			<Type>UNIT_SCIENTIST</Type>
+			<UniqueNames>
+				<UniqueName>TXT_KEY_GREAT_PERSON_MERIT_PTAH</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_XI_LING_SHI</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_NABU_RIMANNI</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_SOCRATES</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_PLATO</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ARISTOTLE</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_EUCLID</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_PTOLEMY</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_HYPATIA</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ZU_CHONGZHI</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ARYABHATA</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_AL_KINDI</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_AL_KHWARIZMI</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_AL_RAZI</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ALHAZEN</UniqueName>
+			</UniqueNames>
+			<Special>SPECIALUNIT_PEOPLE</Special>
+			<Capture>NONE</Capture>
+			<Domain>DOMAIN_LAND</Domain>
+			<DefaultUnitAI>UNITAI_SCIENTIST</DefaultUnitAI>
+			<Description>Scholar</Description>
+			<Civilopedia>TXT_KEY_CONCEPT_GREAT_PEOPLE_PEDIA</Civilopedia>
+			<Strategy>TXT_KEY_UNIT_GREAT_SCIENTIST_STRATEGY</Strategy>
+			<Advisor>ADVISOR_RELIGION</Advisor>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_SCIENTIST</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<GreatPeoples>
+				<GreatPeople>
+					<GreatPeopleType>SPECIALIST_GREAT_SCIENTIST</GreatPeopleType>
+					<bGreatPeople>1</bGreatPeople>
+				</GreatPeople>
+			</GreatPeoples>
+			<iCost>-1</iCost>
+			<iAdvancedStartCost>-1</iAdvancedStartCost>
+			<iMinAreaSize>-1</iMinAreaSize>
+			<iMoves>2</iMoves>
+			<iNukeRange>-1</iNukeRange>
+			<iBaseDiscover>1000</iBaseDiscover>
+			<iDiscoverMultiplier>2</iDiscoverMultiplier>
+			<iAsset>4</iAsset>
+			<UnitMeshGroups>
+				<iGroupSize>4</iGroupSize>
+				<fMaxSpeed>1.75</fMaxSpeed>
+				<fPadTime>1</fPadTime>
+				<iMeleeWaveSize>4</iMeleeWaveSize>
+				<iRangedWaveSize>0</iRangedWaveSize>
+				<UnitMeshGroup>
+					<iRequired>1</iRequired>
+					<EarlyArtDefineTag>ART_DEF_UNIT_SCIENTIST</EarlyArtDefineTag>
+				</UnitMeshGroup>
+			</UnitMeshGroups>
+			<FormationType>FORMATION_TYPE_DEFAULT</FormationType>
+		</UnitInfo>
+		<UnitInfo>
+			<Class>UNITCLASS_ENGINEER</Class>
+			<Type>UNIT_ENGINEER</Type>
+			<UniqueNames>
+				<UniqueName>TXT_KEY_GREAT_PERSON_IMHOTEP</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ARCHIMEDES</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_HERON</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_CAI_LUN</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ZHANG_HENG</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_BI_SHENG</UniqueName>
+			</UniqueNames>
+			<Special>SPECIALUNIT_PEOPLE</Special>
+			<Capture>NONE</Capture>
+			<Domain>DOMAIN_LAND</Domain>
+			<DefaultUnitAI>UNITAI_ENGINEER</DefaultUnitAI>
+			<Description>TXT_KEY_UNIT_GREAT_ENGINEER</Description>
+			<Civilopedia>TXT_KEY_CONCEPT_GREAT_PEOPLE_PEDIA</Civilopedia>
+			<Strategy>TXT_KEY_UNIT_GREAT_ENGINEER_STRATEGY</Strategy>
+			<Advisor>ADVISOR_RELIGION</Advisor>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_ENGINEER</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<GreatPeoples>
+				<GreatPeople>
+					<GreatPeopleType>ART_DEF_UNIT_ENGINEER</GreatPeopleType>
+					<bGreatPeople>1</bGreatPeople>
+				</GreatPeople>
+			</GreatPeoples>
+			<iCost>-1</iCost>
+			<iAdvancedStartCost>-1</iAdvancedStartCost>
+			<iMinAreaSize>-1</iMinAreaSize>
+			<iMoves>2</iMoves>
+			<iNukeRange>-1</iNukeRange>
+			<iBaseDiscover>1000</iBaseDiscover>
+			<iDiscoverMultiplier>2</iDiscoverMultiplier>
+			<iAsset>4</iAsset>
+			<UnitMeshGroups>
+				<iGroupSize>4</iGroupSize>
+				<fMaxSpeed>1.75</fMaxSpeed>
+				<fPadTime>1</fPadTime>
+				<iMeleeWaveSize>4</iMeleeWaveSize>
+				<iRangedWaveSize>0</iRangedWaveSize>
+				<UnitMeshGroup>
+					<iRequired>1</iRequired>
+					<EarlyArtDefineTag>ART_DEF_UNIT_PROPHET</EarlyArtDefineTag>
+				</UnitMeshGroup>
+			</UnitMeshGroups>
+			<FormationType>FORMATION_TYPE_DEFAULT</FormationType>
+		</UnitInfo>
+		<UnitInfo>
+			<Class>UNITCLASS_GREAT_SPY</Class>
+			<Type>UNIT_GREAT_SPY</Type>
+			<UniqueNames>
+				<UniqueName>TXT_KEY_GREAT_PERSON_MOSES</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_MAHAVIRA</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ZOROASTER</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ANANDA</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_CHUANG_TZU</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_MENCIUS</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_MO_TZU</UniqueName>
+			</UniqueNames>
+			<Special>SPECIALUNIT_PEOPLE</Special>
+			<Capture>NONE</Capture>
+			<Domain>DOMAIN_LAND</Domain>
+			<DefaultUnitAI>UNITAI_MERCHANT</DefaultUnitAI>
+			<Description>TXT_KEY_UNIT_GREAT_SPY</Description>
+			<Civilopedia>TXT_KEY_CONCEPT_GREAT_PEOPLE_PEDIA</Civilopedia>
+			<Strategy>TXT_KEY_UNIT_GREAT_SPY_STRATEGY</Strategy>
+			<Advisor>ADVISOR_RELIGION</Advisor>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_MERCHANT</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<GreatPeoples>
+				<GreatPeople>
+					<GreatPeopleType>SPECIALIST_GREAT_SPY</GreatPeopleType>
+					<bGreatPeople>1</bGreatPeople>
+				</GreatPeople>
+			</GreatPeoples>
+			<iCost>-1</iCost>
+			<iAdvancedStartCost>-1</iAdvancedStartCost>
+			<iMinAreaSize>-1</iMinAreaSize>
+			<iMoves>2</iMoves>
+			<iNukeRange>-1</iNukeRange>
+			<iEspionagePoints>3000</iEspionagePoints>
+			<iAsset>4</iAsset>
+			<UnitMeshGroups>
+				<iGroupSize>4</iGroupSize>
+				<fMaxSpeed>1.75</fMaxSpeed>
+				<fPadTime>1</fPadTime>
+				<iMeleeWaveSize>4</iMeleeWaveSize>
+				<iRangedWaveSize>0</iRangedWaveSize>
+				<UnitMeshGroup>
+					<iRequired>1</iRequired>
+					<EarlyArtDefineTag>ART_DEF_UNIT_ANCIENT_GREAT_SPY</EarlyArtDefineTag>
+				</UnitMeshGroup>
+			</UnitMeshGroups>
+			<FormationType>FORMATION_TYPE_DEFAULT</FormationType>
+		</UnitInfo>
+		<UnitInfo>
+			<Class>UNITCLASS_GREAT_GENERAL</Class>
+			<Type>UNIT_GREAT_GENERAL</Type>
+			<UniqueNames>
+				<UniqueName>TXT_KEY_GREAT_PERSON_SARGON</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_NEBUCHADREZZAR</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_SUN_TZU</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_LEONIDAS</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_LYSANDER</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_CHANDRAGUPTA_MAURYA</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_HAMILCAR_BARCA</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_GAIUS_MARIUS</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_SCIPIO_AFRICANUS</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_VERCINGETORIX</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ARMINIUS</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_CAO_CAO</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ZHUGE_LIANG</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_BELISARIUS</UniqueName>
+			</UniqueNames>
+			<Special>SPECIALUNIT_PEOPLE</Special>
+			<Capture>NONE</Capture>
+			<Domain>DOMAIN_LAND</Domain>
+			<DefaultUnitAI>UNITAI_GENERAL</DefaultUnitAI>
+			<Description>TXT_KEY_UNIT_GREAT_GENERAL</Description>
+			<Civilopedia>TXT_KEY_CONCEPT_GREAT_PEOPLE_PEDIA</Civilopedia>
+			<Strategy>TXT_KEY_UNIT_GREAT_GENERAL_STRATEGY</Strategy>
+			<Advisor>ADVISOR_RELIGION</Advisor>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_GENERAL</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<GreatPeoples>
+				<GreatPeople>
+					<GreatPeopleType>SPECIALIST_GREAT_GENERAL</GreatPeopleType>
+					<bGreatPeople>1</bGreatPeople>
+				</GreatPeople>
+			</GreatPeoples>
+			<iCost>-1</iCost>
+			<iAdvancedStartCost>-1</iAdvancedStartCost>
+			<iMinAreaSize>-1</iMinAreaSize>
+			<iMoves>2</iMoves>
+			<iNukeRange>-1</iNukeRange>
+			<iEspionagePoints>3000</iEspionagePoints>
+			<iAsset>4</iAsset>
+			<UnitMeshGroups>
+				<iGroupSize>4</iGroupSize>
+				<fMaxSpeed>1.75</fMaxSpeed>
+				<fPadTime>1</fPadTime>
+				<iMeleeWaveSize>4</iMeleeWaveSize>
+				<iRangedWaveSize>0</iRangedWaveSize>
+				<UnitMeshGroup>
+					<iRequired>1</iRequired>
+					<EarlyArtDefineTag>ART_DEF_UNIT_WARLORD_ANCIENT</EarlyArtDefineTag>
+				</UnitMeshGroup>
+			</UnitMeshGroups>
+			<FormationType>FORMATION_TYPE_DEFAULT</FormationType>
+			<LeaderPromotion>PROMOTION_LEADER</LeaderPromotion>
+			<iLeaderExperience>20</iLeaderExperience>
 		</UnitInfo>
 	</UnitInfos>
 </Civ4UnitInfos>

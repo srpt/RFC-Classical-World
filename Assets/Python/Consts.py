@@ -54,13 +54,15 @@ iNumidia, iBactria, iHan, iXiongnu, iSatavahanas, iArmenia, iHebrews, iParthia, 
 iAxum, iKushans, iJin, iSassanids, iGuptas, iCiv37, iCiv38, iCiv39, iCiv40, iCiv41, iCiv42, iCiv43, iCiv44, 
 iCiv45, iCiv46, iCiv47, iCiv48, iCiv49, iCiv50, iCiv51, iCiv52, iCiv53) = range(iNumPlayers)
 
-iIndependent1 = iNumPlayers
-iIndependent2 = iNumPlayers+1
-iIndependent3 = iNumPlayers+2
-iIndependent4 = iNumPlayers+3
+iIndependent1 = iNumPlayers # 54
+iIndependent2 = iNumPlayers+1 # 55
+iIndependent3 = iNumPlayers+2 # 56
+iIndependent4 = iNumPlayers+3 # 57
 iBarbarian = 58
 iNumMinorPlayers = 4
 iNumTotalPlayers = 58
+
+lMinorPlayers = [iIndependent1, iIndependent2, iIndependent3, iIndependent4]
 
 # CAPITALS
 
@@ -74,7 +76,7 @@ tCapitals = (
 	(131, 46), # Tang
 	( 39, 37), # Athens
 	(106, 28), # Pataliputra
-	( 28, 42), # Rome
+	( 27, 42), # Rome
 	(142, 34), # Kuaiji
 	( 17, 50), # Bibracte
 	( 50, 13), # Medewi
@@ -117,15 +119,15 @@ tCapitals = (
 
 # preferred capital if tCapital is not possible
 tBackupCapitals = ( 
-	(-1, -1),
-	(-1, -1),
-	(-1, -1),
-	(-1, -1),
-	(-1, -1),
-	(-1, -1),
-	(-1, -1),
-	(-1, -1),
-	(-1, -1),
+	(-1, -1), # Carthage
+	(-1, -1), # Babylon
+	(-1, -1), # Xian
+	(-1, -1), # Linzi
+	(-1, -1), # Wuxi
+	(-1, -1), # Ying
+	(-1, -1), # Tang
+	(-1, -1), # Athens
+	(103, 28), # Kashi
 	(-1, -1),
 	(-1, -1),
 	(-1, -1),
@@ -265,13 +267,77 @@ tNewCapitals = (
 	(-1, -1),
 	(-1, -1),
 	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
+	(-1, -1),
 ) 
 
 # CIVILIZATION DATA
 
 tBirth = ( # starting year (these correspond to both to civilizations in the XML and players in WBSave, excluding Minors/Barbarians!)
 	#Car   Per   Qin   Qi    Wu    Chu   Jin   Ath   Nan   Rom   Yue   Cel   Nub   Sab   Mac   Mau   Ant   Sel   Pto   Tam   Pon   Bac   Xio   Num   Han   Sat   Arm   Heb   Par    Dac   Sak   Gog  Axu  Kus
-	-480, -480, -480, -480, -480, -480, -480, -480, -480, -480, -480, -480, -480, -480, -380, -325, -320, -320, -320, -300, -290, -220, -210, -202, -200, -200, -180, -160, -140,  -80,  -80,  -30,  10,  50, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999)
+	-480, -480, -480, -480, -480, -480, -480, -480, -480, -480, -480, -480, -480, -480, -480, -350, -320, -320, -320, -300, -290, -220, -210, -202, -200, -200, -180, -160, -140,  -80,  -80,  -30,  10,  50, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999)
 #	
 
 tVictory = ( # estimated time of historical victory for final score calculation
@@ -295,7 +361,8 @@ tFallRespawned = ( # slight changes for respawned civs
 #	
 
 tNoSettler = ( # 1 = civs that spawn without a settler (invasions)
-	  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0)
+	#Car   Per   Qin   Qi    Wu    Chu   Jin   Ath   Nan   Rom   Yue   Cel   Nub   Sab   Mac   Mau   Ant   Sel   Pto   Tam   Pon   Bac   Xio   Num   Han   Sat   Arm   Heb   Par    Dac   Sak   Gog  Axu  Kus
+	   0,    0,    0,   0,    0,     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    1,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,    0,    0,   0,   0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0)
 # 	
 
 tStartingGold = (
@@ -339,7 +406,7 @@ tGrowthPercent = (
 
 tProductionPercent = (
 	#Car   Per   Qin   Qi    Wu    Chu   Jin   Ath   Nan   Rom   Yue   Cel   Nub   Sab   Mac   Mau   Ant   Sel   Pto   Tam   Pon   Bac   Xio   Num   Han   Sat   Arm   Heb   Par   Dac   Sak   Gog   Axu   Kus
-	 100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100)
+	 100,  110,   90,  100,  100,  100,  100,   90,  100,   80,  100,  100,  100,  100,   80,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100)
 
 
 tResearchPercent = (
@@ -793,44 +860,44 @@ tAttitudeModifier = (
 	
 # Names and descriptions of civilizations' Unique Powers
 tUniquePowers = (
-	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Carthage
+	("The Power of Negotiation:", "Mercenary costs halved"), # Carthage
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Persia
-	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Qin
+	("The power of Legalism:", "+1 [ICON_HAPPY] per military unit in cities with no religion"), # Qin
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Qi
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Wu
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Chu
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Jin
-	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Athens
+	("The Power of Hellenic Philosophy:", "In the Early Classical era, all Wonders can be built when their prerequired techs are available and not yet researched"), # Athens
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Nandas
-	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Rome
+	("The Power of Roman Law:", "All government civics are available"), # Rome
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Yue
-	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Celts
-	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Nubia
+	("The Power of the Bards:", "+2 [ICON_CULTURE] and +1 [ICON_HAPPY] in all cities"), # Celts
+	("The Power of the Nile", "TXT_KEY_UP_2"), # Nubia
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Saba
-	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Macedon
-	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Mauryans
+	("The Power of Conquest:", "Collapsing enemies may surrender if their capital is lost"), # Macedon
+	("The Power of Devotion:", "All religious civics are available"), # Mauryans
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Antigonids
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Seleucids
-	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Ptolemys
+	("The Power of Hellenic Philosophy:", "+50% Great People occurence in the Early Classical Era"), # Athens
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Tamils
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Pontus
-	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Bactria
+	("The Power of Cultural Fusion:", "+25% GPP for every non-state religion in a city"), # Bactria
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Xiongnu
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Numidia
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Han
-	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Satavahanas
+	("The Power of Cultural Diffusion:", "Successful spreading of Hinduism or Buddhism to foreign cities adds culture to your cities"), # Satavahanas
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Armenia
-	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Hebrews
-	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Parthia
+	("The Power of Zealous Defense:", "Free City Defender I for Melee and Archery units"), # Hebrews
+	("The Power of the Parthian Shot:", "Free Flanking I Promotion for Cavalry and Missile Cavalry units"), # Parthia
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Dacia
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Sakas
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Goguryeo
-	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Axum
+	("The Power of the Middleman:", "Technologies can be brokered"), # Axum
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Kushans
+	("The Power of the Monsoon:", "+1 [ICON_FOOD] from tropical river tiles and jungles do not cause unhealthiness"), # Funan
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Jin
 	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Sassanids
-	("TXT_KEY_UP", "TXT_KEY_UP_2"), # Guptas
-	("TXT_KEY_UP", "TXT_KEY_UP_2"),
+	("The Power of India's Golden Age:", "+50% Golden Age duration and fewer Great People required to start a Golden Age"), # Guptas
 	("TXT_KEY_UP", "TXT_KEY_UP_2"),
 	("TXT_KEY_UP", "TXT_KEY_UP_2"),
 	("TXT_KEY_UP", "TXT_KEY_UP_2"),
@@ -845,15 +912,17 @@ tUniquePowers = (
 # Descriptions for Unique Historical Victory goals, one set for each game speed & civ
 tGoals = (
 	( # Epic
+		# Carthage
+		("Control six luxury resources and six strategic resources by 350BC", "Make Carthage the most prosperous trading city in the world in 300BC", "Destroy the Romans by 200BC"),
+		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"),
+		("Build the Great Wall and the Terracotta Army by 215BC", "Control the empire of Qin Shi Huang by 210BC", "Control at least 9 provinces in 100BC"),
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"),
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"),
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"),
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"),
-		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"),
-		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"),
-		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"),
-		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"),
-		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"),
+		# Athens
+		("Control five Aegean ports by 350BC", "Build the Parthenon, the Theatre of Dionysis and the Academy", "Settle five Great People in your capital by 300BC"),
+		("Control northern India by 330BC", "Control the world's largest army by 330BC", "Be the world's richest civilization in 330BC"),
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"),
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"),
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"),
@@ -894,15 +963,18 @@ tGoals = (
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"),
 	),
 	( # Normal
-		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"), # Carthage
+		# Carthage
+		("Control six luxury resources and 6 strategic resources by 350BC", "Make Carthage the most prosperous trading city in the world in 300BC", "Destroy the Romans before 200BC"),
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"), # Persia
-		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"), # Qin
+		# Qin
+		("Build the Great Wall and the Terracotta Army by 215BC", "Control the empire of Qin Shi Huang by 210BC", "Control at least 9 provinces in 100BC"),
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"), # Qi
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"), # Wu
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"), # Chu
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"), # Jin
-		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"), # Athens
-		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"), # Nandas
+		# Athens
+		("Control five Aegean ports in 350BC", "Build the Parthenon, the Theatre of Dionysis and the Academy", "Settle five Great People in your capital by 300BC"),
+		("Control northern India by 330BC", "Control the world's largest army by 330BC", "Be the world's richest civilization in 330BC"),
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"), # Rome
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"), # Yue
 		("TXT_KEY_UHV_1", "TXT_KEY_UHV_2", "TXT_KEY_UHV_3"), # Celts
@@ -958,21 +1030,21 @@ tReligiousGoals = (
 
 # Civilizations that will be contact when the civ spawns
 lContactCivsOnSpawn = [
-	[iPersia, iAthens, iRome], # Carthage
-	[iCarthage, iAthens], # Persia
-	[iJinState, iQiState, iWuState, iChuState, iYue], # Qin
-	[iJinState, iWuState, iChuState, iYue, iQin], # Qi
-	[iJinState, iQiState, iChuState, iYue, iQin], # Wu
-	[iJinState, iQiState, iWuState, iYue, iQin], # Chu
-	[iQiState, iWuState, iChuState, iYue, iQin], # Jin
-	[iPersia, iCarthage, iRome], # Athens
+	[], # Carthage
+	[], # Persia
+	[], # Qin
+	[], # Qi
+	[], # Wu
+	[], # Chu
+	[], # Jin
+	[], # Athens
 	[], # Nandas
-	[iCarthage, iAthens], # Rome
-	[iJinState, iQiState, iWuState, iChuState, iQin], # Yue
+	[], # Rome
+	[], # Yue
 	[], # Celts
-	[iPersia], # Nubia
+	[], # Nubia
 	[], # Saba
-	[iAthens, iRome, iPersia], # Macedon
+	[], # Macedon ## starting civs contacts set in the WBS
 	[iNandas], # Mauryans
 	[iSeleucids, iPtolemys, iRome, iAthens], # Antigonids
 	[iAntigonids, iPtolemys, iRome, iAthens], # Seleucids
@@ -1204,12 +1276,12 @@ iHolyWarPeriod = 100
 
 # COMPANIES (CORPORATIONS)
 
-iNumCompanies = 8
-(iCorp1, iCorp2, iCorp3, iCorp4, iCorp5, iCorp6, iCorp7, iCorp8) = range(iNumCompanies)
+iNumCompanies = 7
+(iCorp1, iCorp2, iCorp3, iCorp4, iCorp5, iCorp6, iCorp7) = range(iNumCompanies)
 
-tCompaniesBirth = (999, 999, 999, 999, 999, 999, 999, 999)
-tCompaniesDeath = (999, 999, 999, 999, 999, 999, 999, 999)
-tCompaniesLimit = ( 10,  10,  10,  10,  10,  10,  10,  10)
+tCompaniesBirth = (999, 999, 999, 999, 999, 999, 999)
+tCompaniesDeath = (999, 999, 999, 999, 999, 999, 999)
+tCompaniesLimit = ( 10,  10,  10,  10,  10,  10,  10)
 
 # TITLES (PROJECTS)
 
@@ -1243,7 +1315,8 @@ iMercenary) = range(iNumPromotions)
 # TERRAINS
 
 iNumTerrains = 15
-(iGrassland, iPlains, iSemidesert, iDesert, iSaltFlat, iWetland, iTundra, iIce, iSaltLake, iCoast, iSea, iOcean, iPeak, iHills, iWasteland) = range(iNumTerrains)
+(iGrassland, iPlains, iSemidesert, iDesert, iSaltFlat, iWetland, iTundra, iIce, iSaltLake, iCoast, iSea, 
+iOcean, iPeak, iHills, iWasteland) = range(iNumTerrains)
 
 iNumTerrainFeatures = 9
 (iIce, iJungle, iSavanna, iOasis, iFloodPlains, iForest, iLightForest, iDenseForest, iMarsh) = range(iNumTerrainFeatures)
@@ -1265,7 +1338,7 @@ iNumTechs = 52
 lStartingTechs = [
 	# Carthage
 	[iSailing, iConstruction, iMasonry, iAgriculture, iHorticulture, iWriting, iMathematics, iCodeOfLaws, 
-	iAlphabet, iCityPlanning, iCurrency, iLuxuryTrade, iMilitaryDrill, iMetalCasting, iHorsemanship, ],
+	iAlphabet, iCityPlanning, iCurrency, iLuxuryTrade, iHorsemanship, ],
 	# Persia
 	[iSailing, iConstruction, iMasonry, iAgriculture, iWriting, iMathematics, iCodeOfLaws, iAlphabet, 
 	iCityPlanning, iCurrency, iLuxuryTrade, iHorsemanship],
@@ -1289,9 +1362,8 @@ lStartingTechs = [
 	iAlphabet, iCityPlanning, iCurrency, iLuxuryTrade, iMilitaryDrill, iMetalCasting, 
 	iHorsemanship],
 	# Nandas
-	[iConstruction, iAgriculture, iWriting, iMathematics, iAlphabet, iHorsemanship, ],
+	[iConstruction, iMasonry, iAgriculture, iWriting, iMathematics, iAlphabet, iPriesthood, ],
 	# Rome
-	[iConstruction, iMasonry, iAgriculture, iWriting, iMathematics, iAlphabet, iPriesthood, iHorsemanship, ], # Nandas
 	[iSailing, iConstruction, iMasonry, iAgriculture, iHorticulture, iWriting, iMathematics, iCodeOfLaws, 
 	iAlphabet, iCityPlanning, iCurrency, iLuxuryTrade, iMilitaryDrill, iMetalCasting, 
 	iHorsemanship],
@@ -1301,9 +1373,9 @@ lStartingTechs = [
 	# Celts
 	[iConstruction, iAgriculture, iMetalCasting, ],
 	# Nubia
-	[iConstruction, iMasonry, iAgriculture, iWriting, iHorsemanship, ],
+	[iConstruction, iMasonry, iAgriculture, iWriting, ],
 	# Saba
-	[iAgriculture, iWriting, iHorsemanship, ],
+	[iAgriculture, iWriting, iConstruction, iMasonry, ],
 	# Macedon
 	[iSailing, iConstruction, iMasonry, iAgriculture, iHorticulture, iWriting, iMathematics, iCodeOfLaws, 
 	iAlphabet, iCityPlanning, iCurrency, iLuxuryTrade, iMilitaryDrill, iMetalCasting, iHorsemanship, 
@@ -1383,11 +1455,12 @@ lStartingTechs = [
 
 # UNITS
 
-iNumUnits = 49
+iNumUnits = 59
 (iSettler, 
 iWorker, 
 iSlave,
 iLevySpearman,
+iBarbWarrior,
 iGallicWarrior,
 iMilitiaSpearman,
 iHoplite,
@@ -1395,6 +1468,7 @@ iHeijaInfantry,
 iSpearman,
 iPhalangite,
 iHeavySpearman,
+iLightSwordsman, 
 iSwordsman,
 iLegionary,
 iGalatianInfantry,
@@ -1431,41 +1505,55 @@ iArmoredElephant,
 iRam,
 iCatapult,
 iTrebuchet,
+iWorkBoat,
 iGalley,
-iWarGalley) = range(iNumUnits)
+iWarGalley,
+iGreatSaint,
+iGreatArtist,
+iGreatMerchant,
+iGreatScholar,
+iGreatEngineer,
+iGreatSpy,
+iGreatGeneral) = range(iNumUnits)
 
 # BUILDINGS
 
-iNumBuildings = 55
-(iPalace, iMonument, iEdict, iGranary, iWalls, iCelticDun, iBarracks, iStratopedon, iPracticeRange, 
-iHarbor, iCothon, iMarket, iForum, iFunduq, iAgora, iLibrary, iTheatre, iOdeon, 
-iForge, iStable, iLighthouse, iAqueduct, iFairground, iCourthouse, iBank, iHospital, iNationalEpic, 
-iAcademy, iEmporium, iMint, iPyramids, iHangingGardens, iTempleofArtemis, iApadanaPalace, iColossus, 
-iParthenon, iArchimedesWorkshop, iIronPillar, iMaolingMausoleum, iNalandaUniversity, iGreatWall, 
+iNumBuildings = 71
+(iPalace, iMonument, iEdict, iGranary, iBath, iWalls, iCelticDun, iFortress, iBarracks, iStratopedon, 
+iPracticeRange, iHarbor, iCothon, iMarket, iForum, iFunduq, iAgora, iLibrary, iLegalistSchool, iTheatre, iOdeon, 
+iForge, iStable, iLighthouse, iAqueduct, iFairground, iCourthouse, iBank, iHospital, iMesopotamianTemple, iEgyptianTemple, 
+iPhoenicianTemple, iJewishTemple, iChristianTemple, iHinduTemple, iBuddhistTemple, iConfucianTemple, iTaoistTemple, iHellenicTemple, 
+iZoroastrianTemple, iManicheanTemple, iNationalEpic, iLyceum, 
+iEmporium, iMint, iPyramids, iHangingGardens, iTempleofArtemis, iApadanaPalace, iColossus, 
+iParthenon, iDionysis, iAcademy, iArchimedesWorkshop, iIronPillar, iMaolingMausoleum, iNalandaUniversity, iGreatWall, 
 iTerracottaArmy, iGreatLighthouse, iGreatLibrary, iTrajansColumn, iColosseum, iBamiyanBuddhas, 
-iGrandAnicut, iPantheon, iGondeshapur, iGreatCothon, iGuozijian, iDujiangyan, iArgEBam, 
+iGrandAnicut, iPantheon, iGondeshapur, iGuozijian, iDujiangyan, iArgEBam, 
 iPlague) = range(iNumBuildings)
 
 # RESOURCES
 
-iNumResources = 41
-(iHorse, iIron, iCopper, iSulfur, iMarble, iStone, iClam, iCrab, iCow, iDeer, iFish, iPig, iRice, iSheep, 
-iWheat, iBarley, iDye, iFur, iGold, iIncense, iSilk, iSilver, iSpices, iSugar, iWine, iWhale, iHemp, 
-iCotton, iHoney, iSalt, iOlives, iCitrus, iApples, iDates, iGems, iPearls, iIvory, iOpium, iCoffee, 
-iSorghum, iOil) = range(iNumResources)
+iNumResources = 39
+(iHorse, iIron, iCopper, iMarble, iStone, iClam, iCrab, iCow, iDeer, iFish, iPig, iRice, iSheep, 
+iWheat, iBarley, iDye, iFur, iGold, iIncense, iSilk, iSilver, iPepper, iSaffron, iSugar, iWine, iHemp, 
+iCotton, iSalt, iOlives, iCitrus, iDates, iGems, iPearls, iIvory, iCinnamon, iMillet, 
+iCamel, iTimber, iTea) = range(iNumResources)
 
 # IMPROVEMENTS
 
-iFarm = 4
-iMine = 6
-iWorkshop = 7
-iWindmill = 8
-iWatermill = 9
-iCottage = 19
-iHamlet = 20
-iVillage = 21
-iTown = 22
-iFort = 23
+iNumImprovements = 22
+(iLandWorked, iWaterWorked, iCityRuins, iGoodyHut, iFarm, iFishingBoats, iMine, iWorkshop, iWindmill, 
+iWatermill, iPlantation, iOrchard, iQuarry, iPasture, iCamp, iWinery, iCottage, iHamlet, iVillage, 
+iTown, iFort, iLumbermill) = range(iNumImprovements)
+
+# City plots
+tKashi = (103, 28)
+tTamralipti = (108, 25)
+tLuoyang = (132, 41)
+tLinzi = (138, 45)
+tWuxi = (142, 37)
+tYing = (132, 36)
+tTaiyuan = (131, 46)
+
 
 # REGIONS (PROVINCES) for RFC RiseAndFall, RFC Stability, RFC AIWars, MEM Religions and MEM Regional Recruitment
 
@@ -1482,7 +1570,7 @@ rEgypt, rLibya, rAfrica, rMauretania, rNubia, rAxum, rPunt, rSahara, rAethiopia,
 #Persia
 rMedia, rPersia, rParthia, rArachosia, rSogdiana, 
 #India
-rSindh, rGandhara, rPunjab, rThar, rMagadha, rBangala, rKalinka, rKerala, rTamilNadu, rAvanti, rDeccan, 
+rSindh, rGandhara, rPunjab, rThar, rMagadha, rAnga, rKalinka, rKerala, rTamilNadu, rAvanti, rDeccan, 
 rLanka, 
 # Tarim
 rTibet, rTarim, 
@@ -1629,14 +1717,14 @@ lNormalRegions = [
 	[rShu, rWu], # Chu
 	[rZhao, rYan, rQin], # Jin
 	[rAsia, rCrete, rRhodes, rMacedonia], # Athens
-	[rBharat, rBangala, rAvanti], # Nandas
+	[rBharat, rAnga, rAvanti], # Nandas
 	[rNItaly, rSardinia, rCorsica, rSeptimania, rAquitania, rGaul, rIberia, rBaetica, rLusitania, rMauretania, rNumidia, rAfrica, rLibya, rEgypt, rJudea, rSyria, rCappadocia, rPontus, rAsia, rThrace, rMacedonia, rGreece, rSicily, rRhodes, rCrete, rIllyricum, rBritannia, rNoricum], # Rome
 	[rWu, rNanYue], # Yue
 	[rAquitania, rSeptimania], # Celts
 	[rEgypt], # Nubia
 	[rArabia, rAxum], # Saba
 	[rGreece, rThrace, rAsia, rPontus, rCappadocia, rSyria, rJudea, rEgypt, rMesopotamia, rPersia, rMedia, rParthia, rGedrosia, rArachosia, rMargiana, rBactria, rSogdiana], # Macedon
-	[rBharat, rPunjab, rGandhara, rArachosia, rSindh, rAvanti, rDeccan, rKalinka, rBangala, rAndhra, rSaurashtra], # Mauryans
+	[rBharat, rPunjab, rGandhara, rArachosia, rSindh, rAvanti, rDeccan, rKalinka, rAnga, rAndhra, rSaurashtra], # Mauryans
 	[rAsia, rPontus, rSyria, rMacedonia, rCyprus], # Antigonids
 	[rPersia, rMedia, rParthia, rMargiana, rSogdiana, rBactria, rArachosia, rGedrosia, rSyria, rJudea], # Seleucids
 	[rJudea, rRhodes, rCrete, rNubia, rSyria, rLibya, rCyprus], # Ptolemys
@@ -1657,7 +1745,7 @@ lNormalRegions = [
 	[rFerghana, rMargiana, rGedrosia, rPunjab, rSindh, rArachosia], # Kushans
 	[rQin, rGansu, rTarim, rZhao, rYan, rHan, rWu, rChu, rBa, rShu, rNanYue, rMinYue], # Jin
 	[rMesopotamia, rArmenia, rSyria, rArabia, rMakan, rGedrosia, rArachosia, rMargiana], # Sassanids
-	[rPunjab, rBangala, rAvanti, rKalinka], # Guptas
+	[rPunjab, rAnga, rAvanti, rKalinka], # Guptas
 	[], 
 	[], 
 	[], 
@@ -1851,43 +1939,70 @@ lRespawnBroaderRegions = [
 ]
 
 lRevealRegions = [
-	[rEgypt, rJudea, rSyria, rCappadocia, rAsia, rMacedonia, rGreece, rNItaly, rSItaly, rSeptimania, rIberia, rBaetica, rMauretania, rNumidia, rAfrica, rLibya, rSicily, rCrete, rCyprus, rMediterraneanSea, rBlackSea], # Carthage
-	[rGreece, rMacedonia, rThrace, rAsia, rPontus, rCappadocia, rArmenia, rCaucasus, rEgypt, rNubia, rLibya, rArabia, rMesopotamia, rSyria, rJudea, rPersia, rMedia, rParthia, rMargiana, rSogdiana, rFerghana, rBactria, rGandhara, rArachosia, rGedrosia, rSindh, rMakan], # Persia
+	[rEgypt, rJudea, rSyria, rCappadocia, rAsia, rMacedonia, rGreece, rNItaly, 
+	rSItaly, rSeptimania, rIberia, rBaetica, rMauretania, rNumidia, rAfrica, rLibya, 
+	rSicily, rCrete, rCyprus, rMediterraneanSea, rBlackSea], # Carthage
+	[rGreece, rMacedonia, rThrace, rAsia, rPontus, rCappadocia, rArmenia, rCaucasus, 
+	rEgypt, rLibya, rArabia, rMesopotamia, rSyria, rJudea, rPersia, rMedia, rParthia, 
+	rMargiana, rSogdiana, rFerghana, rBactria, rGandhara, rArachosia, rGedrosia, 
+	rSindh, rMakan], # Persia
 	[rQin, rWei, rZhao, rYan, rQi, rChu, rWu, rHan], # Qin
 	[rQin, rWei, rZhao, rYan, rQi, rChu, rWu, rHan], # Qi
 	[rQin, rWei, rZhao, rYan, rQi, rChu, rWu, rHan], # Wu
 	[rQin, rWei, rZhao, rYan, rQi, rChu, rWu, rHan], # Chu
 	[rQin, rWei, rZhao, rYan, rQi, rChu, rWu, rHan], # Jin
-	[rEgypt, rJudea, rSyria, rCappadocia, rAsia, rThrace, rMacedonia, rGreece, rIllyricum, rNItaly, rSItaly, rSeptimania, rIberia, rBaetica, rMauretania, rNumidia, rAfrica, rLibya, rSicily, rCrete, rCyprus, rPontus, rColchis, rCrimea, rMediterraneanSea, rBlackSea], # Athens
-	[rMagadha, rBharat, rBangala], # Nandas
+	[rEgypt, rJudea, rSyria, rCappadocia, rAsia, rThrace, rMacedonia, rGreece, rIllyricum, 
+	rNItaly, rSItaly, rSeptimania, rIberia, rBaetica, rMauretania, rNumidia, rAfrica, rLibya, 
+	rSicily, rCrete, rCyprus, rPontus, rColchis, rCrimea, rMediterraneanSea, rBlackSea], # Athens
+	[rMagadha, rBharat, rAnga], # Nandas
 	[rSItaly, rNItaly, rSardinia, rSicily, rAfrica, rGreece, rMediterraneanSea], # Rome
 	[rMinYue, rNanYue, rWu, rChu], # Yue
 	[rGaul, rSeptimania, rAquitania], # Celts
 	[rEgypt, rNubia, rRedSea], # Nubia
 	[rArabiaFelix, rArabia, rMakan, rRedSea], # Saba
-	[rEgypt, rJudea, rSyria, rCappadocia, rAsia, rThrace, rMacedonia, rGreece, rIllyricum, rNItaly, rSItaly, rSeptimania, rIberia, rBaetica, rMauretania, rNumidia, rAfrica, rLibya, rSicily, rCrete, rCyprus, rPontus, rColchis, rCrimea, rMediterraneanSea, rBlackSea], # Macedon
-	[rMagadha, rBharat, rBangala, rPunjab, rAvanti, rSaurashtra, rSindh, rArachosia, rGedrosia, rGandhara, rAssam, rDeccan, rAndhra], # Mauryans
-	[rEgypt, rJudea, rSyria, rCappadocia, rAsia, rThrace, rMacedonia, rGreece, rIllyricum, rNItaly, rSItaly, rSeptimania, rIberia, rBaetica, rMauretania, rNumidia, rAfrica, rLibya, rSicily, rCrete, rCyprus, rPontus, rColchis, rCrimea, rMediterraneanSea, rBlackSea, rPersia, rMedia, rParthia, rMargiana, rSogdiana, rFerghana, rBactria, rGandhara, rArachosia, rGedrosia, rSindh], # Antigonids
-	[rEgypt, rJudea, rSyria, rCappadocia, rAsia, rThrace, rMacedonia, rGreece, rIllyricum, rNItaly, rSItaly, rSeptimania, rIberia, rBaetica, rMauretania, rNumidia, rAfrica, rLibya, rSicily, rCrete, rCyprus, rPontus, rColchis, rCrimea, rMediterraneanSea, rBlackSea, rPersia, rMedia, rParthia, rMargiana, rSogdiana, rFerghana, rBactria, rGandhara, rArachosia, rGedrosia, rSindh], # Seleucids
-	[rEgypt, rJudea, rSyria, rCappadocia, rAsia, rThrace, rMacedonia, rGreece, rIllyricum, rNItaly, rSItaly, rSeptimania, rIberia, rBaetica, rMauretania, rNumidia, rAfrica, rLibya, rSicily, rCrete, rCyprus, rPontus, rColchis, rCrimea, rMediterraneanSea, rBlackSea, rPersia, rMedia, rParthia, rMargiana, rSogdiana, rFerghana, rBactria, rGandhara, rArachosia, rGedrosia, rSindh, rNubia], # Ptolemys
+	[rEgypt, rJudea, rSyria, rCappadocia, rAsia, rThrace, rMacedonia, rGreece, rIllyricum, rNItaly, 
+	rSItaly, rSeptimania, rIberia, rBaetica, rMauretania, rNumidia, rAfrica, rLibya, rSicily, rCrete, 
+	rCyprus, rPontus, rColchis, rCrimea, rMediterraneanSea, rBlackSea], # Macedon
+	[rMagadha, rBharat, rAnga, rPunjab, rAvanti, rSaurashtra, rSindh, rArachosia, rGedrosia, 
+	rGandhara, rAssam, rDeccan, rAndhra], # Mauryans
+	[rEgypt, rJudea, rSyria, rCappadocia, rAsia, rThrace, rMacedonia, rGreece, rIllyricum, rNItaly, 
+	rSItaly, rSeptimania, rIberia, rBaetica, rMauretania, rNumidia, rAfrica, rLibya, rSicily, rCrete, 
+	rCyprus, rPontus, rColchis, rCrimea, rMediterraneanSea, rBlackSea, rPersia, rMedia, rParthia, rMargiana, 
+	rSogdiana, rFerghana, rBactria, rGandhara, rArachosia, rGedrosia, rSindh], # Antigonids
+	[rEgypt, rJudea, rSyria, rCappadocia, rAsia, rThrace, rMacedonia, rGreece, rIllyricum, rNItaly, 
+	rSItaly, rSeptimania, rIberia, rBaetica, rMauretania, rNumidia, rAfrica, rLibya, rSicily, rCrete, 
+	rCyprus, rPontus, rColchis, rCrimea, rMediterraneanSea, rBlackSea, rPersia, rMedia, rParthia, 
+	rMargiana, rSogdiana, rFerghana, rBactria, rGandhara, rArachosia, rGedrosia, rSindh], # Seleucids
+	[rEgypt, rJudea, rSyria, rCappadocia, rAsia, rThrace, rMacedonia, rGreece, rIllyricum, rNItaly, 
+	rSItaly, rSeptimania, rIberia, rBaetica, rMauretania, rNumidia, rAfrica, rLibya, rSicily, rCrete, 
+	rCyprus, rPontus, rColchis, rCrimea, rMediterraneanSea, rBlackSea, rPersia, rMedia, rParthia, rMargiana, 
+	rSogdiana, rFerghana, rBactria, rGandhara, rArachosia, rGedrosia, rSindh, rNubia], # Ptolemys
 	[rTamilNadu, rKerala, rAndhra], # Tamils
 	[rBlackSea, rPontus, rColchis, rCrimea, rThrace, rCappadocia, rAsia, rArmenia], # Pontus
-	[rBactria, rSogdiana, rFerghana, rMargiana, rGandhara, rArachosia, rGedrosia, rParthia, rMedia, rPersia, rMesopotamia], # Bactria
+	[rBactria, rSogdiana, rFerghana, rMargiana, rGandhara, rArachosia, rGedrosia, rParthia, rMedia, 
+	rPersia, rMesopotamia], # Bactria
 	[rMongolianSteppe, rTarim, rGansu, rZhao, rYan, rBuyeo], # Xiongnu
 	[rNumidia, rMauretania, rAfrica], # Numidia
 	[rHan, rQin, rWei, rZhao, rYan, rQi, rWu, rChu, rShu, rBa, rNanYue, rMinYue, rBuyeo], # Han
 	[rMagadha, rBharat, rSaurashtra, rDeccan, rKalinka, rAndhra, rTamilNadu, rKerala], # Satavahanas
-	[rArmenia, rCaucasus, rColchis, rCappadocia, rPontus, rSyria, rMesopotamia, rMedia, rPersia], # Armenia
-	[rJudea, rEgypt, rSyria, rMesopotamia, rPersia, rMedia, rArmenia, rCappadocia, rAsia, rGreece, rCyprus, rCrete, rRhodes, rMediterraneanSea], # Hebrews
+	[rArmenia, rCaucasus, rColchis, rCappadocia, rPontus, rSyria, rMesopotamia, rMedia, 
+	rPersia], # Armenia
+	[rJudea, rEgypt, rSyria, rMesopotamia, rPersia, rMedia, rArmenia, rCappadocia, rAsia, rGreece,
+	rCyprus, rCrete, rRhodes, rMediterraneanSea], # Hebrews
 	[rParthia, rPersia, rMedia, rMesopotamia, rArmenia, rMargiana, rArachosia, rGedrosia], # Parthia
 	[rDacia, rMoesia, rIllyricum, rMacedonia, rThrace], # Dacia
 	[rMargiana, rArachosia, rGedrosia, rSogdiana, rFerghana, rGandhara, rScythianSteppe, rPunjab, rSindh], # Sakas
 	[rGoguryeo, rBuyeo, rYan, rQi], # Goguryeo
 	[rAxum, rArabiaFelix, rNubia, rRedSea], # Axum
-	[rMargiana, rArachosia, rGedrosia, rSogdiana, rFerghana, rGandhara, rScythianSteppe, rPunjab, rSindh, rTarim], # Kushans
-	[rHan, rQin, rWei, rZhao, rYan, rQi, rWu, rChu, rShu, rBa, rNanYue, rMinYue, rBuyeo, rFerghana, rGoguryeo, rAnnam, rNanzhao, rQinghai], # Jin
-	[rGreece, rMacedonia, rThrace, rAsia, rPontus, rCappadocia, rArmenia, rCaucasus, rEgypt, rNubia, rLibya, rArabia, rMesopotamia, rSyria, rJudea, rPersia, rMedia, rParthia, rMargiana, rSogdiana, rFerghana, rBactria, rGandhara, rArachosia, rGedrosia, rSindh, rMakan], # Sassanids
-	[rMagadha, rBharat, rBangala, rPunjab, rAvanti, rSaurashtra, rSindh, rArachosia, rGedrosia, rGandhara, rAssam, rDeccan, rAndhra], # Guptas
+	[rMargiana, rArachosia, rGedrosia, rSogdiana, rFerghana, rGandhara, rScythianSteppe, rPunjab, rSindh, 
+	rTarim], # Kushans
+	[rHan, rQin, rWei, rZhao, rYan, rQi, rWu, rChu, rShu, rBa, rNanYue, rMinYue, rBuyeo, rFerghana, rGoguryeo, 
+	rAnnam, rNanzhao, rQinghai], # Jin
+	[rGreece, rMacedonia, rThrace, rAsia, rPontus, rCappadocia, rArmenia, rCaucasus, rEgypt, rNubia, rLibya, 
+	rArabia, rMesopotamia, rSyria, rJudea, rPersia, rMedia, rParthia, rMargiana, rSogdiana, rFerghana, rBactria, 
+	rGandhara, rArachosia, rGedrosia, rSindh, rMakan], # Sassanids
+	[rMagadha, rBharat, rAnga, rPunjab, rAvanti, rSaurashtra, rSindh, rArachosia, rGedrosia, rGandhara, rAssam, 
+	rDeccan, rAndhra], # Guptas
 	[], 
 	[], 
 	[], 
@@ -1917,7 +2032,6 @@ lUnrulyRegions = []
 lCompanyRegions = [
 [], #all
 [], #all
-[],
 [],
 [],
 [],
@@ -2098,3 +2212,7 @@ mercenaryPromotionOdds = {
 	iMercenary : 0,
 	# all remaining promotions : 0%
 }
+
+lAegeanPortTiles = [
+	(37, 34), (37, 35), (38, 35), (38, 36), (38, 37), (38, 40), (38, 41), (39, 33), (39, 35), (39, 37), (39, 38), (39, 39), (39, 41), (40, 33), (40, 37), (40, 41), (40, 42), (41, 33), (41, 39), (41, 42), (42, 36), (42, 42), (43, 34), (43, 38), (43, 39), (43, 40), (43, 42), (44, 36), (44, 37), (44, 38), (44, 39), (44, 40), (44, 42), (45, 35), (45, 36), (45, 40), (45, 42), (46, 40), (46, 41)
+	]

@@ -120,7 +120,7 @@
 			<YieldChanges>
 				<iYieldChange>-2</iYieldChange>
 				<iYieldChange>0</iYieldChange>
-				<iYieldChange>-1</iYieldChange>
+				<iYieldChange>0</iYieldChange>
 			</YieldChanges>
 			<RiverYieldChange>
 				<iYield>0</iYield>
@@ -128,7 +128,7 @@
 				<iYield>1</iYield>
 			</RiverYieldChange>
 			<HillsYieldChange/>
-			<iMovement>2</iMovement>
+			<iMovement>3</iMovement>
 			<iSeeThrough>1</iSeeThrough>
 			<iHealthPercent>-25</iHealthPercent>
 			<iDefense>-25</iDefense>
@@ -142,7 +142,7 @@
 			<bRequiresFlatlands>0</bRequiresFlatlands>
 			<bRequiresRiver>0</bRequiresRiver>
 			<bAddsFreshWater>0</bAddsFreshWater>
-			<bImpassable>0</bImpassable>
+			<bImpassable>1</bImpassable>
 			<bNoCity>0</bNoCity>
 			<bNoImprovement>0</bNoImprovement>
 			<bVisibleAlways>0</bVisibleAlways>
@@ -237,11 +237,11 @@
 			<RiverYieldChange>
 				<iYield>0</iYield>
 				<iYield>0</iYield>
-				<iYield>0</iYield>
+				<iYield>1</iYield>
 			</RiverYieldChange>
 			<HillsYieldChange/>
 			<iMovement>1</iMovement>
-			<iSeeThrough>0</iSeeThrough>
+			<iSeeThrough>1</iSeeThrough>
 			<iHealthPercent>0</iHealthPercent>
 			<iDefense>10</iDefense>
 			<iAppearance>0</iAppearance>
@@ -351,7 +351,7 @@
 			<Civilopedia>TXT_KEY_FEATURE_OASIS_PEDIA</Civilopedia>
 			<ArtDefineTag>ART_DEF_FEATURE_OASIS</ArtDefineTag>
 			<YieldChanges>
-				<iYieldChange>3</iYieldChange>
+				<iYieldChange>2</iYieldChange>
 				<iYieldChange>0</iYieldChange>
 				<iYieldChange>2</iYieldChange>
 			</YieldChanges>
@@ -600,7 +600,7 @@
 			<bRequiresFlatlands>0</bRequiresFlatlands>
 			<bRequiresRiver>0</bRequiresRiver>
 			<bAddsFreshWater>0</bAddsFreshWater>
-			<bImpassable>0</bImpassable>
+			<bImpassable>1</bImpassable>
 			<bNoCity>0</bNoCity>
 			<bNoImprovement>0</bNoImprovement>
 			<bVisibleAlways>0</bVisibleAlways>
@@ -707,7 +707,7 @@
 			</YieldChanges>
 			<RiverYieldChange/>
 			<HillsYieldChange/>
-			<iMovement>3</iMovement>
+			<iMovement>2</iMovement>
 			<iSeeThrough>1</iSeeThrough>
 			<iHealthPercent>25</iHealthPercent>
 			<iDefense>-25</iDefense>
@@ -828,7 +828,7 @@
 			</YieldChanges>
 			<RiverYieldChange/>
 			<HillsYieldChange/>
-			<iMovement>2</iMovement>
+			<iMovement>3</iMovement>
 			<iSeeThrough>1</iSeeThrough>
 			<iHealthPercent>25</iHealthPercent>
 			<iDefense>-25</iDefense>

@@ -2463,6 +2463,12 @@ void CvDLLWidgetData::parseActionHelp(CvWidgetDataStruct &widgetDataStruct, CvWS
 			else if (GC.getActionInfo(widgetDataStruct.m_iData1).getMissionType() == MISSION_GOLDEN_AGE)
 			{
 				iUnitConsume = GET_PLAYER(pHeadSelectedUnit->getOwnerINLINE()).unitsRequiredForGoldenAge();
+				// srpt adjustment for Guptan UP
+				if (iUnitConsume > 1 && (pHeadSelectedUnit->getOwnerINLINE() == GUPTAS))
+				{
+					iUnitConsume -= 1;
+				}
+				// srpt end
 				iUnitDiff = (iUnitConsume - GET_PLAYER(pHeadSelectedUnit->getOwnerINLINE()).unitsGoldenAgeReady());
 
 				if (iUnitDiff > 0)

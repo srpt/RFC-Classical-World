@@ -2995,12 +2995,6 @@ def canTriggerCrusadeCity(argsList):
 	player = gc.getPlayer(ePlayer)
 	city = player.getCity(iCity)
 	
-	# crusaders only
-	if ePlayer != con.iCrusaders and ePlayer != con.iAntioch:
-		return false
-	if player.getStateReligion() != con.iCatholicism:
-		return false
-	
 	# no more than 10 crusades
 	if utils.getNumCrusades() >= 10:
 		return false
@@ -3211,32 +3205,12 @@ def canTriggerOrbanTheGunfounderCity(argsList):
 
 def triggerOrbanTheGreedy(argsList):
 	
-	if gc.getMap().plot(1,65).isCity() and gc.getMap().plot(1,65).getOwner() == con.iOttomans:
-		city = gc.getMap().plot(1,65).getPlotCity()
-	elif gc.getMap().plot(5,59).isCity() and gc.getMap().plot(5,59).getOwner() == con.iOttomans:
-		city = gc.getMap().plot(5,59).getPlotCity()
-	elif gc.getMap().plot(2,60).isCity() and gc.getMap().plot(2,60).getOwner() == con.iOttomans:
-		city = gc.getMap().plot(2,60).getPlotCity()
-	elif gc.getMap().plot(1,60).isCity() and gc.getMap().plot(1,60).getOwner() == con.iOttomans:
-		city = gc.getMap().plot(1,60).getPlotCity()
-	elif gc.getMap().plot(2,56).isCity() and gc.getMap().plot(2,56).getOwner() == con.iOttomans:
-		city = gc.getMap().plot(2,56).getPlotCity()
-	else:
-		city = None
-	
-	if city and gc.getPlayer(con.iOttomans).isAlive():
-		gc.getPlayer(con.iOttomans).initTriggeredData(gc.getInfoTypeForString("EVENTTRIGGER_ORBAN_THE_GREEDY"), True, city.getID(), city.getX(), city.getY(), -1, -1, -1, -1, -1, -1, "")
+	return False
 
 ####### Pilgrims (edead) ######
 
 def canTriggerPilgrims(argsList):
 	kTriggeredData = argsList[0]
-	
-	if kTriggeredData.ePlayer != con.iCrusaders:
-		return false
-	
-	if not utils.isActive(con.iCrusaders):
-		return false
 	
 	return true
 
@@ -3457,8 +3431,6 @@ def applyPeasantRevolt1(argsList):
 	if listPlots:
 		plot = random.choice(listPlots)
 		unit = gc.getPlayer(con.iBarbarian).initUnit(con.iPeasant, plot.getX(), plot.getY(), UnitAITypes.UNITAI_PILLAGE, DirectionTypes.DIRECTION_SOUTH)
-		if unit and kTriggeredData.ePlayer in [con.iGeorgia, con.iArmenia]:
-			unit.setArtDefineTag("ART_DEF_UNIT_PEASANT_CAUCASIAN")
 		
 ####### Massacre of the Latins & the Fourth Crusade (edead) #######
 

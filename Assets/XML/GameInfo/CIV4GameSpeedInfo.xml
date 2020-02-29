@@ -35,28 +35,8 @@
 			<iVictoryDelayPercent>150</iVictoryDelayPercent>
 			<GameTurnInfos>
 				<GameTurnInfo>
-					<iMonthIncrement>24</iMonthIncrement>
-					<iTurnsPerIncrement>30</iTurnsPerIncrement>
-				</GameTurnInfo>
-				<GameTurnInfo>
-					<iMonthIncrement>18</iMonthIncrement>
-					<iTurnsPerIncrement>120</iTurnsPerIncrement>
-				</GameTurnInfo>
-				<GameTurnInfo>
 					<iMonthIncrement>12</iMonthIncrement>
-					<iTurnsPerIncrement>310</iTurnsPerIncrement>
-				</GameTurnInfo>
-				<GameTurnInfo>
-					<iMonthIncrement>18</iMonthIncrement>
-					<iTurnsPerIncrement>130</iTurnsPerIncrement>
-				</GameTurnInfo>
-				<GameTurnInfo>
-					<iMonthIncrement>12</iMonthIncrement>
-					<iTurnsPerIncrement>100</iTurnsPerIncrement>
-				</GameTurnInfo>
-				<GameTurnInfo>
-					<iMonthIncrement>6</iMonthIncrement>
-					<iTurnsPerIncrement>210</iTurnsPerIncrement>
+					<iTurnsPerIncrement>900</iTurnsPerIncrement>
 				</GameTurnInfo>
 			</GameTurnInfos>
 		</GameSpeedInfo>
@@ -88,12 +68,8 @@
 			<iVictoryDelayPercent>100</iVictoryDelayPercent>
 			<GameTurnInfos>
 				<GameTurnInfo>
-					<iMonthIncrement>36</iMonthIncrement>
-					<iTurnsPerIncrement>30</iTurnsPerIncrement>
-				</GameTurnInfo>
-				<GameTurnInfo>
 					<iMonthIncrement>24</iMonthIncrement>
-					<iTurnsPerIncrement>405</iTurnsPerIncrement>
+					<iTurnsPerIncrement>450</iTurnsPerIncrement>
 				</GameTurnInfo>
 			</GameTurnInfos>
 		</GameSpeedInfo>

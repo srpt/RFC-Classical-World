@@ -936,7 +936,9 @@ void CvTeam::doTurn()
 		}
 	}
 
-	if (!GC.getGameINLINE().isOption(GAMEOPTION_NO_TECH_BROKERING))
+	// srpt Axum UP
+
+	if ((!GC.getGameINLINE().isOption(GAMEOPTION_NO_TECH_BROKERING)) || (getID() == AXUM))
 	{
 		for (iI = 0; iI < GC.getNumTechInfos(); iI++)
 		{
@@ -944,6 +946,15 @@ void CvTeam::doTurn()
 		}
 
 	}
+
+	/*if (!GC.getGameINLINE().isOption(GAMEOPTION_NO_TECH_BROKERING))
+	{
+		for (iI = 0; iI < GC.getNumTechInfos(); iI++)
+		{
+			setNoTradeTech(((TechTypes)iI), false);
+		}
+
+	}*/
 
 	doWarWeariness();
 
@@ -2703,6 +2714,25 @@ int CvTeam::getResearchCost(TechTypes eTech) const
 		}
 	}
 	//Rhye - end
+	
+	//srpt/Leoreth: new Chinese UP: techs not known by anyone get -20% cost
+	if (getID() == HAN)
+	{
+		bool bUnknown = true;
+		for (int i = 0; i < NUM_MAJOR_PLAYERS; i++)
+		{
+			if (GET_TEAM((TeamTypes)i).isHasTech(eTech))
+			{
+				bUnknown = false;
+			}
+		}
+
+		if (bUnknown) //allow for all techs
+		{
+			iCost *= 80;
+			iCost /= 100;
+		}
+	}
 	return std::max(1, iCost);
 }
 

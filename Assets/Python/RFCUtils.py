@@ -438,7 +438,7 @@ class RFCUtils:
 	def getRandomMinorCiv(self):
 		"""Returns a random minor civilization."""
 		
-		return con.iIndependent + gc.getGame().getSorenRandNum(iNumMinorPlayers, 'Random minor civilization')
+		return con.iIndependent1 + gc.getGame().getSorenRandNum(iNumMinorPlayers, 'Random minor civilization')
 
 
 	# Religions
@@ -522,12 +522,10 @@ class RFCUtils:
 			y = city.getY()
 			for iActiveCiv in range( iNumPlayers ):
 				if gc.getPlayer(iActiveCiv).isAlive() and not gc.getPlayer(iActiveCiv).isHuman():
-					if iActiveCiv == con.iRum and sd.getCivStatus(iActiveCiv) > 0: # skip Karamanids to make them more passive
-						continue
 					regionList = []
 					regionList.extend(self.getCoreRegions(iActiveCiv))
 					regionList.extend(self.getNormalRegions(iActiveCiv))
-					regionList.extend(self.getBroaderRegions(iActiveCiv))
+					#regionList.extend(self.getBroaderRegions(iActiveCiv))
 					if gc.getMap().plot(x, y).getRegionID() in regionList:
 						if (not teamMinor.isAtWar(iActiveCiv)):
 							teamMinor.declareWar(iActiveCiv, False, WarPlanTypes.WARPLAN_LIMITED)
@@ -551,21 +549,28 @@ class RFCUtils:
 
 
 	# RiseAndFall, Religions, Barbs
-	def makeUnit(self, iUnit, iPlayer, tCoords, iNum, eUnitAIType = UnitAITypes.NO_UNITAI, tPromotions = False, prefix = False): #by LOQ/edead
+	#def makeUnit(self, iUnit, iPlayer, tCoords, iNum, eUnitAIType = UnitAITypes.NO_UNITAI, tPromotions = False, prefix = False, name = False): #by LOQ/edead
+	def makeUnit(self, iUnit, iPlayer, tCoords, iNum, eUnitAIType = UnitAITypes.NO_UNITAI, tPromotions = False, prefix = False, art = False, name = False): #by LOQ/edead
 		"""Makes iNum units for player iPlayer of the type iUnit at tCoords."""
 		
 		if iUnit == -1: return None # edead
 		
 		pUnit = None
+		#print ("eDirectionType", eDirectionType)
 		for i in range(iNum):
 			pUnit = gc.getPlayer(iPlayer).initUnit(iUnit, tCoords[0], tCoords[1], eUnitAIType, DirectionTypes.DIRECTION_SOUTH)
+			#pUnit = gc.getPlayer(iPlayer).initUnit(iUnit, tCoords[0], tCoords[1], eUnitAIType, eDirectionType)
 			if pUnit:
-				UnitArtStyler.checkUnitArt(pUnit) # update unit art
+				if art != False and iPlayer in con.lMinorPlayers:
+					pUnit.setArtDefineTag(art)
+				#UnitArtStyler.checkUnitArt(pUnit) # update unit art
 				if tPromotions:
 					for j in tPromotions:
 						pUnit.setHasPromotion(j, True)
 				if prefix:
 					pUnit.setName("%s %s" %(prefix, pUnit.getName()))
+				if name:
+					pUnit.setName("%s" %(name))
 		return pUnit
 
 
@@ -603,6 +608,9 @@ class RFCUtils:
 			for i in range(iNumUnitsInAPlot):
 				unit = tempPlot.getUnit(0)
 				unit.setXY(tCityPlot[0], tCityPlot[1], False, False, False)
+				if iCiv in con.lMinorPlayers:
+					#print "unit art"
+					UnitArtStyler.updateUnitArt(unit)
 		#cover plots revealed
 		self.coverPlots(con.iFlipX, con.iFlipY, iCiv)
 
@@ -667,6 +675,8 @@ class RFCUtils:
 									#print ("Moving unit from ", unit.getNameNoDesc(), con.iFlipX, con.iFlipY)
 									#print ("Moving unit to ", plotList[iLoop][0], plotList[iLoop][1])
 									unit.setXY(plotList[iLoop][0], plotList[iLoop][1], False, False, False)
+									if iNewOwner in con.lMinorPlayers:
+										UnitArtStyler.updateUnitArt(unit)
 								iCiv = iNewOwner
 								if (bRevealedZero == False):
 									self.coverPlots(con.iFlipX, con.iFlipY, iCiv)
@@ -739,7 +749,7 @@ class RFCUtils:
 											gc.getMap().plot(x, y).setCulture(iNewOwner, iPlotBarbCulture, True)
 								# loop through minors - edead
 								for offset in range(con.iNumMinorPlayers):
-									iMinorCiv = con.iIndependent + offset
+									iMinorCiv = con.iIndependent1 + offset
 									iPlotIndependentCulture = gc.getMap().plot(x, y).getCulture(iMinorCiv)
 									if (iPlotIndependentCulture > 0):
 										if (gc.getMap().plot(x, y).getPlotCity().isNone() or (x==tCityPlot[0] and y==tCityPlot[1])):
@@ -912,7 +922,7 @@ class RFCUtils:
 					iNumLoyalCities += 1
 					if (iNumLoyalCities == 1):
 						for offset in range(con.iNumMinorPlayers):
-							gc.getTeam(gc.getPlayer(iCiv).getTeam()).declareWar(con.iIndependent + offset, False, -1) #too dangerous?
+							gc.getTeam(gc.getPlayer(iCiv).getTeam()).declareWar(con.iIndependent1 + offset, False, -1) #too dangerous?
 					iCounter += 1
 					#print(pyCity.GetCy().getName(), "loyal")
 					continue
@@ -923,7 +933,7 @@ class RFCUtils:
 			# edead - minors fix + efficiency
 			plotCulture = pCurrent.getCulture(iCiv) + pCurrent.getCulture(con.iBarbarian)
 			for offset in range(iNumMinorPlayers):
-				plotCulture += pCurrent.getCulture(con.iIndependent + offset)
+				plotCulture += pCurrent.getCulture(con.iIndependent1 + offset)
 			
 			for j in range(iRndnum, iRndnum + iNumPlayers): #only major players
 				iLoopCiv = j % iNumPlayers
@@ -1620,21 +1630,9 @@ class RFCUtils:
 		
 		iStateReligion = gc.getPlayer(iNewOwner).getStateReligion()
 		
-		if iUnit in [con.iItalianMaceman, con.iItalianCrossbowman, con.iHospitallerSergeant, con.iHospitallerCanon, con.iHospitallerKnight, con.iTemplarSergeant, con.iTemplarKnight, con.iManAtArms, con.iKnightOfJerusalem, con.iNormanKnight, con.iVarangianGuard, con.iGreekFlamethrower]:
-			if iStateReligion == con.iCatholicism or iStateReligion == con.iOrthodoxy:
-				return iUnit
-			else: 
-				return -1
-		
-		if iUnit in [con.iGhulamLancer, con.iGhulamHorseArcher, con.iGhulamGuard, con.iMaceman_Harafisha, con.iMaceman_Turkish]:
-			if iStateReligion == con.iSunni or iStateReligion == con.iShia:
-				return iUnit
-			else: 
-				return -1
-		
-		# get base unit class using Delhi Sultanate (no UUs)
+		# get base unit class using Minor civ (no UUs)
 		iUnitClass = gc.getUnitInfo(iUnit).getUnitClassType()
-		iBaseUnit = gc.getCivilizationInfo(gc.getInfoTypeForString("CIVILIZATION_DELHI")).getCivilizationUnits(iUnitClass)
+		iBaseUnit = gc.getCivilizationInfo(gc.getInfoTypeForString("CIVILIZATION_MINOR")).getCivilizationUnits(iUnitClass)
 		
 		if iBaseUnit == -1:
 			return iUnit
@@ -1795,6 +1793,20 @@ class RFCUtils:
 		'Returns a copy of alist with duplicate elements removed.'
 		set = {}
 		return [set.setdefault(e,e) for e in alist if e not in set]
+		
+	def getAllCities(self):
+		lCities = []
+		for iPlayer in range(iNumPlayers):
+			lCities.extend(self.getCityList(iPlayer))
+		return lCities
+		
+	def getCityList(self, iCiv):
+		if iCiv is None: return []
+		return [pCity.GetCy() for pCity in PyPlayer(iCiv).getCityList()]
+		return lCities
+		
+	def getArmySize(iPlayer):
+		return gc.getPlayer(iPlayer).getNumUnits()
 
 
 # singleton for use by all modules

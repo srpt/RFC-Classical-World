@@ -58,6 +58,14 @@
 					</UnitMeshGroup>
 				</StyleUnit>
 				<StyleUnit>
+					<UnitType>UNIT_LIGHT_SWORDSMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_LIGHT_SWORDSMAN_PERSIA</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_LIGHT_SWORDSMAN_PERSIA</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_LIGHT_SWORDSMAN_PERSIA</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
 					<UnitType>UNIT_SWORDSMAN</UnitType>
 					<UnitMeshGroup>
 						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_PERSIA</EarlyArtDefineTag>
@@ -220,6 +228,14 @@
 						<EarlyArtDefineTag>ART_DEF_UNIT_HEAVY_SPEARMAN_INDIA</EarlyArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_HEAVY_SPEARMAN_INDIA</MiddleArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_HEAVY_SPEARMAN_INDIA</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_LIGHT_SWORDSMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_LIGHT_SWORDSMAN_INDIA</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_LIGHT_SWORDSMAN_INDIA</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_LIGHT_SWORDSMAN_INDIA</LateArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 				<StyleUnit>
@@ -1460,6 +1476,147 @@
 						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_GREEK</EarlyArtDefineTag>
 						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_GREEK</MiddleArtDefineTag>
 						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_HEAVY_SPEARMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_HEAVY_SPEARMAN_GREEK</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_HEAVY_SPEARMAN_GREEK</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_HEAVY_SPEARMAN_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_SWORDSMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SWORDSMAN_GREEK</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SWORDSMAN_GREEK</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SWORDSMAN_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_HEAVY_SWORDSMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_HEAVY_SWORDSMAN_GREEK</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_HEAVY_SWORDSMAN_GREEK</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_HEAVY_SWORDSMAN_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_HEAVY_INFANTRY</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_HEAVY_INFANTRY_GREEK</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_HEAVY_INFANTRY_GREEK</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_HEAVY_INFANTRY_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_JAVELINMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_JAVELINMAN_GREEK</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_JAVELINMAN_GREEK</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_JAVELINMAN_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_ARCHER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_ARCHER_GREEK</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_ARCHER_GREEK</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_ARCHER_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_BOWMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_BOWMAN_GREEK</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_BOWMAN_GREEK</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_BOWMAN_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_HEAVY_BOWMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_HEAVY_BOWMAN_GREEK</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_HEAVY_BOWMAN_GREEK</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_HEAVY_BOWMAN_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_SKIRMISHER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SKIRMISHER_GREEK</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SKIRMISHER_GREEK</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SKIRMISHER_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_HORSEMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_HORSEMAN_GREEK</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_HORSEMAN_GREEK</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_HORSEMAN_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_HEAVY_HORSEMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_HEAVY_HORSEMAN_GREEK</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_HEAVY_HORSEMAN_GREEK</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_HEAVY_HORSEMAN_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_HEAVY_CAVALRY</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_HEAVY_CAVALRY_GREEK</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_HEAVY_CAVALRY_GREEK</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_HEAVY_CAVALRY_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_HORSE_ARCHER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_HORSE_ARCHER_GREEK</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_HORSE_ARCHER_GREEK</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_HORSE_ARCHER_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_HEAVY_HORSE_ARCHER</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_HEAVY_HORSE_ARCHER_GREEK</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_HEAVY_HORSE_ARCHER_GREEK</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_HEAVY_HORSE_ARCHER_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+			</StyleUnits>
+		</UnitArtStyleTypeInfo>
+		<UnitArtStyleTypeInfo>
+			<Type>UNIT_ARTSTYLE_MACEDONIAN</Type>
+			<StyleUnits>
+				<StyleUnit>
+					<UnitType>UNIT_LEVY_SPEARMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_LEVY_SPEARMAN_GREEK</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_LEVY_SPEARMAN_GREEK</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_LEVY_SPEARMAN_GREEK</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_MILITIA_SPEARMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_MILITIA_SPEARMAN_MACEDONIAN</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_MILITIA_SPEARMAN_MACEDONIAN</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_MILITIA_SPEARMAN_MACEDONIAN</LateArtDefineTag>
+					</UnitMeshGroup>
+				</StyleUnit>
+				<StyleUnit>
+					<UnitType>UNIT_SPEARMAN</UnitType>
+					<UnitMeshGroup>
+						<EarlyArtDefineTag>ART_DEF_UNIT_SPEARMAN_MACEDONIAN</EarlyArtDefineTag>
+						<MiddleArtDefineTag>ART_DEF_UNIT_SPEARMAN_MACEDONIAN</MiddleArtDefineTag>
+						<LateArtDefineTag>ART_DEF_UNIT_SPEARMAN_MACEDONIAN</LateArtDefineTag>
 					</UnitMeshGroup>
 				</StyleUnit>
 				<StyleUnit>

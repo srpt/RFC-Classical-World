@@ -6246,6 +6246,17 @@ int CvPlot::calculateNatureYield(YieldTypes eYield, TeamTypes eTeam, bool bIgnor
 	if (isRiver())
 	{
 		iYield += ((bIgnoreFeature || (getFeatureType() == NO_FEATURE)) ? GC.getTerrainInfo(getTerrainType()).getRiverYieldChange(eYield) : GC.getFeatureInfo(getFeatureType()).getRiverYieldChange(eYield));
+		// srpt Funan UP
+		if (getOwnerINLINE() == FUNAN)
+		{
+			if ((getY_INLINE()) < 40)
+			{
+				if ((int)eYield == 0)
+				{
+					iYield += 1;
+				}
+			}
+		}
 	}
 
 	if (isHills())

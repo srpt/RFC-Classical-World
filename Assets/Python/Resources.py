@@ -15,6 +15,7 @@ localText = CyTranslator()
 class Resources:
 
 
+
 	def createResource(self, iX, iY, iBonus, textKey="TXT_KEY_MISC_DISCOVERED_NEW_RESOURCE"):
 		"""Creates a bonus resource and alerts the plot owner"""
 		
@@ -40,6 +41,9 @@ class Resources:
 
 
 	def checkTurn(self, iGameTurn):
+			
+		if iGameTurn == getTurnForYear(-200)-1:
+			self.createResource(20, 33, con.iWheat) # Cirta, just before Numidians
 		
 		return
 

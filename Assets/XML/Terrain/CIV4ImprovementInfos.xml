@@ -200,7 +200,7 @@
 				<iYield>0</iYield>
 			</PrereqNatureYields>
 			<IrrigatedYieldChange>
-				<iYield>1</iYield>
+				<iYield>2</iYield>
 				<iYield>0</iYield>
 				<iYield>0</iYield>
 			</IrrigatedYieldChange>
@@ -269,7 +269,7 @@
 					<bBonusTrade>1</bBonusTrade>
 					<iDiscoverRand>0</iDiscoverRand>
 					<YieldChanges>
-						<iYieldChange>1</iYieldChange>
+						<iYieldChange>2</iYieldChange>
 						<iYieldChange>0</iYieldChange>
 						<iYieldChange>0</iYieldChange>
 					</YieldChanges>
@@ -352,7 +352,7 @@
 					<bBonusTrade>1</bBonusTrade>
 					<iDiscoverRand>0</iDiscoverRand>
 					<YieldChanges>
-						<iYieldChange>3</iYieldChange>
+						<iYieldChange>2</iYieldChange>
 						<iYieldChange>0</iYieldChange>
 						<iYieldChange>0</iYieldChange>
 					</YieldChanges>
@@ -382,11 +382,11 @@
 			<ArtDefineTag>ART_DEF_IMPROVEMENT_MINE</ArtDefineTag>
 			<YieldChanges>
 				<iYieldChange>0</iYieldChange>
-				<iYieldChange>2</iYieldChange>
+				<iYieldChange>0</iYieldChange>
 				<iYieldChange>0</iYieldChange>
 			</YieldChanges>
 			<bActsAsCity>0</bActsAsCity>
-			<bHillsMakesValid>1</bHillsMakesValid>
+			<bHillsMakesValid>0</bHillsMakesValid>
 			<bFreshWaterMakesValid>0</bFreshWaterMakesValid>
 			<bRiverSideMakesValid>0</bRiverSideMakesValid>
 			<bNoFreshWater>0</bNoFreshWater>
@@ -419,7 +419,7 @@
 					<iDiscoverRand>10000</iDiscoverRand>
 					<YieldChanges>
 						<iYieldChange>0</iYieldChange>
-						<iYieldChange>-1</iYieldChange>
+						<iYieldChange>-2</iYieldChange>
 						<iYieldChange>6</iYieldChange>
 					</YieldChanges>
 				</BonusTypeStruct>
@@ -695,7 +695,7 @@
 					</YieldChanges>
 				</BonusTypeStruct>
 				<BonusTypeStruct>
-					<BonusType>BONUS_SPICES</BonusType>
+					<BonusType>BONUS_PEPPER</BonusType>
 					<bBonusMakesValid>1</bBonusMakesValid>
 					<bBonusTrade>1</bBonusTrade>
 					<iDiscoverRand>0</iDiscoverRand>
@@ -824,7 +824,7 @@
 			<Civilopedia>TXT_KEY_IMPROVEMENT_QUARRY_PEDIA</Civilopedia>
 			<ArtDefineTag>ART_DEF_IMPROVEMENT_QUARRY</ArtDefineTag>
 			<bActsAsCity>0</bActsAsCity>
-			<bHillsMakesValid>0</bHillsMakesValid>
+			<bHillsMakesValid>1</bHillsMakesValid>
 			<bFreshWaterMakesValid>0</bFreshWaterMakesValid>
 			<bRiverSideMakesValid>0</bRiverSideMakesValid>
 			<bNoFreshWater>0</bNoFreshWater>
@@ -847,7 +847,8 @@
 			<iHappiness>0</iHappiness>
 			<iPillageGold>5</iPillageGold>
 			<bOutsideBorders>0</bOutsideBorders>
-			<TerrainMakesValids/>
+			<TerrainMakesValids>
+			</TerrainMakesValids>
 			<FeatureMakesValids/>
 			<BonusTypeStructs>
 				<BonusTypeStruct>
@@ -1045,57 +1046,6 @@
 			<RouteYieldChanges/>
 			<bGraphicalOnly>0</bGraphicalOnly>
 		</ImprovementInfo>
-		<!--<ImprovementInfo>
-			<Type>IMPROVEMENT_APIARY</Type>
-			<Description>Apiary</Description>
-			<Civilopedia>TXT_KEY_IMPROVEMENT_APIARY_PEDIA</Civilopedia>
-			<ArtDefineTag>ART_DEF_IMPROVEMENT_APIARY</ArtDefineTag>
-			<bActsAsCity>0</bActsAsCity>
-			<bHillsMakesValid>0</bHillsMakesValid>
-			<bFreshWaterMakesValid>0</bFreshWaterMakesValid>
-			<bRiverSideMakesValid>0</bRiverSideMakesValid>
-			<bNoFreshWater>0</bNoFreshWater>
-			<bRequiresFlatlands>0</bRequiresFlatlands>
-			<bRequiresRiverSide>0</bRequiresRiverSide>
-			<bRequiresIrrigation>0</bRequiresIrrigation>
-			<bCarriesIrrigation>0</bCarriesIrrigation>
-			<bRequiresFeature>0</bRequiresFeature>
-			<bWater>0</bWater>
-			<bGoody>0</bGoody>
-			<bPermanent>0</bPermanent>
-			<bUseLSystem>1</bUseLSystem>
-			<iAdvancedStartCost>30</iAdvancedStartCost>
-			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
-			<iTilesPerGoody>0</iTilesPerGoody>
-			<iGoodyRange>0</iGoodyRange>
-			<iFeatureGrowth>0</iFeatureGrowth>
-			<iUpgradeTime>0</iUpgradeTime>
-			<iAirBombDefense>5</iAirBombDefense>
-			<iDefenseModifier>0</iDefenseModifier>
-			<iHappiness>0</iHappiness>
-			<iPillageGold>5</iPillageGold>
-			<bOutsideBorders>0</bOutsideBorders>
-			<TerrainMakesValids/>
-			<FeatureMakesValids/>
-			<BonusTypeStructs>
-				<BonusTypeStruct>
-					<BonusType>BONUS_HONEY</BonusType>
-					<bBonusMakesValid>1</bBonusMakesValid>
-					<bBonusTrade>1</bBonusTrade>
-					<iDiscoverRand>0</iDiscoverRand>
-					<YieldChanges>
-						<iYieldChange>1</iYieldChange>
-						<iYieldChange>0</iYieldChange>
-						<iYieldChange>2</iYieldChange>
-					</YieldChanges>
-				</BonusTypeStruct>
-			</BonusTypeStructs>
-			<ImprovementPillage/>
-			<ImprovementUpgrade/>
-			<TechYieldChanges/>
-			<RouteYieldChanges/>
-			<bGraphicalOnly>0</bGraphicalOnly>
-		</ImprovementInfo>-->
 		<ImprovementInfo>
 			<Type>IMPROVEMENT_WINERY</Type>
 			<Description>TXT_KEY_IMPROVEMENT_WINERY</Description>
@@ -1340,7 +1290,7 @@
 			<Civilopedia>TXT_KEY_IMPROVEMENT_FORT_PEDIA</Civilopedia>
 			<ArtDefineTag>ART_DEF_IMPROVEMENT_FORT</ArtDefineTag>
 			<YieldChanges/>
-			<bActsAsCity>1</bActsAsCity>
+			<bActsAsCity>0</bActsAsCity>
 			<bHillsMakesValid>0</bHillsMakesValid>
 			<bFreshWaterMakesValid>0</bFreshWaterMakesValid>
 			<bRiverSideMakesValid>0</bRiverSideMakesValid>

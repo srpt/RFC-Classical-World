@@ -4426,7 +4426,12 @@
 			<FavoriteCivic>NONE</FavoriteCivic>
 			<FavoriteReligion>NONE</FavoriteReligion>
 			<FavoriteWonder>NONE</FavoriteWonder>
-			<Traits/>
+			<Traits>
+				<Trait>
+					<TraitType>TRAIT_MOBILITY</TraitType>
+					<bTrait>1</bTrait>
+				</Trait>
+			</Traits>
 			<Flavors/>
 			<ContactRands/>
 			<ContactDelays/>

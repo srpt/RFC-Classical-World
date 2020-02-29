@@ -15,6 +15,10 @@ gc = CyGlobalContext()
 PyPlayer = PyHelpers.PyPlayer
 localText = CyTranslator()
 
+# initialise player variables
+iPlayer = utils.getHumanID()
+pPlayer = gc.getPlayer(iPlayer)
+
 iReligiousVictory = 7
 iHistoricalVictory = 8
 
@@ -26,6 +30,133 @@ class Victory:
 		
 		iHuman = utils.getHumanID()
 		pPlayer = gc.getPlayer(iPlayer)
+		
+		# CARTHAGE
+		if iPlayer == con.iCarthage:
+				
+			# Carthaginian UHV1: Obtain 6 luxury resources and 6 strategic resources by 350BC
+			if sd.getGoal(iPlayer, 0) == -1:
+				if iGameTurn <= getTurnForYear(-350):
+					if self.getNumLuxuries(iPlayer) >= 6 and self.getNumStrategicResources(iPlayer) >= 6:
+						sd.setGoal(iPlayer, 0, 1)
+				else:
+					sd.setGoal(iPlayer, 0, 0)
+						
+			# Carthaginian UHV2: Make Carthage the most prosperous trading city in the world in 300BC
+			if iGameTurn <= getTurnForYear(-300):
+				iCarthageTrade = gc.getMap().plot(23, 33).getPlotCity().getTradeYield(YieldTypes.YIELD_COMMERCE)
+				iBestTrade = 0
+				for city in utils.getAllCities():
+					if city.getX() != 23 and city.getY() != 33:
+						iCityTrade = city.getTradeYield(YieldTypes.YIELD_COMMERCE)
+						if iCityTrade > iBestTrade:
+							iBestTrade = iCityTrade
+				if iCarthageTrade > iBestTrade:
+					sd.setGoal(iPlayer, 1, 1)
+				else:
+					sd.setGoal(iPlayer, 1, 0)
+		
+		# ATHENS
+		if iPlayer == con.iAthens:
+		
+			# Control five Aegean ports by 350BC
+			if sd.getGoal(iPlayer, 0) == -1:
+				if iGameTurn <= getTurnForYear(-350):
+					iPorts = 0
+					for city in utils.getCityList(iPlayer):
+						if (city.getX(), city.getY()) in con.lAegeanPortTiles:
+							iPorts += 1
+					if iPorts >= 5:
+						sd.setGoal(iPlayer, 0, 1)
+				else:
+					sd.setGoal(iPlayer, 0, 0)
+					
+			# Build the Parthenon, the Theatre of Dionysis and the Academy see onBuildingBuilt
+			
+			# Settle five Great People in your capital by 300BC
+			if sd.getGoal(iPlayer, 2) == -1:
+				if iGameTurn <= getTurnForYear(300):
+					iCount = 0
+					if pPlayer.getNumCities() > 0:
+						capital = pPlayer.getCapitalCity()
+						if self.countGreatPeople((capital.getX(), capital.getY())) >= 5:
+							sd.setGoal(iPlayer, 2, 1)
+				else:
+					sd.setGoal(iPlayer, 2, 0)
+					
+		# NANDAS
+		if iPlayer == con.iNandas:
+			
+			# Control northern India by 330BC
+			if sd.getGoal(iPlayer, 0) == -1:
+				if iGameTurn <= getTurnForYear(-330):
+					bControl = true
+					regionList = [con.rMagadha, con.rAnga, con.rAvanti, con.rPunjab]
+					for regionID in regionList:
+						if not utils.checkRegionControl(iPlayer, regionID, True):
+							bControl = false
+					if bControl:
+						sd.setGoal(iPlayer, 0, 1)
+				else:
+					sd.setGoal(iPlayer, 0, 0)
+						
+			# Control the world's largest army by 330BC
+			if sd.getGoal(iPlayer, 1) == -1:
+				if iGameTurn <= getTurnForYear(-330):
+					iBestArmy = 0
+					iNandaArmy = gc.getPlayer(iPlayer).getNumUnits()
+					for iLoopPlayer in range(con.iNumPlayers):
+						iLoopArmy = gc.getPlayer(iLoopPlayer).getNumUnits()
+						if iLoopArmy > iBestArmy:
+							iBestArmy = iLoopArmy
+					if iBestArmy > iNandaArmy:
+						sd.setGoal(iPlayer, 1, 1)
+				else:
+					sd.setGoal(iPlayer, 1, 0)
+					
+			# Be the world's richest civilization in 330BC
+			if iGameTurn == getTurnForYear(-330):
+				iBestGold = 0
+				iNandaGold = gc.getPlayer(iPlayer).getGold()
+				for iLoopPlayer in range(con.iNumPlayers):
+					iLoopGold = gc.getPlayer(iPlayer).getGold()
+					if iLoopGold > iBestGold:
+						iBestGold = iLoopGold
+				if iNandaGold > iBestGold:
+					sd.setGoal(iPlayer, 2, 1)
+				else:
+					sd.setGoal(iPlayer, 2, 0)
+					
+		# QIN
+		if iPlayer == con.iQin:
+		# Qin UHV1: Build the Great Wall and the Terracotta Army by 215BC see onBuildingBuilt
+			if sd.getGoal(iPlayer, 0) == -1:
+				if iGameTurn >= getTurnForYear(-215):
+					sd.setGoal(iPlayer, 0, 0)
+			
+			# Qin UHV2: control central and north China by 210BC
+			if sd.getGoal(iPlayer, 1) == -1:
+				if iGameTurn <= getTurnForYear(-210):
+					bControl = True
+					regionList = [con.rQin, con.rHan, con.rYan, con.rZhao, con.rChu, con.rNanYue, con.rQi, con.rWu, con.rShu]
+					for regionID in regionList:
+						if not utils.checkRegionControl(iPlayer, regionID):
+							bControl = False
+					if bControl:
+						sd.setGoal(iPlayer, 1, 1)
+				else:
+					sd.setGoal(iPlayer, 1, 0)
+			
+			# Qin UHV3: control at least 9 provinces in 100BC
+			if sd.getGoal(iPlayer, 2) == -1:
+				if iGameTurn == getTurnForYear(-100):
+					if self.getNumProvinces(iPlayer) >= 9:
+						sd.setGoal(iPlayer, 2, 1)
+					else:
+						sd.setGoal(iPlayer, 2, 0)
+						
+			
+			
 		
 		# HISTORICAL VICTORY
 		if gc.getGame().isVictoryValid(iHistoricalVictory):
@@ -109,6 +240,18 @@ class Victory:
 		
 		if not gc.getGame().isVictoryValid(iHistoricalVictory):
 			return
+		
+		# Atehns
+		if iPlayer == con.iAthens and sd.getGoal(iPlayer, 0) == -1 and iBuilding in [con.iParthenon, con.iDionysis, con.iAcademy]:
+			sd.setWondersBuilt(iPlayer, sd.getWondersBuilt(iPlayer) + 1)
+			if sd.getWondersBuilt(iPlayer) == 3:
+				sd.setGoal(iPlayer, 0, 1)
+				
+		# Qin 
+		if iPlayer == con.iQin and sd.getGoal(iPlayer, 0) == -1 and iBuilding in [con.iGreatWall, con.iTerracottaArmy]:
+			sd.setWondersBuilt(iQin, sd.getWondersBuilt(iQin) + 1)
+			if sd.getWondersBuilt(iQin) == 2:
+				sd.setGoal(iQin, 0, 1)
 		
 		iGameTurn = gc.getGame().getGameTurn()
 		pPlayer = gc.getPlayer(iPlayer)
@@ -374,6 +517,17 @@ class Victory:
 		return nLuxuries
 
 
+	def getNumStrategicResources(self, iPlayer):
+		"""Returns the number of happiness-giving resources available to iPlayer."""
+		nLuxuries = 0
+		pPlayer = gc.getPlayer(iPlayer)
+		for iBonus in range(con.iNumResources):
+			if iBonus in [con.iHorse, con.iIron, con.iCopper, con.iIvory, con.iTimber, con.iStone]:
+				if pPlayer.getNumAvailableBonuses(iBonus) > 0:
+					nLuxuries += 1
+		return nLuxuries
+
+
 	def getRegionsOwnedCity(self, iPlayer, regionList, bCoastal=False):
 		"""Checks whether the player has any city in the provided list of regions (provinces)."""
 		bFound = False
@@ -495,6 +649,17 @@ class Victory:
 		for key, value in sorted(data.iteritems(), key=lambda (k,v): (v,k)):
 			pass
 		return key
+		
+	def countGreatPeople(self, tCoords):
+		"""Returns the number of Great People settled at tCoords(x,y)."""
+		iCount = 0
+		plot = gc.getMap().plot(tCoords[0], tCoords[1])
+		if plot.isCity():
+			city = plot.getPlotCity()
+			iGreatPriest = gc.getInfoTypeForString("SPECIALIST_GREAT_PRIEST")
+			for i in range(iGreatPriest, iGreatPriest+7, 1):
+				iCount += city.getFreeSpecialistCount(i)
+		return iCount
 	
 	
 	def getIcon(self, bVal):
@@ -510,6 +675,7 @@ class Victory:
 		
 		aHelp = []
 		pPlayer = gc.getPlayer(iPlayer)
+		iGameTurn = gc.getGame().getGameTurn()
 		
 		# the info is outdated or irrelevant once the goal has been accomplished or failed
 		if sd.getGoal(iPlayer, iGoal) == 1:
@@ -518,6 +684,138 @@ class Victory:
 		elif sd.getGoal(iPlayer, iGoal) == 0:
 			aHelp.append(self.getIcon(False) + localText.getText("TXT_KEY_VICTORY_GOAL_FAILED", ()))
 			return aHelp
+				
+		
+		if iPlayer == con.iCarthage:
+			if iGoal == 0: 
+				iTurnsLeft = abs(max(0, getTurnForYear(-350) - iGameTurn))
+				iLuxuryCount = self.getNumLuxuries(con.iCarthage)
+				iStrategicCount = self.getNumStrategicResources(con.iCarthage)
+				aHelp.append(self.getIcon(iLuxuryCount >= 6 and iStrategicCount >= 6) + 'Luxury resources: ' + str(iLuxuryCount) + ' / 6' + self.getIcon(iStrategicCount >= 6) + 'Strategic resources: ' + str(iStrategicCount) + ' / 6')
+				if iTurnsLeft > 0 and sd.getGoal(iPlayer, 0) == -1:
+					aHelp.append(str(iTurnsLeft) + ' turns left')
+					
+			if iGoal == 1: 
+				iTurnsLeft = abs(max(0, getTurnForYear(-300) - iGameTurn))
+				bComplete = False
+				iCarthageTrade = gc.getMap().plot(23, 33).getPlotCity().getTradeYield(YieldTypes.YIELD_COMMERCE)
+				iBestTrade = 0
+				for city in utils.getAllCities():
+					if city.getX() != 23 and city.getY() != 33:
+						iCityTrade = city.getTradeYield(YieldTypes.YIELD_COMMERCE)
+						if iCityTrade > iBestTrade:
+							iBestTrade = iCityTrade
+							pBestCity = city
+				aHelp.append('Top trade city: ' + pBestCity.getName() + 'Trade: ' + str(iBestTrade))
+				if iCarthageTrade > iCityTrade:
+					aHelp.append(self.getIcon(iCarthageTrade > iBestTrade) + 'Carthage top trade city')
+				else:
+					aHelp.append(self.getIcon(iCarthageTrade > iBestTrade) + pBestCity.getName() + ' top trade city')
+							
+				if iTurnsLeft > 0 and sd.getGoal(iPlayer, 0) == -1:
+					aHelp.append(str(iTurnsLeft) + ' turns left')
+					
+			if iGoal == 2:  
+				iTurnsLeft = abs(max(0, getTurnForYear(-200) - iGameTurn))
+				bComplete = False
+				if sd.getGoal(con.iCarthage, 1) == 1: bComplete = True
+				aHelp.append(self.getIcon(bComplete) + 'Romans destroyed')
+				if iTurnsLeft > 0 and sd.getGoal(iPlayer, 0) == -1:
+					aHelp.append(str(iTurnsLeft) + ' turns left')
+					
+		if iPlayer == con.iAthens:
+			if iGoal == 0:
+				iTurnsLeft = abs(max(0, getTurnForYear(-350) - iGameTurn))
+				iPorts = 0
+				for city in utils.getCityList(iPlayer):
+					if (city.getX(), city.getY()) in con.lAegeanPortTiles:
+						iPorts += 1
+				aHelp.append(self.getIcon(iPorts >= 5) + 'Aegean ports: ' + str(iPorts) + ' / 5')
+				if iTurnsLeft > 0 and sd.getGoal(iPlayer, 0) == -1:
+					aHelp.append(str(iTurnsLeft) + ' turns left')
+						
+			if iGoal == 1:
+				bParthenon = self.getNumBuildings(iPlayer, con.iParthenon)
+				bDionysis = self.getNumBuildings(iPlayer, con.iDionysis)
+				bAcademy = self.getNumBuildings(iPlayer, con.iAcademy)
+				aHelp.append(self.getIcon(bParthenon) + 'Parthenon, ' + self.getIcon(bDionysis) + 'Dionysis, ' + self.getIcon(bAcademy) + 'Academy')
+				
+			if iGoal == 2:
+				iTurnsLeft = abs(max(0, getTurnForYear(-300) - iGameTurn))
+				iCount = 0
+				if pPlayer.getNumCities() > 0:
+					capital = pPlayer.getCapitalCity()
+					iCount = self.countGreatPeople((capital.getX(), capital.getY()))
+				aHelp.append(self.getIcon(iCount >= 5) + 'Great people settled: ' + str(iCount) + ' / 5')
+				if iTurnsLeft > 0 and sd.getGoal(iPlayer, 0) == -1:
+					aHelp.append(str(iTurnsLeft) + ' turns left')
+				
+				
+		if iPlayer == con.iNandas:
+			if iGoal == 0:
+				iTurnsLeft = abs(max(0, getTurnForYear(-330) - iGameTurn))
+				bMagadha = utils.checkRegionControl(iPlayer, con.rMagadha, True)
+				bAnga = utils.checkRegionControl(iPlayer, con.rAnga, True)
+				bAvanti = utils.checkRegionControl(iPlayer, con.rAvanti, True)
+				bPunjab = utils.checkRegionControl(iPlayer, con.rPunjab, True)
+				aHelp.append(self.getIcon(bMagadha) + 'Magadha, ' + self.getIcon(bAnga) + 'Anga, ' + self.getIcon(bPunjab) + 'Punjab, ' + self.getIcon(bAvanti) + 'Avanti')
+				if iTurnsLeft > 0 and sd.getGoal(iPlayer, 0) == -1:
+					aHelp.append(str(iTurnsLeft) + ' turns left')
+			if iGoal == 1:
+				iTurnsLeft = abs(max(0, getTurnForYear(-330) - iGameTurn))
+				iBestArmy = 0
+				iNandaArmy = gc.getPlayer(iPlayer).getNumUnits()
+				for iLoopPlayer in range(con.iNumPlayers):
+					iLoopArmy = gc.getPlayer(iLoopPlayer).getNumUnits()
+					if iLoopArmy > iBestArmy:
+						iBestArmy = iLoopArmy
+				aHelp.append(self.getIcon(iNandaArmy > iBestArmy) + 'Army size: ' + str(iNandaArmy) + '    Rival army size: ' + str(iBestArmy))
+				if iTurnsLeft > 0 and sd.getGoal(iPlayer, 0) == -1:
+					aHelp.append(str(iTurnsLeft) + ' turns left')
+			if iGoal == 2:
+				iTurnsLeft = abs(max(0, getTurnForYear(-330) - iGameTurn))
+				iBestGold = 0
+				iNandaGold = gc.getPlayer(iPlayer).getGold()
+				for iLoopPlayer in range(con.iNumPlayers):
+					iLoopGold = gc.getPlayer(iLoopPlayer).getGold()
+					if iLoopGold > iBestGold:
+						iBestGold = iLoopGold
+				aHelp.append(self.getIcon(iNandaGold > iBestGold) + 'Gold: ' + str(iNandaGold) + '    Rival gold: ' + str(iBestGold))
+				if iTurnsLeft > 0 and sd.getGoal(iPlayer, 0) == -1:
+					aHelp.append(str(iTurnsLeft) + ' turns left')
+		
+		if iPlayer == con.iQin:
+			if iGoal == 0: 
+				iTurnsLeft = abs(max(0, getTurnForYear(-215) - iGameTurn))
+				bWall = self.getNumBuildings(iPlayer, con.iGreatWall)
+				bArmy = self.getNumBuildings(iPlayer, con.iTerracottaArmy)
+				aHelp.append(self.getIcon(bWall) + 'The Great Wall, ' + self.getIcon(bArmy) + 'The Terracotta Army')
+				if iTurnsLeft > 0 and sd.getGoal(iPlayer, 0) == -1:
+					aHelp.append(str(iTurnsLeft) + ' turns left')
+			if iGoal == 1:
+				iTurnsLeft = abs(max(0, getTurnForYear(-210) - iGameTurn))
+				bQin = utils.checkRegionControl(iPlayer, con.rQin)
+				bHan = utils.checkRegionControl(iPlayer, con.rHan)
+				bYan = utils.checkRegionControl(iPlayer, con.rYan)
+				bZhao = utils.checkRegionControl(iPlayer, con.rZhao)
+				bChu = utils.checkRegionControl(iPlayer, con.rChu)
+				bNanYue = utils.checkRegionControl(iPlayer, con.rNanYue)
+				bWu = utils.checkRegionControl(iPlayer, con.rWu)
+				bQi = utils.checkRegionControl(iPlayer, con.rQi)
+				aHelp.append(self.getIcon(bQin) + 'Qin, ' + self.getIcon(bHan) + 'Han, ' + self.getIcon(bYan) + 'Yan, ' + self.getIcon(bZhao) + 'Zhao, ' + self.getIcon(bChu) + 'Chu ' + self.getIcon(bNanYue) + 'Nan Yue, ' + self.getIcon(bQi) + 'Qi ' + self.getIcon(bWu) + 'Wu')
+				if iTurnsLeft > 0 and sd.getGoal(iPlayer, 0) == -1:
+					aHelp.append(str(iTurnsLeft) + ' turns left')
+			if iGoal == 2:
+				iTurnsLeft = abs(max(0, getTurnForYear(-100) - iGameTurn))
+				iCount = self.getNumProvinces(iPlayer)
+				aHelp.append(self.getIcon(iCount >= 9) + 'Provinces controlled: ' + str(iCount) + ' / 9')
+				if iTurnsLeft > 0 and sd.getGoal(iPlayer, 0) == -1:
+					aHelp.append(str(iTurnsLeft) + ' turns left')
+				
+		
+				
+				
+		
+		
 		
 		return aHelp
-	

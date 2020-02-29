@@ -5727,10 +5727,14 @@ bool CvPlayer::canConstruct(BuildingTypes eBuilding, bool bContinue, bool bTestV
 			return false;
 		}
 	}
-
-	if (!(currentTeam.isHasTech((TechTypes)(GC.getBuildingInfo(eBuilding).getPrereqAndTech()))))
+	
+	// srpt Greek UP
+	if (!(getID() == ATHENS && canResearch((TechTypes)(GC.getBuildingInfo(eBuilding).getPrereqAndTech())) && getCurrentEra() < 1 && (GC.getBuildingInfo(eBuilding).getGreatPeopleUnitClass() != NO_UNITCLASS)))
 	{
-		return false;
+		if (!(currentTeam.isHasTech((TechTypes)(GC.getBuildingInfo(eBuilding).getPrereqAndTech()))))
+		{
+			return false;
+		}
 	}
 
 	for (iI = 0; iI < GC.getNUM_BUILDING_AND_TECH_PREREQS(); iI++)
@@ -6834,6 +6838,12 @@ int CvPlayer::calculateUnitCost() const
 		return 0;
 	}
 
+	// srpt Leoreth: independents do not have to pay unit costs
+	if (getID() == INDEPENDENT1 || getID() == INDEPENDENT4)
+	{
+		return 0;
+	}
+
 	int iFreeUnits;
 	int iFreeMilitaryUnits;
 	int iPaidUnits;
@@ -6851,6 +6861,12 @@ int CvPlayer::calculateUnitSupply() const
 	int iBaseSupplyCost;
 
 	if (isAnarchy())
+	{
+		return 0;
+	}
+
+	// srpt Leoreth: independents do not have to pay unit supply
+	if (getID() == INDEPENDENT1 || getID() == INDEPENDENT4)
 	{
 		return 0;
 	}
@@ -7467,6 +7483,26 @@ bool CvPlayer::canDoCivics(CivicTypes eCivic) const
 			return true;
 		}
 	}
+	
+	//srpt - start mauryan UP all religious civics
+	if (getID() == MAURYANS)
+	{
+		if (eCivic > 19)
+		{
+			return true;
+		}
+	}
+	//srpt - end UP
+	
+	//srpt - start roman UP all govt civics
+	if (getID() == ROME)
+	{
+		if (eCivic < 5)
+		{
+			return true;
+		}
+	}
+	//srpt - end UP
 
 	if (!isHasCivicOption((CivicOptionTypes)(GC.getCivicInfo(eCivic).getCivicOptionType())) && !(GET_TEAM(getTeam()).isHasTech((TechTypes)(GC.getCivicInfo(eCivic).getTechPrereq()))))
 	{

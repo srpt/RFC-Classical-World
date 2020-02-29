@@ -539,7 +539,8 @@
 	</Define>
 	<Define>
 		<DefineName>INITIAL_BASE_FREE_UNITS</DefineName>
-		<iDefineIntVal>4</iDefineIntVal>
+		<!--<iDefineIntVal>4</iDefineIntVal>-->
+		<iDefineIntVal>0</iDefineIntVal>
 	</Define>
 	<Define>
 		<DefineName>INITIAL_BASE_FREE_MILITARY_UNITS</DefineName>
@@ -547,7 +548,8 @@
 	</Define>
 	<Define>
 		<DefineName>INITIAL_FREE_UNITS_POPULATION_PERCENT</DefineName>
-		<iDefineIntVal>24</iDefineIntVal>
+		<!--<iDefineIntVal>24</iDefineIntVal>-->
+		<iDefineIntVal>12</iDefineIntVal>
 	</Define>
 	<Define>
 		<DefineName>INITIAL_FREE_MILITARY_UNITS_POPULATION_PERCENT</DefineName>
@@ -1572,7 +1574,7 @@
 	</Define>
 	<Define>
 		<DefineName>ADVANCED_START_CITY_COST</DefineName>
-		<iDefineIntVal>67</iDefineIntVal>
+		<iDefineIntVal>120</iDefineIntVal>
 	</Define>
 	<Define>
 		<DefineName>ADVANCED_START_CITY_COST_INCREASE</DefineName>

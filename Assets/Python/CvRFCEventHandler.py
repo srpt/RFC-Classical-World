@@ -33,6 +33,7 @@ PyGame = PyHelpers.PyGame()
 PyInfo = PyHelpers.PyInfo
 
 iNumPlayers = con.iNumPlayers
+iHuman = utils.getHumanID()
 
 class CvRFCEventHandler:
 
@@ -95,10 +96,10 @@ class CvRFCEventHandler:
 		self.rnf.setup()
 		self.sta.setup()
 		self.aiw.setup()
-		self.pla.setup()
+		#self.pla.setup()
 		self.dc.setup()
 		self.rel.setup()
-		self.tit.setup()
+		#self.tit.setup()
 		sd.save()
 		
 		
@@ -136,14 +137,14 @@ class CvRFCEventHandler:
 		self.rel.checkTurn(iGameTurn)
 		self.sta.checkTurn(iGameTurn)
 		self.aiw.checkTurn(iGameTurn)
-		self.pla.checkTurn(iGameTurn)
+		#self.pla.checkTurn(iGameTurn)
 		self.com.checkTurn(iGameTurn)
 		self.corp.checkTurn(iGameTurn)
 		
 		
 		
 		# Refugees
-		if sd.getVal('tRazedCityData'):
+		"""if sd.getVal('tRazedCityData'):
 			map = CyMap()
 			tRazedCityData = sd.getVal('tRazedCityData') #(city.getNameKey(), city.getX(), city.getY())
 			sd.delVal('tRazedCityData')
@@ -158,7 +159,7 @@ class CvRFCEventHandler:
 								cityList.append(targetCity)
 			if cityList:
 				targetCity = cityList[gc.getGame().getSorenRandNum(len(cityList), 'Random city')]
-				gc.getPlayer(targetCity.getOwner()).initTriggeredData(gc.getInfoTypeForString("EVENTTRIGGER_REFUGEES"), True, targetCity.getID(), targetCity.getX(), targetCity.getY(), -1, -1, -1, -1, -1, -1, tRazedCityData[2])
+				gc.getPlayer(targetCity.getOwner()).initTriggeredData(gc.getInfoTypeForString("EVENTTRIGGER_REFUGEES"), True, targetCity.getID(), targetCity.getX(), targetCity.getY(), -1, -1, -1, -1, -1, -1, tRazedCityData[2])"""
 		
 		
 
@@ -181,9 +182,11 @@ class CvRFCEventHandler:
 		if self.rnf.getDeleteMode(0) != -1:
 			self.rnf.deleteMode(iPlayer)
 		
-		self.pla.checkPlayerTurn(iGameTurn, iPlayer)
+		#self.pla.checkPlayerTurn(iGameTurn, iPlayer)
 		
-		if pPlayer.isAlive() and iPlayer < iNumPlayers:
+		#srpt only check human player victory
+		if pPlayer.isAlive() and iPlayer == utils.getHumanID():
+		#if pPlayer.isAlive() and iPlayer < iNumPlayers:
 			self.vic.checkPlayerTurn(iGameTurn, iPlayer)
 			sd.setLastTurnAlive(iPlayer, iGameTurn)
 			if pPlayer.getNumCities() > 0:
@@ -210,7 +213,11 @@ class CvRFCEventHandler:
 		if iOwner < iNumPlayers:
 			self.sta.onBuildingBuilt(iOwner, iBuildingType, city)
 			self.rel.onBuildingBuilt(iOwner, iBuildingType)
-			self.vic.onBuildingBuilt(iOwner, iBuildingType, city)
+			if iOwner == iHuman:
+				self.vic.onBuildingBuilt(iOwner, iBuildingType, city)
+		if iBuildingType == con.iLegalistSchool:
+			for iReligion in range(con.iNumReligions):
+				city.setHasReligion(iReligion, True, False)
 
 
 	def onProjectBuilt(self, argsList):
@@ -223,7 +230,8 @@ class CvRFCEventHandler:
 		iTechType, iTeam, iPlayer, bAnnounce = argsList
 		
 		if iPlayer < iNumPlayers:
-			self.vic.onTechAcquired(iTechType, iPlayer) # Ottomans
+			if iPlayer == iHuman:
+				self.vic.onTechAcquired(iTechType, iPlayer) # Ottomans
 			self.res.onTechAcquired(iTechType)
 			self.rel.onTechAcquired(iTechType, iPlayer)
 			if gc.getPlayer(iPlayer).isAlive() and gc.getGame().getGameTurn() > getTurnForYear(con.tBirth[iPlayer]):
@@ -243,7 +251,7 @@ class CvRFCEventHandler:
 		player = gc.getPlayer(iOwner)
 		
 		self.cnm.assignName(city)
-		self.tit.onCityBuilt(city)
+		#self.tit.onCityBuilt(city)
 		
 		#Rhye - delete culture of barbs and minor civs to prevent weird unhappiness
 		pCurrent = gc.getMap().plot(city.getX(), city.getY())
@@ -267,32 +275,8 @@ class CvRFCEventHandler:
 			iPreviousOwner = city.getPreviousOwner()
 		
 		self.sta.onCityRazed(iPreviousOwner)
-		self.pla.onCityRazed(argsList)
+		#self.pla.onCityRazed(argsList)
 		self.rel.onCityRazed(argsList)
-		self.vic.onCityRazed(iPlayer) # Timurids
-		
-		# Crusades UP
-		if iPreviousOwner < iNumPlayers:
-			plot = gc.getMap().plot(city.getX(),city.getY())
-			if plot.getRegionID() in utils.getCoreRegions(iPreviousOwner):
-				sd.setHasLostCity(iPreviousOwner, True)
-		
-		# Patronage UP
-		if iPlayer == con.iTimurids:
-			pPlayer = gc.getPlayer(iPlayer)
-			if pPlayer.getNumCities() > 0:
-				iCulture = city.getPopulation() * 40 + city.getCulture(iPreviousOwner) / 4
-				capital = pPlayer.getCapitalCity()
-				capital.changeCulture(iPlayer, iCulture, True)
-				CyInterface().addMessage(iPlayer, False, con.iDuration, CyTranslator().getText("TXT_KEY_UP_PATRONAGE", (city.getName(), capital.getName(), iCulture)), "AS2D_CULTUREEXPANDS", InterfaceMessageTypes.MESSAGE_TYPE_MINOR_EVENT, gc.getCommerceInfo(CommerceTypes.COMMERCE_CULTURE).getButton(), ColorTypes(con.iWhite), capital.getX(), capital.getY(), True, True)
-		
-		# Wonders
-		if city.getNumRealBuilding(con.iMevlanasTomb):
-			sd.delVal('iMevlanaOwner')
-		if city.getNumRealBuilding(con.iTopkapiPalace):
-			sd.delVal('iTopkapiOwner')
-		if city.getNumRealBuilding(con.iIbnBattuta):
-			sd.delVal('iIbnBattutaOwner')
 		
 		# Refugees
 		sd.setVal('tRazedCityData', (city.getX(), city.getY(), city.getNameKey()))
@@ -310,95 +294,20 @@ class CvRFCEventHandler:
 		
 		if iNewOwner < iNumPlayers:
 			utils.spreadMajorCulture(iNewOwner, city.getX(), city.getY())
-			self.pla.onCityAcquired(iPreviousOwner, iNewOwner, city)
+			#self.pla.onCityAcquired(iPreviousOwner, iNewOwner, city)
 			self.dc.onCityAcquired(argsList)
 		
 		self.sta.onCityAcquired(iPreviousOwner, iNewOwner, city, bConquest, bTrade)
 		self.rel.onCityAcquired(argsList)
-		
-		# Crusades UP
-		if iPreviousOwner < iNumPlayers:
-			plot = gc.getMap().plot(city.getX(),city.getY())
-			if plot.getRegionID() in utils.getCoreRegions(iPreviousOwner):
-				sd.setHasLostCity(iPreviousOwner, True)
-		
-		self.vic.onCityAcquired(argsList)
+		if iPreviousOwner == iHuman or iNewOwner == iHuman:
+			self.vic.onCityAcquired(argsList)
 		self.corp.onCityAcquired(argsList)
-		self.tit.onCityAcquired(argsList)
+		#self.tit.onCityAcquired(argsList)
 		
 		# Move the palace to historical backup capital
 		if iPreviousOwner < iNumPlayers:
 			if (city.getX(), city.getY()) == con.tCapitals[iPreviousOwner]:
 				self.rnf.moveCapital(con.tBackupCapitals[iPreviousOwner], iPreviousOwner, True)
-		
-		# Wonders
-		if city.getNumRealBuilding(con.iMevlanasTomb):
-			sd.setVal('iMevlanaOwner', iNewOwner)
-		if city.getNumRealBuilding(con.iTopkapiPalace):
-			sd.setVal('iTopkapiOwner', iNewOwner)
-		if city.getNumRealBuilding(con.iIbnBattuta):
-			sd.setVal('iIbnBattutaOwner', iNewOwner)
-		if city.getNumRealBuilding(con.iHouseOfWisdom):
-			if iNewOwner == con.iBarbarian and utils.getYear() > 1240 and utils.getYear() < 1300:
-				for x in range(city.getX()-1, city.getX()+2):
-					for y in range(city.getY()-1, city.getY()+2):
-						plot = gc.getMap().plot(x, y)
-						for i in range(plot.getNumUnits()):
-							unit = plot.getUnit(0)
-							if plot.getUnit(0).getUnitType() == con.iMongolHorseArcher and plot.getUnit(0).getOwner() == con.iBarbarian:
-								city.setNumRealBuilding(con.iHouseOfWisdom, 0)
-								if utils.isActive(utils.getHumanID()):
-									CyInterface().addMessage(utils.getHumanID(), False, con.iDuration, CyTranslator().getText("TXT_KEY_EVENT_HOUSE_OF_WISDOM_DESTROYED", (city.getName(), )), "AS2D_CIVIC_ADOPT", InterfaceMessageTypes.MESSAGE_TYPE_MINOR_EVENT, None, gc.getInfoTypeForString("COLOR_WHITE"), -1, -1, False, False);
-								return
-		
-		# Mongol massacre of GPs
-		if city.plot().getRegionID() in []:
-			if iNewOwner == con.iBarbarian and utils.getYear() > 1220 and utils.getYear() < 1300:
-				iPop = city.getPopulation()
-				if iPop > 2:
-					city.changePopulation(-iPop / 3)
-				for iSpecialistType in range(7,14):
-					for iSpecialist in range(city.getFreeSpecialistCount(iSpecialistType)):
-						if gc.getGame().getSorenRandNum(100, 'Chance to kill a GP') < 60:
-							city.changeFreeSpecialistCount(iSpecialistType, -1)
-		
-		# Reveal hidden relics
-		hiddenRelics = sd.getVal('hiddenRelics')
-		bFound = False
-		for i in hiddenRelics.keys():
-			if hiddenRelics[i] == city.plot().getRegionID():
-				if city.plot().getRegionID() == con.rPalestine and city.getX() != con.tJerusalem[0] and city.getY() != con.tJerusalem[1]:
-					continue
-				if pNewOwner.getStateReligion() in [gc.getBuildingInfo(i).getPrereqReligion(), gc.getBuildingInfo(i).getOrPrereqReligion()]:
-					utils.makeUnit(con.relics[i][0], iNewOwner, (city.getX(), city.getY()), 1, UnitAITypes.UNITAI_MERCHANT)
-					del hiddenRelics[i]
-					bFound = True
-		if bFound:
-			sd.setVal('hiddenRelics', hiddenRelics)
-			pNewOwner.initTriggeredData(gc.getInfoTypeForString("EVENTTRIGGER_RELIC_RECOVERED"), True, city.getID(), city.getX(), city.getY(), -1, -1, -1, -1, -1, -1, "")
-		
-		# Capture relics
-		bFoundAgain = False
-		if iNewOwner < iNumPlayers:
-			for i in con.relics.keys():
-				if city.getNumRealBuilding(i) > 0:
-					city.setNumRealBuilding(i, 0)
-					utils.makeUnit(con.relics[i][0], iNewOwner, (city.getX(), city.getY()), 1, UnitAITypes.UNITAI_MERCHANT)
-					bFoundAgain = True
-		if bFoundAgain and not bFound:
-			pNewOwner.initTriggeredData(gc.getInfoTypeForString("EVENTTRIGGER_RELIC_RECOVERED"), True, city.getID(), city.getX(), city.getY(), -1, -1, -1, -1, -1, -1, "")
-		
-		# Timurid UP
-		sd.setVal('iPreviousOwner', iPreviousOwner)
-		
-		# timer.log()
-		
-		# if (bConquest):
-			# if (iPreviousOwner == utils.getHumanID() and iNewOwner != con.iBarbarian):
-				# self.rnf.collapseHuman(iPreviousOwner, city, iNewOwner)
-			# if (self.rnf.getExileData(0) == city.getX() and self.rnf.getExileData(1) == city.getY()):
-				# if (iNewOwner == utils.getHumanID() and self.rnf.getExileData(2) != -1):
-					# self.rnf.escape(city)
 
 
 	def onCityAcquiredAndKept(self, argsList):
@@ -406,25 +315,15 @@ class CvRFCEventHandler:
 		iOwner,city,bMassacre = argsList
 		
 		iVictims = self.rel.onCityAcquiredAndKept(argsList) # massacre
-		self.vic.onCityAcquiredAndKept(argsList) # Timurids
-		
-		# Patronage UP
-		if iOwner == con.iTimurids and bMassacre and iVictims > 0:
-			pPlayer = gc.getPlayer(iOwner)
-			iPreviousOwner = sd.getVal('iPreviousOwner')
-			if pPlayer.getNumCities() > 0 and iPreviousOwner:
-				iCulture = iVictims * 40 + city.getCulture(iPreviousOwner) / 8
-				city.changeCulture(iPreviousOwner, -(city.getCulture(iPreviousOwner) / 8), True)
-				capital = pPlayer.getCapitalCity()
-				capital.changeCulture(iOwner, iCulture, True)
-				CyInterface().addMessage(iOwner, False, con.iDuration, CyTranslator().getText("TXT_KEY_UP_PATRONAGE", (city.getName(), capital.getName(), iCulture)), "AS2D_CULTUREEXPANDS", InterfaceMessageTypes.MESSAGE_TYPE_MINOR_EVENT, gc.getCommerceInfo(CommerceTypes.COMMERCE_CULTURE).getButton(), ColorTypes(con.iWhite), capital.getX(), capital.getY(), True, True)
-		
+		if iOwner == iHuman:
+			self.vic.onCityAcquiredAndKept(argsList)
 
 
 	def onCombatResult(self, argsList):
+		iHuman = utils.getHumanID()
 		pWinningUnit, pLosingUnit, pAttackingUnit = argsList
-		
-		self.vic.onCombatResult(argsList) # Mamluks
+		if pWinningUnit.getOwner() == iHuman:
+			self.vic.onCombatResult(argsList) # Mamluks
 		self.sta.onCombatResult(argsList)
 		self.rnf.immuneMode(argsList)
 		# srpt Slavery
@@ -434,7 +333,6 @@ class CvRFCEventHandler:
 		pWinningPlayer = gc.getPlayer(pWinningUnit.getOwner())
 		pLosingPlayer = gc.getPlayer(pLosingUnit.getOwner())
 		pAttackingPlayer = gc.getPlayer(pAttackingUnit.getOwner())
-		iHuman = utils.getHumanID()
 		
 		#land only
 		if not (gc.getMap().plot(pWinningUnit.getX(),pWinningUnit.getY()).isWater()):
@@ -501,8 +399,9 @@ class CvRFCEventHandler:
 			self.rel.onPlayerChangeStateReligion(argsList)
 			self.dc.onPlayerChangeStateReligion(argsList)
 			self.corp.onPlayerChangeStateReligion(argsList)
-			self.tit.onPlayerChangeStateReligion(argsList)
-			self.vic.onPlayerChangeStateReligion(argsList)
+			#self.tit.onPlayerChangeStateReligion(argsList)
+			if iPlayer == iHuman:
+				self.vic.onPlayerChangeStateReligion(argsList)
 
 
 	def onVassalState(self, argsList):
@@ -525,7 +424,8 @@ class CvRFCEventHandler:
 		pUnit, iReligion, bSuccess = argsList
 		
 		self.rel.onUnitSpreadReligionAttempt(argsList)
-		self.vic.onUnitSpreadReligionAttempt(argsList) # Oman
+		if pUnit.getOwner() == iHuman:
+			self.vic.onUnitSpreadReligionAttempt(argsList) # Oman
 
 
 	def onUnitBuilt(self, argsList):
@@ -538,14 +438,14 @@ class CvRFCEventHandler:
 		
 		self.rel.onUnitBuilt(argsList)
 		
-		# Slave Barracks (+4 XP for Ghulams)
-		if pCity.getNumRealBuilding(con.iSlaveBarracks) > 0:
-			if iUnitType == con.iGhulamLancer or iUnitType == con.iGhulamHorseArcher or iUnitType == con.iGhulamGuard:
-				pUnit.setExperience(pUnit.getExperience() + 4, -1)
-		
-		# Arabian Sheikh (+2 XP)
-		if iUnitType == con.iArabianSheikh:
-			pUnit.setExperience(pUnit.getExperience() + 2, -1)
+		# Qin UP
+		bNoReligion = True
+		for iReligion in range(con.iNumReligions):
+			if pCity.isHasReligion(iReligion):
+				bNoReligion = False
+				break
+		if bNoReligion == True:
+			pUnit.setExperience(pUnit.getExperience() + 3, -1)
 		
 		# Update UnitArtStyle for independents
 		if iPlayer >= con.iNumPlayers and iPlayer != con.iBarbarian:
@@ -565,15 +465,15 @@ class CvRFCEventHandler:
 		iPlayer, bNewValue = argsList
 		
 		if iPlayer < iNumPlayers:
-			self.tit.onSetPlayerAlive(argsList)
+			#self.tit.onSetPlayerAlive(argsList)
 			self.res.onSetPlayerAlive(argsList)
 
 
 	def onGreatPersonBorn(self, argsList):
 		'Unit Promoted'
 		pUnit, iPlayer, pCity = argsList
-		
-		self.vic.onGreatPersonBorn(argsList) # Chauhan
+		if pUnit.getOwner() == iHuman:
+			self.vic.onGreatPersonBorn(argsList) # Chauhan
 
 
 	def onKbdEvent(self, argsList):
@@ -590,7 +490,7 @@ class CvRFCEventHandler:
 		
 		if eventType == self.EventKeyDown and key == InputTypes.KB_C and self.eventManager.bAlt and self.eventManager.bShift:
 			print("SHIFT-ALT-C") #picks a dead civ so that autoplay can be started with game.AIplay xx
-			iDebugDeadCiv = iSamanids
+			iDebugDeadCiv = iMauryans
 			#gc.getTeam(gc.getPlayer(iDebugDeadCiv).getTeam()).setHasTech(con.iCalendar, True, iDebugDeadCiv, False, False)
 			utils.makeUnit(con.iSpearman, iDebugDeadCiv, (0,0), 1)
 			gc.getGame().setActivePlayer(iDebugDeadCiv, False)

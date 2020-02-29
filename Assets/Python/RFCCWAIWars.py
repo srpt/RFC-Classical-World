@@ -371,7 +371,7 @@ class RFCCWAIWars:
 		# land for elephants
 		
 		teamPreviousOwner = gc.getTeam(gc.getPlayer(iPreviousOwner).getTeam())
-		lIndianRegions = [con.rGandhara, con.rPunjab, con.rSindh, con.rMagadha, con.rAvanti, con.rDeccan, con.rSaurashtra, con.rKerala, con.rTamilNadu, con.rKalinka, con.rBangala]
+		lIndianRegions = [con.rGandhara, con.rPunjab, con.rSindh, con.rMagadha, con.rAvanti, con.rDeccan, con.rSaurashtra, con.rKerala, con.rTamilNadu, con.rKalinka, con.rAnga]
 		lIndianCivs = [con.iMauryans, con.iPandyans, con.iSatavahana]
 		
 		if bTrade and iPreviousOwner < iNumPlayers and iNewOwner in lIndianCivs and pNewOwner.getNumAvailableBonuses(con.iIvory) > 0 and city.plot().getRegionID() in lIndianRegions and utils.getYear() <= -100 and sd.getElephants(iPreviousOwner) == 0:

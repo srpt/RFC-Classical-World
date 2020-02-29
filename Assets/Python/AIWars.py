@@ -123,6 +123,34 @@ class AIWars:
 		else:
 			iRndnum = gc.getGame().getSorenRandNum(iMaxCivs, 'attacking civ index') 
 			
+			# Important war: Carthage vs. Rome
+			if utils.getYear() >= -250 and utils.getYear() < -150:
+				if gc.getPlayer(con.iRome).isAlive() and gc.getPlayer(con.iCarthage).isAlive():
+					if not gc.getTeam(gc.getPlayer(con.iRome).getTeam()).isAtWar(con.iCarthage):
+						if gc.getPlayer(con.iRome) != utils.getHumanID():
+							iRndnum = con.iRome
+						elif gc.getPlayer(con.iCarthage) != utils.getHumanID():
+							iRndnum = con.iCarthage
+			
+			# Important war: Macedon vs. Athens
+			if utils.getYear() >= -400 and utils.getYear() < -300:
+				if gc.getPlayer(con.iMacedon).isAlive() and gc.getPlayer(con.iAthens).isAlive():
+					if not gc.getTeam(gc.getPlayer(con.iMacedon).getTeam()).isAtWar(con.iAthens):
+						if gc.getPlayer(con.iMacedon) != utils.getHumanID():
+							iRndnum = con.iMacedon
+						elif gc.getPlayer(con.iAthens) != utils.getHumanID():
+							iRndnum = con.iAthens
+							iRndnum = con.iCarthage
+			
+			# Important war: Qin vs. Jin
+			if utils.getYear() >= -350 and utils.getYear() < -300:
+				if gc.getPlayer(con.iQin).isAlive() and gc.getPlayer(con.iJinState).isAlive():
+					if not gc.getTeam(gc.getPlayer(con.iQin).getTeam()).isAtWar(con.iJinState):
+						if gc.getPlayer(con.iQin) != utils.getHumanID():
+							iRndnum = con.iQin
+						elif gc.getPlayer(con.iJinState) != utils.getHumanID():
+							iRndnum = con.iJinState
+			
 			
 			
 			#print ("iRndnum", iRndnum)
@@ -203,6 +231,27 @@ class AIWars:
 							lTargetCivs[iOwner] += 5
 						elif regionID in utils.getBroaderRegions(iCiv): 
 							lTargetCivs[iOwner] += 2
+		
+		#srpt: important war
+		if utils.getYear() >= -250 and utils.getYear() < -150:
+			if iCiv == con.iRome:
+				lTargetCivs[con.iCarthage] += 30
+			elif iCiv == con.iCarthage:
+				lTargetCivs[con.iRome] += 30
+		
+		#srpt: important war
+		if utils.getYear() >= -400 and utils.getYear() < -300:
+			if iCiv == con.iMacedon:
+				lTargetCivs[con.iAthens] += 30
+			elif iCiv == con.iAthens:
+				lTargetCivs[con.iMacedon] += 30
+		
+		#srpt: important war
+		if utils.getYear() >= -350 and utils.getYear() < -300:
+			if iCiv == con.iQin:
+				lTargetCivs[con.iJinState] += 30
+			elif iCiv == con.iJinState:
+				lTargetCivs[con.iQin] += 30
 		
 		
 		

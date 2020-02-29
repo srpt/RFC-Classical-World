@@ -606,10 +606,6 @@ class Stability:
 			else:
 				self.setStability(playerType, self.getStability(playerType) + max(0,min(5,(12 - gc.getPlayer(playerType).getNumCities())/2)) )
 			#print("Stability - city acquired", playerType)
-			# Start Samanid UP
-			if playerType == con.iSamanids and bConquest:
-				self.setStability(playerType, self.getStability(playerType) + 2)
-			# End Samanid UP
 			if (owner < con.iNumPlayers):
 				if (city.getX() == tCapitals[owner][0] and city.getY() == tCapitals[owner][1]):
 					self.setStability(playerType, self.getStability(playerType) + 3)
@@ -629,11 +625,11 @@ class Stability:
 		if iPlayer >= iNumPlayers: return
 		
 		iTempCivicsThreshold = self.getStability(iPlayer)
-		if iTech in [con.iReligiousUnity, con.iMovableType]:
-			self.setStability(iPlayer, self.getStability(iPlayer)-2)
-		elif iTech in [con.iCastleBuilding, con.iLevyArmies, con.iMilitaryDrill, con.iProfessionalArmies, con.iMatchlock, con.iFlintlock, con.iMilitaryScience]:
-				self.setStability(iPlayer, self.getStability(iPlayer)-1)
-		elif iTech in [con.iCivilService, con.iWelfareState, con.iAdministrativeReforms, con.iSyncretism, con.iImperialism]:
+		#if iTech in [con.iReligiousUnity, con.iMovableType]:
+			#self.setStability(iPlayer, self.getStability(iPlayer)-2)
+		#elif iTech in [con.iCastleBuilding, con.iLevyArmies, con.iMilitaryDrill, con.iProfessionalArmies, con.iMatchlock, con.iFlintlock, con.iMilitaryScience]:
+				#self.setStability(iPlayer, self.getStability(iPlayer)-1)
+		if iTech in [con.iCivilService, con.iJurisprudence, con.iCodeOfLaws, con.iCityPlanning, con.iImperialism]:
 				self.setStability(iPlayer, self.getStability(iPlayer)+1)
 		
 		self.setParameter(iPlayer, iParCivicsE, True, self.getStability(iPlayer) - iTempCivicsThreshold)
@@ -705,8 +701,8 @@ class Stability:
 		"""Returns the Expansion stability modifier for a given player."""
 		
 		iExpansionPercent = 100
-		#if gc.getPlayer(iPlayer).getCivics(0) == con.iEmpireCivic: # Empire civic
-			#iExpansionPercent -= 40
+		if gc.getPlayer(iPlayer).getCivics(0) == con.iEmpire: # Empire civic
+			iExpansionPercent -= 40
 		#if iPlayer == sd.getVal('iTopkapiOwner'): # Topkapi Palace wonder
 			#iExpansionPercent -= 25
 		return iExpansionPercent

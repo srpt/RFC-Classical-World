@@ -774,7 +774,7 @@
 			<DefaultPlayerColor>PLAYERCOLOR_DARK_YELLOW_MACEDON</DefaultPlayerColor>
 			<ArtDefineTag>ART_DEF_CIVILIZATION_MACEDON</ArtDefineTag>
 			<ArtStyleType>ARTSTYLE_MEDITERRANEAN</ArtStyleType>
-			<UnitArtStyleType>UNIT_ARTSTYLE_GREEK</UnitArtStyleType>
+			<UnitArtStyleType>UNIT_ARTSTYLE_MACEDONIAN</UnitArtStyleType>
 			<bPlayable>1</bPlayable>
 			<bAIPlayable>1</bAIPlayable>
 			<Cities>

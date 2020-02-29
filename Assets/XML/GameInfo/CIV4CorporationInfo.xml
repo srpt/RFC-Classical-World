@@ -127,7 +127,7 @@
 			<iSpreadCost>50</iSpreadCost>
 			<iMaintenance>0</iMaintenance>
 			<PrereqBonuses>
-				<BonusType>BONUS_SPICES</BonusType>
+				<BonusType>BONUS_PEPPER</BonusType>
 				<BonusType>BONUS_SALT</BonusType>
 			</PrereqBonuses>
 			<HeadquarterCommerces>

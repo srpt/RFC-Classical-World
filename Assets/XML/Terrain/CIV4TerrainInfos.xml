@@ -12,12 +12,12 @@
 			<Civilopedia>TXT_KEY_TERRAIN_GRASS_PEDIA</Civilopedia>
 			<ArtDefineTag>ART_DEF_TERRAIN_GRASS</ArtDefineTag>
 			<Yields>
-				<iYield>2</iYield>
+				<iYield>1</iYield>
 				<iYield>0</iYield>
 				<iYield>0</iYield>
 			</Yields>
 			<RiverYieldChange>
-				<iYield>0</iYield>
+				<iYield>1</iYield>
 				<iYield>0</iYield>
 				<iYield>1</iYield>
 			</RiverYieldChange>
@@ -169,12 +169,12 @@
 			<Civilopedia>TXT_KEY_TERRAIN_PLAINS_PEDIA</Civilopedia>
 			<ArtDefineTag>ART_DEF_TERRAIN_PLAINS</ArtDefineTag>
 			<Yields>
-				<iYield>1</iYield>
-				<iYield>1</iYield>
+				<iYield>0</iYield>
+				<iYield>0</iYield>
 				<iYield>0</iYield>
 			</Yields>
 			<RiverYieldChange>
-				<iYield>0</iYield>
+				<iYield>1</iYield>
 				<iYield>0</iYield>
 				<iYield>1</iYield>
 			</RiverYieldChange>
@@ -327,7 +327,7 @@
 			<ArtDefineTag>ART_DEF_TERRAIN_STEPPE</ArtDefineTag>
 			<Yields>
 				<iYield>0</iYield>
-				<iYield>1</iYield>
+				<iYield>0</iYield>
 				<iYield>0</iYield>
 			</Yields>
 			<RiverYieldChange>
@@ -490,7 +490,7 @@
 			</RiverYieldChange>
 			<HillsYieldChange/>
 			<bWater>0</bWater>
-			<bImpassable>0</bImpassable>
+			<bImpassable>1</bImpassable>
 			<bSaline>0</bSaline>
 			<bFound>0</bFound>
 			<bFoundCoast>0</bFoundCoast>
@@ -637,8 +637,8 @@
 			<ArtDefineTag>ART_DEF_TERRAIN_SALTFLAT</ArtDefineTag>
 			<Yields>
 				<iYield>0</iYield>
+				<iYield>0</iYield>
 				<iYield>1</iYield>
-				<iYield>2</iYield>
 			</Yields>
 			<RiverYieldChange>
 				<iYield>0</iYield>
@@ -647,7 +647,7 @@
 			</RiverYieldChange>
 			<HillsYieldChange/>
 			<bWater>0</bWater>
-			<bImpassable>0</bImpassable>
+			<bImpassable>1</bImpassable>
 			<bSaline>0</bSaline>
 			<bFound>0</bFound>
 			<bFoundCoast>0</bFoundCoast>
@@ -793,7 +793,7 @@
 			<Civilopedia>TXT_KEY_TERRAIN_WETLAND_PEDIA</Civilopedia>
 			<ArtDefineTag>ART_DEF_TERRAIN_WETLAND</ArtDefineTag>
 			<Yields>
-				<iYield>1</iYield>
+				<iYield>2</iYield>
 				<iYield>0</iYield>
 				<iYield>0</iYield>
 			</Yields>
@@ -804,7 +804,7 @@
 			</RiverYieldChange>
 			<HillsYieldChange/>
 			<bWater>0</bWater>
-			<bImpassable>0</bImpassable>
+			<bImpassable>1</bImpassable>
 			<bSaline>0</bSaline>
 			<bFound>0</bFound>
 			<bFoundCoast>0</bFoundCoast>
@@ -950,14 +950,14 @@
 			<Civilopedia>TXT_KEY_TERRAIN_TUNDRA_PEDIA</Civilopedia>
 			<ArtDefineTag>ART_DEF_TERRAIN_TUNDRA</ArtDefineTag>
 			<Yields>
-				<iYield>1</iYield>
-				<iYield>1</iYield>
+				<iYield>0</iYield>
+				<iYield>0</iYield>
 				<iYield>0</iYield>
 			</Yields>
 			<RiverYieldChange>
 				<iYield>0</iYield>
 				<iYield>0</iYield>
-				<iYield>1</iYield>
+				<iYield>0</iYield>
 			</RiverYieldChange>
 			<HillsYieldChange/>
 			<bWater>0</bWater>
@@ -1411,7 +1411,7 @@
 			<Yields>
 				<iYield>1</iYield>
 				<iYield>0</iYield>
-				<iYield>2</iYield>
+				<iYield>1</iYield>
 			</Yields>
 			<RiverYieldChange/>
 			<HillsYieldChange/>
@@ -2171,7 +2171,7 @@
 			</RiverYieldChange>
 			<HillsYieldChange/>
 			<bWater>0</bWater>
-			<bImpassable>0</bImpassable>
+			<bImpassable>1</bImpassable>
 			<bSaline>0</bSaline>
 			<bFound>0</bFound>
 			<bFoundCoast>0</bFoundCoast>
